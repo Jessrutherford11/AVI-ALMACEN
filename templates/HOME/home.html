@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+
+        <!--CONTENIDO-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <!-- small box -->
+                <div class="small-box bg-ligth shadow">
+                    <div class="inner">
+                        <h3><sup style="font-size: 8px"></sup></h3>
+                        <h3 id="fecha"></h3>
+                        <h4 id="hora"></h4>
+                        <div class="icon">
+                            <i class="fa fa-solid fa-clock" style="color: rgb(122, 159, 173)"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--Cuadritos. -->
+                <h5 class="mt-4 mb-2"></h5>
+                <div class="row">
+                    <div class="col">
+                        <!-- small box -->
+                        <div class="info-box bg-gradient-lightblue">
+                            <span class="info-box-icon"><i class="fas fa-box"></i></span>
+                            <div class="icon">
+                                <i class="fa fa-solid fa-dice-d6"></i>
+                            </div>
+                            <div class="info-box-content">
+                                <h4 class="info-box-text"><strong>PRODUCTOS</strong></h4>
+                                <span class="info-box-number">41</span> <!--Variable-->
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 50%"></div><!--Variable-->
+                                </div>
+                                <span class="progress-description">
+                                    70% Increase in 30 Days <!--Regal de 3 -->
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- small box -->
+                    <div class="col">
+                        <div class="info-box bg-gradient-gray">
+                            <span class="info-box-icon"><i class="fas fa-boxes"></i></span>
+
+                            <div class="icon">
+                                <i class="fa fa-solid fa-clipboard-check"></i>
+                            </div>
+
+                            <div class="info-box-content">
+
+                                <h4 class="info-box-text"><strong>CATEGORIAS</strong></h4>
+                                <span class="info-box-number">38</span> <!--Variable-->
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 30%"></div><!--Variable-->
+                                </div>
+                                <span class="progress-description">
+                                    70% Increase in 30 Days <!--Regal de 3 -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- small box -->
+                    <div class="col">
+                        <div class="info-box bg-gradient-info">
+                            <span class="info-box-icon"><i class="fas fa-user-alt"></i></span>
+
+                            <div class="icon">
+                                <i class="fa fa-solid fa-user"></i>
+                            </div>
+
+                            <div class="info-box-content">
+
+                                <h4 class="info-box-text"><strong>Provedores</strong></h4>
+                                <span class="info-box-number">20</span> <!--Variable-->
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 20%"></div><!--Variable-->
+                                </div>
+                                <span class="progress-description">
+                                    70% Increase in 30 Days <!--Regal de 3 -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--Charts-->
+                    <!-- AREA CHART -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Area Chart</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="areaChart"
+                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </section>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+
+    </div>
+
+    <!--Librerias chart - Barras - -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--Reloj-->
+    <script src="{{ url_for('static',filename='dist/js/Admin/Reloj/reloj.js')}}"></script>
+    <!--Barra-->
+    <script src="{{ url_for('static',filename='dist/js/Admin/Graficas/verticalBar.js')}}"></script>
+
+
+
+</body>
+
+</html>
