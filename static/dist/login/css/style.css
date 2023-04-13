@@ -79,6 +79,15 @@ body {
     padding: 2rem 0;
 }
 
+
+.texto {
+    font-size: 18px;
+    text-align: justify;
+    padding: 15px;
+
+
+}
+
 .formulario input {
     width: 70%;
     display: block;

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'CATEGORIAS/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'CATEGORIAS/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'CATEGORIAS/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">CATEGORIAS</h1>
+                    </div>
+                    <!--Se pone la tabla-->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Categoria</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--Iteracion por cada dato encontrado-->
+                                {% for dato in categoriasRecibidas %}
+                                <tr>
+                                    <td>{{dato.codigo}}</td>
+                                    <td>{{dato.nombreCategoria}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Categoria</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--Agregar-->
+            <section class="container mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card card-lightblue"> <!---->
+                            <div class="card-header">
+                                <h3 class="card-title">Agregar Categoria</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form class="form-horizontal" action="/agregar-categorias" method="post">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Categoria</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="nombreCate" placeholder="Categoria">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-outline-info">Agregar</button>
+                                </div>
+                                <!-- /.card-footer -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+        </div>
+
+        <!--Pie de pagina-->
+        {% include 'CATEGORIAS/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'CATEGORIAS/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'CATEGORIAS/MODULOS/scripts.html' %}
+    </div>
+
+</body>
+
+</html>

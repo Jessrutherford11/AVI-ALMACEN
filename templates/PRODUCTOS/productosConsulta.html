@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'PRODUCTOS/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'PRODUCTOS/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'PRODUCTOS/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+        <!--Consultar productos-->
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">PRODUCTOS</h1>
+            </div>
+            <!--Se pone la tabla-->
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Producto</th>
+                            <th>Existencia</th>
+                            <th>Descripcion</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--Iteracion por cada dato encontrado-->
+                        {% for dato in productosRecibidos %}
+                        <tr>
+                            <td>{{dato.codigo}}</td>
+                            <td>{{dato.nombreProducto}}</td>
+                            <td>{{dato.existencia}}</td>
+                            <td>{{dato.descripcion}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Producto</th>
+                            <th>Existencia</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+        </div>
+
+            </section>
+        </div>
+
+
+
+
+        <!--Pie de pagina-->
+        {% include 'PRODUCTOS/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'PRODUCTOS/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'PRODUCTOS/MODULOS/scripts.html' %}
+
+    </div>
+
+
+
+</body>
+
+</html>

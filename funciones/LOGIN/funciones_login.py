@@ -7,7 +7,7 @@ from werkzeug.security import check_password_hash
 
 from data_base import baseDatos as Conecbd
 
-
+#Conexion a la BD
 BD = Conecbd.conexion()
 
 
@@ -28,7 +28,7 @@ def inicioSesionAdminis():
             if(check_password_hash(userRecibido['contraseña'], password)==True):
                 session['usuario-administrador'] = userRecibido['email']
                 usuario = True
-                session.pop('usuario-empleado',None)
+                session.pop('usuario-proveedor',None)
                 return redirect('/home')    
             elif(check_password_hash(userRecibido['contraseña'],password)==False):
                 flash('Error: Contraseña incorrecta')

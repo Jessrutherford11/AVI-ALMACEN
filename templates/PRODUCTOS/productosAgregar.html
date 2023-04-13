@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'PRODUCTOS/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'PRODUCTOS/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'PRODUCTOS/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+        <!--Agregar-->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card card-lime"> <!---->
+                            <div class="card-header">
+                                <h3 class="card-title">Agregar Productos</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form class="form-horizontal" action="/agregar-productos" method="post">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Producto</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="nombreProducto" placeholder="Producto">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Existencia</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="existencia" placeholder="Existencias Productos">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Descripcion</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="descripcion" placeholder="Descripcion Producto">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-outline-success">Agregar</button>
+                                </div>
+                                <!-- /.card-footer -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+
+
+
+        <!--Pie de pagina-->
+        {% include 'PRODUCTOS/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'PRODUCTOS/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'PRODUCTOS/MODULOS/scripts.html' %}
+
+    </div>
+
+
+
+</body>
+
+</html>
