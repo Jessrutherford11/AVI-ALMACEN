@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'PRODUCTOS/MODULOS/header.html' %}
+{% include 'HOME/MODULOS/header.html' %}
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper"> <!--Ajuste de tamaño-->
@@ -10,18 +10,18 @@
                 alt="LOGO" height="60" width="60" />
         </div>
         <!--Navbar-->
-        {% include 'PRODUCTOS/MODULOS/nav-bar.html' %}
+        {% include 'HOME/MODULOS/nav-bar.html' %}
         <!-- /.navbar -->
 
         <!--Menu-->
-        {% include 'PRODUCTOS/MODULOS/menu.html' %}
+        {% include 'HOME/MODULOS/menu.html' %}
         <!--CONTENIDO- Para que no se rompa el diseño-->
         <div class="content-wrapper">
             <section class="container mt-4">
         <!--Agregar-->
                 <div class="card">
                     <div class="card-body">
-                        <div class="card card-lime"> <!---->
+                        <div class="card card-lightblue"> <!---->
                             <div class="card-header">
                                 <h3 class="card-title">Agregar Productos</h3>
                             </div>
@@ -49,10 +49,19 @@
                                             <input type="text" class="form-control" name="descripcion" placeholder="Descripcion Producto">
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Distribuidor</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="distribuidor" placeholder="Distribuidor del Producto">
+                                        </div>
+                                    </div>
+
+
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-outline-success">Agregar</button>
+                                    <button type="submit" class="btn btn-outline-primary">Agregar</button>
                                 </div>
                                 <!-- /.card-footer -->
                             </form>
@@ -67,13 +76,13 @@
 
 
         <!--Pie de pagina-->
-        {% include 'PRODUCTOS/MODULOS/footer.html' %}
+        {% include 'HOME/MODULOS/footer.html' %}
 
         <!--Side- bar control -->
-        {% include 'PRODUCTOS/MODULOS/side-bar-control.html' %}
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
 
         <!--Sripts-->
-        {% include 'PRODUCTOS/MODULOS/scripts.html' %}
+        {% include 'HOME/MODULOS/scripts.html' %}
 
     </div>
 

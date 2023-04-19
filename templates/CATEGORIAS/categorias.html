@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'CATEGORIAS/MODULOS/header.html' %}
+{% include 'HOME/MODULOS/header.html' %}
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper"> <!--Ajuste de tamaño-->
@@ -10,11 +10,11 @@
                 alt="LOGO" height="60" width="60" />
         </div>
         <!--Navbar-->
-        {% include 'CATEGORIAS/MODULOS/nav-bar.html' %}
+        {% include 'HOME/MODULOS/nav-bar.html' %}
         <!-- /.navbar -->
 
         <!--Menu-->
-        {% include 'CATEGORIAS/MODULOS/menu.html' %}
+        {% include 'HOME/MODULOS/menu.html' %}
         <!--CONTENIDO- Para que no se rompa el diseño-->
         <div class="content-wrapper">
             <section class="container mt-4">
@@ -29,15 +29,21 @@
                                 <tr>
                                     <th>Codigo</th>
                                     <th>Categoria</th>
+                                    <th class="text-center">Acciones  <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i></th> 
+                            
+                            
                                     
                                 </tr>
                             </thead>
-                            <tbody>
-                                <!--Iteracion por cada dato encontrado-->
+                            <tbody
+                            <!-- Iteracion por cada dato encontrado -->
                                 {% for dato in categoriasRecibidas %}
                                 <tr>
                                     <td>{{dato.codigo}}</td>
                                     <td>{{dato.nombreCategoria}}</td>
+                                    <td class="text-center"> <a href="#" class="btn btn-outline-warning"> <i class="fas fa-edit nav-icon"></i> </a> <!--Boton Editar-->
+                                        <a href="#" class="btn btn-outline-danger"><i class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i> </a></td> <!--Boton Eliminar-->
+                                   
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -59,7 +65,7 @@
             <section class="container mt-4">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card card-lightblue"> <!---->
+                        <div class="card card-info"> <!---->
                             <div class="card-header">
                                 <h3 class="card-title">Agregar Categoria</h3>
                             </div>
@@ -91,13 +97,13 @@
         </div>
 
         <!--Pie de pagina-->
-        {% include 'CATEGORIAS/MODULOS/footer.html' %}
+        {% include 'HOME/MODULOS/footer.html' %}
 
         <!--Side- bar control -->
-        {% include 'CATEGORIAS/MODULOS/side-bar-control.html' %}
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
 
         <!--Sripts-->
-        {% include 'CATEGORIAS/MODULOS/scripts.html' %}
+        {% include 'HOME/MODULOS/scripts.html' %}
     </div>
 
 </body>

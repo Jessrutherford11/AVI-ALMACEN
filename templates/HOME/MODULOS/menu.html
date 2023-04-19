@@ -1,112 +1,181 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href='/home' class="brand-link">
-        
-      <img src="{{ url_for('static', filename = 'dist/img/pestaña/A-LOGO.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AVI ALMACEN</span>
-    </a>
+  <!-- Brand Logo -->
+  <a href='/home' class="brand-link">
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      
+    <img src="{{ url_for('static', filename = 'dist/img/pestaña/A-LOGO.png')}}" alt="Logo"
+      class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">AVI ALMACEN</span>
+  </a>
 
-      <!-- SidebarSearch Form -->
-     
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user (optional) -->
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
+
+    <!-- SidebarSearch Form -->
+
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-header">PROVEDOR</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user fa-solid"></i> <!--Icono que se muestra dentro del nav-bar-->
-              <p>
-                Administrar
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/REGISTRAR-OPERADOR" class="nav-link"> <!---->
-                  <i class="fas fa-solid fa-file fa-user-plus fa-plus nav-icon"></i>
-                  <p>Agregar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/BASE-DATOS-OPERADOR" class="nav-link"><!---->
-                  <i class="fas fa-solid fa-database nav-icon"></i>
-                  <p>Consulta de Provedores</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/OPERACIONES-OPERADOR" class="nav-link"><!---->
-                  <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
-                  <p>Operaciones</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!-- PRODUCTOS-->
-          <li class="nav-header">PRODUCTOS</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-box fa-solid"></i><!--Icono que se muestra dentro del nav-bar-->
-              <p>
-                Administrar
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/ingresar-productos" class="nav-link"><!---->
-                  <i class="fas fa-solid fa-file fa-circle fa-plus nav-icon"></i>
-                  <p>Agregar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/productos" class="nav-link"><!---->
-                  <i class="fas fa-solid fa-database nav-icon"></i>
-                  <p>Consulta de Productos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/OPERACIONES-AUXILIAR" class="nav-link"><!---->
-                  <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
-                  <p>Operaciones</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!--CATEGORIAS PRODUCTOS-->
-          <li class="nav-header">CATEGORIAS</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-boxes fa-solid"></i>
-              <p>
-                Administrar
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
+        
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user fa-solid"></i> <!--Icono que se muestra dentro del nav-bar-->
+            <p>
+              CONTACTOS
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/provedores" class="nav-link"> <!---->
+                <i class="fas fa-solid fa-id-card-alt nav-icon"></i>
+                <p>Provedores</p> <!--CONSULTA DE PROVEDORES. Todas las acciones en uno solo.-->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/clientes" class="nav-link"><!---->
+                <i class="fas fa-solid fa-address-card nav-icon"></i>
+                <p>Clientes</p> <!--CONSULTA DE CLIENTES-->
+              </a>
+            </li>
+
+          </ul>
+        </li>
+        <!-- PRODUCTOS-->
+        <li class="nav-header">PRODUCTOS</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-box fa-solid"></i><!--Icono que se muestra dentro del nav-bar-->
+            <p>
+              Administrar
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/ingresar-productos" class="nav-link"><!---->
+                <i class="fas fa-solid fa-file fa-circle fa-plus nav-icon"></i>
+                <p>Agregar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/productos" class="nav-link"><!---->
+                <i class="fas fa-solid fa-database nav-icon"></i>
+                <p>Consulta de Productos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/productos-operaciones" class="nav-link"><!--operaciones-productos-->
+                <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
+                <p>Operaciones</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!--CATEGORIAS PRODUCTOS-->
+        <li class="nav-header">CATEGORIAS</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-boxes fa-solid"></i>
+            <p>
+              Administrar
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
 
 
-              <li class="nav-item">
-                <a href="/categorias" class="nav-link">
-                  <i class="fas fa-solid fa-database nav-icon"></i>
-                  <p>Consulta de Categorias</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+            <li class="nav-item">
+              <a href="/categorias" class="nav-link">
+                <i class="fas fa-solid fa-database nav-icon"></i> <!--Aqui se consulta y se agrega en una sola-->
+                <p>Consulta de Categorias</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
+        <!-- COMPRAS-->
+        <li class="nav-header">COMPRAS</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-dolly-flatbed fa-solid"></i><!--Icono que se muestra dentro del nav-bar-->
+            <p>
+              Administrar
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="" class="nav-link"><!---->
+                <i class="fas fa-solid fa-file fa-circle fa-plus nav-icon"></i>
+                <p>Agregar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link"><!---->
+                <i class="fas fa-solid fa-database nav-icon"></i>
+                <p>Consulta de compras</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link"><!---->
+                <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
+                <p>Operaciones</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- VENTAS-->
+        <li class="nav-header">VENTAS</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-comment-dollar fa-solid"></i><!--Icono que se muestra dentro del nav-bar-->
+            <p>
+              Administrar
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="" class="nav-link"><!---->
+                <i class="fas fa-solid fa-file fa-circle fa-plus nav-icon"></i>
+                <p>Agregar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link"><!---->
+                <i class="fas fa-solid fa-database nav-icon"></i>
+                <p>Consulta de Ventas</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link"><!---->
+                <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
+                <p>Operaciones</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
