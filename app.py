@@ -9,6 +9,7 @@ import funciones.HOME.funciones_home  as fun_home
 import funciones.CATEGORIAS.funciones_categorias as fun_cate
 import funciones.PRODUCTOS.funciones_productos as fun_prod
 import funciones.PROVEDORES.funciones_provedores as fun_prove
+import funciones.CLIENTES.funciones_clientes as fun_cli
 
 app = Flask(__name__)
 
@@ -89,6 +90,19 @@ def provedores():
 def agregarProveedores():
     return fun_prove.nuevoProveedor()
 
+
+#********************FUNCIONES CLIENTES***********************
+
+#FUNCION DE VISTA CLIENTE. 
+@app.route('/clientes')
+def clientes():
+    return fun_cli.vistaClientes()
+
+#FUNCION DE AGREGAR CLIENTES.
+
+@app.route('/agregar-clientes', methods = ['POST'])
+def agregarClientees():
+    return fun_cli.nuevoCliente()
 
 
 

@@ -20,7 +20,7 @@
             <section class="container mt-4">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="card-title"><strong><i class="fas fa-solid fa-id-card-alt nav-icon"> <font face="Castellar">  PROVEEDORES</strong></i></font> </h1>
+                        <h1 class="card-title"><strong><i class="fas fa-solid fa-users nav-icon"> <font face="Castellar">   CLIENTES</strong></i></font> </h1>
                     </div>
                     <!--Se pone la tabla-->
                     <div class="card-body">
@@ -43,7 +43,7 @@
                             </thead>
                             <tbody>
                                 <!--Iteracion por cada dato encontrado-->
-                                {% for dato in provedoresRecibidos %}
+                                {% for dato in clientesRecibidos %}
                                 <tr>
                                     <td>{{dato.codigo}}</td>
                                     <td>{{dato.nombres}}</td>
@@ -70,7 +70,7 @@
             <section class="container mt-4">
                 <div class="card card-success card-success">
                     <div class="card-header">
-                        <h5 class="card-title"><strong> <i class="fas fa-user-plus " ><font face="Calibri">  Agregar Proveedor </strong></i></font></h5>
+                        <h5 class="card-title"><strong> <i class="fas fa-user-plus " ><font face="Calibri">  Agregar Cliente </strong></i></font></h5>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
@@ -80,7 +80,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <div class="card-body">
-                        <form class="form-horizontal" action="/agregar-proveedores" method="post">
+                        <form class="form-horizontal" action="/agregar-clientes" method="post"> <!---->
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"><font face="Century">Nombre</label></font>
                                 <div class="col-sm-10">

@@ -18,18 +18,24 @@
 
         <!--CONTENIDO-->
         <div class="content-wrapper">
-            <section class="container mt-3">
-                <!-- small box -->
-                <div class="small-box bg-ligth ">
-                    <div class="inner">
-                        <h3><sup style="font-size: 5px"></sup></h3>
-                        <h3 id="fecha"></h3>
-                        <h4 id="hora"></h4>
-                        <div class="icon">
-                            <i class="fa fa-solid fa-clock" style="color: rgb(122, 159, 173)"></i>
+            <div class="container-fluid mt-4"> <!--fluid. Ocupe todo el espacio en la pantalla-->
+
+                <!-- reloj -->
+                <div class="row">
+                    <div class="col mt-10">
+                        <div class="small-box bg-ligth ">
+                            <div class="inner">
+                                <h3><sup style="font-size: 4px"></sup></h3>
+                                <h4 id="fecha"></h4>
+                                <h4 id="hora"></h4>
+                                <div class="icon">
+                                    <i class="fa fa-solid fa-clock" style="color: rgb(122, 159, 173)"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <!--Cuadritos. -->
                 <div class="row">
                     <div class="col-sm-3">
@@ -37,7 +43,7 @@
                         <div class="info-box bg-gradient-lightblue">
                             <span class="info-box-icon"><i class="fas fa-box"></i></span>
                             <div class="icon">
-                                <i class="fa fa-solid fa-dice-d6"></i>
+                                <i class="fa fa-solid fa-box-open"></i>
                             </div>
                             <div class="info-box-content">
                                 <h4 class="info-box-text"><strong>Productos</strong></h4>
@@ -96,13 +102,13 @@
                         </div>
                     </div>
 
-                        <!-- small box Clientes -->
+                    <!-- small box Clientes -->
                     <div class="col-sm-3">
                         <div class="info-box bg-gradient-gray-dark">
-                            <span class="info-box-icon"><i class="fas fa-user-alt"></i></span>
+                            <span class="info-box-icon"><i class="fas fa-users"></i></span>
 
                             <div class="icon">
-                                <i class="fa fa-solid fa-user"></i>
+                                <i class="fa fa-solid fa-user-check"></i>
                             </div>
 
                             <div class="info-box-content">
@@ -120,36 +126,41 @@
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
 
-    <!--TABLA DE BARRAS-->
-    <div class="content-wrapper">
-        <section class="container mt-4">
-            <canvas id="reportes">
+            </div>
 
-            </canvas>
-        </section>
-    </div>
 
-        <!--CUADRITOS COLLAPSE-->
-        <div class="content-wrapper">
-            <section class="container mt-6">
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-md-8">
+            <!--TABLA DE BARRAS-->
+            <div class="card card-outline card-dark">
+                <div class="card-header">
+                    <h3 class="card-title">Reporte</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body"> <!--Para que funcione el boton. -->
+                    <div class="container-fluid mt-4">
+                        <canvas id="reportes">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!--CUADRITOS COLLAPSE-->
+            <div class="container text-center">
+                <div class="row aling-items-start">
+                    <div class="col-md-4">
                         <div class="card card-outline card-dark">
                             <div class="card-header">
                                 <h3 class="card-title"><strong>Nuevos Productos</strong></h3>
-
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                 </div>
-                                <!-- /.card-tools -->
                             </div>
-                            <!-- /.card-header -->
                             <div class="card-body">
                                 <p class="text-left">
                                     Producto
@@ -161,13 +172,69 @@
                                     <a href="/productos" class="nav-link">Ver Todos los productos</a>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-
                     </div>
+
+
+                    <!---->
+
+                    <div class="col-md-4">
+                        <div class="card card-outline card-dark">
+                            <div class="card-header">
+                                <h3 class="card-title"><strong>Ultimas Ventas</strong></h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-left">
+                                    Producto
+                                </p>
+                                <p class="text-left">
+                                    Producto 1
+                                </p>
+                                <div class="text-center">
+                                    <a href="/productos" class="nav-link">Ver Todos los productos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!---->
+
+                    
+                    <div class="col-md-4">
+                        <div class="card card-outline card-dark">
+                            <div class="card-header">
+                                <h3 class="card-title"><strong>Productos mas Vendidos</strong></h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-left">
+                                    Producto
+                                </p>
+                                <p class="text-left">
+                                    Producto 1
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
-            </section>
+            </div>
+
+
+
+
         </div>
+    </div>
 
 
 
@@ -182,14 +249,14 @@
 
 
 
-        <!--Pie de pagina-->
-        {% include 'HOME/MODULOS/footer.html' %}
+    <!--Pie de pagina-->
+    {% include 'HOME/MODULOS/footer.html' %}
 
-        <!--Side - bar control-->
-        {% include 'HOME/MODULOS/side-bar-control.html' %}
+    <!--Side - bar control-->
+    {% include 'HOME/MODULOS/side-bar-control.html' %}
 
-        <!--Sripts-->
-        {% include 'HOME/MODULOS/scripts.html' %}
+    <!--Sripts-->
+    {% include 'HOME/MODULOS/scripts.html' %}
 
     </div>
 
