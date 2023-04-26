@@ -30,8 +30,8 @@ def nuevoProveedor():
         correo = request.form["correo"] 
         telefono = request.form["telefono"] 
         direccion = request.form["direccion"]  
-        #id aleatorio
-        codigo = str(random.randint(0,4000))
+        #id aleatorio con el nombre
+        codigo = str(random.randint(0,4000)) + nombres
 
         if codigo and nombres and apellidos and edad and correo and telefono and direccion:
             provedor = Proveedores(codigo, nombres, apellidos, edad, correo, telefono, direccion)
@@ -41,3 +41,24 @@ def nuevoProveedor():
     
     elif 'usuario-proveedor' in session:
         return redirect('/')
+
+
+
+
+
+
+
+
+
+
+#ELIMINAR PROVEEDORES
+def eliminarProvedor(key):
+    if 'usuario-administrador' in session:
+        #Tabla donde eliminara y conexion 
+        ProvedoresBD = BD ['Provedores']
+        #Se pasa la key y el nombre de la variable
+        ProvedoresBD.delete_one({'codigo':key})
+        return redirect ('/provedores')
+    
+    elif 'usuario-provedor' in session:
+        return redirect ('/')

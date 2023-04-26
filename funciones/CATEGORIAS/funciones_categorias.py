@@ -30,7 +30,7 @@ def nuevaCategoria():
         #Variable que viene del form de html-name
         nombreCategoria = request.form["nombreCate"] 
         #el id aleatorio
-        codigo = str(random.randint(0,5000))
+        codigo = str(random.randint(1,7000))
 
         if codigo and nombreCategoria:
             categoria = Categoria(codigo, nombreCategoria)
@@ -38,5 +38,19 @@ def nuevaCategoria():
             categoriasBD.insert_one(categoria.datosCategoriasJson())
             return redirect('/categorias')
         
+    elif 'usuario-proveedor' in session:
+        return redirect('/')
+
+
+
+
+
+#ELIMINAR CATEGORIAS
+def eliminarCategoria(key):
+    if 'usuario-administrador' in session:
+        categoriasBD = BD['Categoria']
+        categoriasBD.delete_one({'codigo':key})
+        return redirect ('/categorias')
+    
     elif 'usuario-proveedor' in session:
         return redirect('/')

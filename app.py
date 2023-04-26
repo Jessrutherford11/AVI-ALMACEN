@@ -49,6 +49,11 @@ def categoria():
 def agregarCategoria():
     return fun_cate.nuevaCategoria()
 
+#FUNCION DE ELIMINAR CATEGORIA.
+@app.route('/eliminar-categorias <key>')
+def eliminarCategorias(key):
+    return fun_cate.eliminarCategoria(key)
+
 
 #********************FUNCIONES PRODUCTOS***********************
 
@@ -90,6 +95,12 @@ def provedores():
 def agregarProveedores():
     return fun_prove.nuevoProveedor()
 
+#FUNCION DE ELIMINAR PROVEEDOR
+@app.route('/eliminar-proveedor <key>')
+#funcion que se ponen dentro del btn del form
+def eliminarProveedores(key):
+    return fun_prove.eliminarProvedor(key)
+
 
 #********************FUNCIONES CLIENTES***********************
 
@@ -110,10 +121,12 @@ def agregarClientees():
 
 
 
+
+
 #********************FUNCION DE PAGINA NO ENCONTRADA********************
 def paginaNoEncontrada(error):
     return fun_serv.error_404(error)
 
-#Comprobador. Por si falta un elemento y si no lo tiene no correra dicha pagina. 
+#***COMPROBADOR***. Por si falta un elemento y si no lo tiene no correra dicha pagina. 
 if __name__ == '__main__':
     app.run(host=app.host, port=app.port, debug=True)

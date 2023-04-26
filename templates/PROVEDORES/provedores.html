@@ -54,9 +54,10 @@
                                     <td>{{dato.direccion}}</td>
                                     <td class="text-center"> <a href="#" class="btn btn-outline-warning"> <i
                                                 class="fas fa-user-edit nav-icon"></i> </a> <!--Boton Editar-->
-                                        <a href="#" class="btn btn-outline-danger"><i
+                                                
+                                                <a href="{{url_for('eliminarProveedores', key=dato.codigo)}}" class="btn btn-outline-danger"><i
                                                 class="fas fa-solid fa-user-times nav-icon"></i> </a>
-                                    </td> <!--Boton Eliminar-->
+                                    </td>        <!--Boton Eliminar-->
 
                                 </tr>
                                 {% endfor %}
