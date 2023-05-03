@@ -29,12 +29,13 @@ def nuevoProveedor():
         edad = request.form["edad"] 
         correo = request.form["correo"] 
         telefono = request.form["telefono"] 
-        direccion = request.form["direccion"]  
+        direccion = request.form["direccion"] 
+        empresa = request.form["empresa"]  
         #id aleatorio con el nombre
-        codigo = str(random.randint(0,4000)) + nombres
+        codigo = str(random.randint(0,4000)) 
 
-        if codigo and nombres and apellidos and edad and correo and telefono and direccion:
-            provedor = Proveedores(codigo, nombres, apellidos, edad, correo, telefono, direccion)
+        if codigo and nombres and apellidos and edad and correo and telefono and direccion and empresa:
+            provedor = Proveedores(codigo, nombres, apellidos, edad, correo, telefono, direccion, empresa)
             #Insercion a la BD
             provedoresBD.insert_one(provedor.datosProveedoresJson())
             return redirect('provedores')
@@ -42,6 +43,17 @@ def nuevoProveedor():
     elif 'usuario-proveedor' in session:
         return redirect('/')
 
+
+#INFORMACION PROVEEDORES
+def informacionProvedor(key):
+    if 'usuario-administrador' in session:
+        titulo = 'Informacion Proveedor'
+        ProvedoresBD = BD['Provedores']
+        ProvedoresRecibidos = ProvedoresBD.find_one({'codigo':key})
+        return render_template ('PROVEDORES/actualizarinfo.html', titulo=titulo, ProvedoresRecibidos=ProvedoresRecibidos)
+    
+    elif 'usuario-proveedor' in session:
+        return redirect('/')
 
 
 

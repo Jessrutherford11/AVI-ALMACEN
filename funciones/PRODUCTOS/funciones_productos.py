@@ -62,6 +62,14 @@ def consultaProductosOperaciones():
 
 
 
-
+#FUNCION ELIMINAR PRODUCTOS
+def eliminarProductos(key):
+    if 'usuario-administrador' in session:
+        productosBD = BD['Productos']
+        productosBD.delete_one({'codigo':key})
+        return redirect ('/productos-operaciones')
+    
+    elif 'usuario-proveedor' in session:
+        return redirect('/')
 
 

@@ -34,6 +34,7 @@
                                     <th><i class="fas fa-envelope"><font face="Calibri">    Correo </font></i></th>
                                     <th><i class="fas fa-phone"><font face="Calibri">    Telefono </font></i></th>
                                     <th><i class="fas fa-map-marker-alt"><font face="Calibri">    Direccion </font></i></th>
+                                    <th><i class="fas fa-building"><font face="Calibri">    Empresa </font></i></th>
                                     <th><i class="fas fa-solid fa-screwdriver fa-wrench nav-icon" class="text-center"><font face="Century"> Acciones </font></th></i>
 
 
@@ -52,7 +53,8 @@
                                     <td>{{dato.correo}}</td>
                                     <td>{{dato.telefono}}</td>
                                     <td>{{dato.direccion}}</td>
-                                    <td class="text-center"> <a href="#" class="btn btn-outline-warning"> <i
+                                    <td>{{dato.empresa}}</td>
+                                    <td class="text-center"> <a href="{{url_for('informacionProveedor', key=dato.codigo)}}" class="btn btn-outline-warning"> <i
                                                 class="fas fa-user-edit nav-icon"></i> </a> <!--Boton Editar-->
                                                 
                                                 <a href="{{url_for('eliminarProveedores', key=dato.codigo)}}" class="btn btn-outline-danger"><i
@@ -126,6 +128,16 @@
                                         placeholder="Calle, Colonia, Numero">
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"><font face="Century">Empresa</label></font>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="empresa"
+                                        placeholder="Nombre empresa">
+                                </div>
+                            </div>
+
+
                             <div class="card-footer">
                                 <div class="text-center">
                                     <div class="icon">

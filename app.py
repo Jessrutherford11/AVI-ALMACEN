@@ -79,6 +79,11 @@ def ingresarProductos():
 def agregarProducto():
     return fun_prod.nuevoProducto()
 
+#FUNCION DE ELIMINAR PRODUCTO
+@app.route('/eliminar-producto <key>')
+#funcion que se ponen dentro del btn del form
+def eliminarProducto(key):
+    return fun_prod.eliminarProductos(key)
 
 
 
@@ -89,11 +94,18 @@ def agregarProducto():
 def provedores():
     return fun_prove.vistaProvedores()
 
-#FUNCION DE AGREGAR CATEGORIA.
+#FUNCION DE AGREGAR PROVEDOR.
 
 @app.route('/agregar-proveedores', methods = ['POST'])
 def agregarProveedores():
     return fun_prove.nuevoProveedor()
+
+#FUNCION DE INFORMACION PROVEDOR
+@app.route('/informacion-proveedores <key>')
+def informacionProveedor(key):
+    return fun_prove.informacionProvedor(key)
+
+
 
 #FUNCION DE ELIMINAR PROVEEDOR
 @app.route('/eliminar-proveedor <key>')

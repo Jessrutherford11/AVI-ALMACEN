@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+
+        <!-- CONTENIDO. 
+        VISTA DONDE SE VIZUALIZA LOS DATOS -->
+        <div class="content-wrapper">
+            <div class="container-fluid mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title"><i class="fas fa-solid fa-user-circle nav-icon"> Actualizar
+                                        Proveedor</h1></i>
+                            </div>
+                            <!-- Profile Image -->
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle"
+                                        src="{{url_for('static', filename='dist/img/imagenes-menu/conductor.png')}}">
+                                    <h3 class="profile-username text-center">{{ProvedoresRecibidos.nombres}}
+                                        {{ProvedoresRecibidos.apellidos}}
+                                    </h3>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group">
+                                                    <small>
+                                                        Nombres:
+                                                        <!--Boton que activara el modal para modificar datos-->
+                                                        <button type="button" data-toggle="modal" data-target="#nombres"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <!--Variable-->
+                                                    <p id="vtitle">{{ProvedoresRecibidos.nombres}}
+                                                        <span class="text-muted"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group">
+                                                    <small>
+                                                        Apellidos:
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#apellidos" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProvedoresRecibidos.apellidos}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group">
+                                                    <small>
+                                                        Edad:
+                                                        <button type="button" data-toggle="modal" data-target="#edad"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProvedoresRecibidos.edad}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Telefono:
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#telefono" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProvedoresRecibidos.telefono}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Direccion:
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#direccion" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProvedoresRecibidos.direccion}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Correo:
+                                                        <button type="button" data-toggle="modal" data-target="#correo"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProvedoresRecibidos.correo}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Empresa:
+                                                        <button type="button" data-toggle="modal" data-target="#empresa"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProvedoresRecibidos.empresa}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- /.MODAL NOMNBRES -->
+            <div class="modal fade" id="nombres">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Nombre</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.nombres}}" type="text">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- /.MODAL APELLIDOS -->
+             <div class="modal fade" id="apellidos">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Apellidos</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.apellidos}}" type="text">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- /.MODAL EDAD -->
+             <div class="modal fade" id="edad">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Edad</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.edad}}" type="number">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- /.MODAL TELEFONO -->
+             <div class="modal fade" id="telefono">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Telefono</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.telefono}}" type="number">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- /.MODAL Direccion -->
+             <div class="modal fade" id="direccion">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Direccion</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.direccion}}" type="text">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- /.MODAL CORREO -->
+             <div class="modal fade" id="correo">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Correo</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.correo}}" type="email">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ <!-- /.MODAL EMPRESA -->
+ <div class="modal fade" id="empresa">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Editar Empresa</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.empresa}}" type="text">
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+        <!--Side - bar control-->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+    </div>
+
+</body>
+
+</html>
