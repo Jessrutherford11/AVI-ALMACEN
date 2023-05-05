@@ -54,9 +54,22 @@ def informacionProvedor(key):
     
     elif 'usuario-proveedor' in session:
         return redirect('/')
+    
+#ACTUALIZAR PROVEDORES
+def actualizarProvedor(key,campo):
+    if 'usuario-administrador' in session:
+        ProveedoresBD = BD ['Provedores']
+        dato = request.form['dato']
+        #Comprobacion si dato existe
+        if dato: 
+            #$-- set.poner lo que se manda a campo que tre dato(nombres)
+            #Campo es el que se actualizara 
+            ProveedoresBD.update_one({'codigo':key},{'$set':{campo:dato}})
+        #Se  retorna la funcion de la vista 
+        return informacionProvedor(key)
 
-
-
+    elif 'usuario-proveedor' in session:
+        return redirect('/')
 
 
 

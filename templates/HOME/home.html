@@ -16,6 +16,27 @@
         <!--Menu-->
         {% include 'HOME/MODULOS/menu.html' %}
 
+        <!--MENSSAJE-->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+            message in messages %}
+            <script>
+                Swal.fire({
+                    position: "top",
+                    icon: "success",
+                    title: "BIENVENIDO",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            </script>
+            {% endfor %} {% endif %} {% endwith %}
+
+
+
+
+
+
+
+
         <!--CONTENIDO-->
         <div class="content-wrapper">
             <div class="container-fluid mt-4"> <!--fluid. Ocupe todo el espacio en la pantalla-->

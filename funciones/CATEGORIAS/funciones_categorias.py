@@ -42,6 +42,29 @@ def nuevaCategoria():
         return redirect('/')
 
 
+#INFORMACION CATEGORIAS
+def informacionCategorias(key):
+    if 'usuario-administrador' in session:
+        titulo = 'Informacion Categorias'
+        CategoriasBD = BD['Categoria']
+        categoriasRecibidas = CategoriasBD.find_one({'codigo':key})
+        return render_template ('CATEGORIAS/actualizarInfo.html', titulo=titulo, categoriasRecibidas=categoriasRecibidas)
+    
+    elif 'usuario-proveedor' in session:
+        return redirect('/')
+    
+
+#ACTUALIZAR CATEGORIAS
+def actualizarCategorias(key,campo):
+    if 'usuario-administrador' in session:
+        CategoriasBD = BD['Categoria']
+        dato = request.form['dato']
+        if dato:
+            CategoriasBD.update_one({'codigo':key}, {'$set':{campo:dato}})
+            return informacionCategorias(key)
+        
+        elif 'usuario-proveedor' in session:
+            return redirect('/')
 
 
 

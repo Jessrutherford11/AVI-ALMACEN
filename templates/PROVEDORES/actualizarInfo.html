@@ -157,26 +157,35 @@
             <!-- /.MODAL NOMNBRES -->
             <div class="modal fade" id="nombres">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Editar Nombre</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.nombres}}" type="text">
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
+                    <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
+                    <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='nombres')}}"
+                        method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Nombre</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.nombres}}"
+                                    type="text" name="dato">
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                        class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                <button type="submit" class="btn btn-outline-success"><i
+                                        class="fa-solid fas fa-user-check"></i>Guardar</button>
+                            </div>
+                    </form>
                 </div>
             </div>
-             <!-- /.MODAL APELLIDOS -->
-             <div class="modal fade" id="apellidos">
-                <div class="modal-dialog">
+        </div>
+        <!-- /.MODAL APELLIDOS -->
+        <div class="modal fade" id="apellidos">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='apellidos')}}"
+                    method="post">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Editar Apellidos</h4>
@@ -185,18 +194,24 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.apellidos}}" type="text">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.apellidos}}"
+                                type="text" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-             <!-- /.MODAL EDAD -->
-             <div class="modal fade" id="edad">
-                <div class="modal-dialog">
+        </div>
+        <!-- /.MODAL EDAD -->
+        <div class="modal fade" id="edad">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='edad')}}"
+                    method="post">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Editar Edad</h4>
@@ -205,18 +220,24 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.edad}}" type="number">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.edad}}"
+                                type="number" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-             <!-- /.MODAL TELEFONO -->
-             <div class="modal fade" id="telefono">
-                <div class="modal-dialog">
+        </div>
+        <!-- /.MODAL TELEFONO -->
+        <div class="modal fade" id="telefono">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='telefono')}}"
+                    method="post">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Editar Telefono</h4>
@@ -225,19 +246,26 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.telefono}}" type="number">
+                            <input class="form-control rounded-pill"
+                                placeholder="(Codigo de area) Numero  {{ProvedoresRecibidos.telefono}}" type="tel"
+                                name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
+        </div>
 
-             <!-- /.MODAL Direccion -->
-             <div class="modal fade" id="direccion">
-                <div class="modal-dialog">
+        <!-- /.MODAL Direccion -->
+        <div class="modal fade" id="direccion">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='direccion')}}"
+                    method="post">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Editar Direccion</h4>
@@ -246,18 +274,24 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.direccion}}" type="text">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.direccion}}"
+                                type="text" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-             <!-- /.MODAL CORREO -->
-             <div class="modal fade" id="correo">
-                <div class="modal-dialog">
+        </div>
+        <!-- /.MODAL CORREO -->
+        <div class="modal fade" id="correo">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='correo')}}"
+                    method="post">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Editar Correo</h4>
@@ -266,45 +300,55 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.correo}}" type="email">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.correo}}"
+                                type="email" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
- <!-- /.MODAL EMPRESA -->
- <div class="modal fade" id="empresa">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Editar Empresa</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.empresa}}" type="text">
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
+
+        <!-- /.MODAL EMPRESA -->
+        <div class="modal fade" id="empresa">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='empresa')}}"
+                    method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Empresa</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.empresa}}"
+                                type="text" name="dato">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
     </div>
-</div>
-
-
-        </div>
-        <!--Pie de pagina-->
-        {% include 'HOME/MODULOS/footer.html' %}
-        <!--Side - bar control-->
-        {% include 'HOME/MODULOS/side-bar-control.html' %}
-        <!--Sripts-->
-        {% include 'HOME/MODULOS/scripts.html' %}
+    <!--Pie de pagina-->
+    {% include 'HOME/MODULOS/footer.html' %}
+    <!--Side - bar control-->
+    {% include 'HOME/MODULOS/side-bar-control.html' %}
+    <!--Sripts-->
+    {% include 'HOME/MODULOS/scripts.html' %}
     </div>
 
 </body>

@@ -2,19 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename = 'dist/login/css/style.css')}}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!---->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!--ICONO Pequeños-->
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-
-
-    <title>{{titulo}}</title>
+    {% include 'LOGIN/MODULOS/header.html' %}
 </head>
 
 <body>
@@ -27,44 +15,48 @@
                 <button class="sign-up-btn">Iniciar Sesion</button>
             </div>
         </div>
-
-        <form class="formulario">
+        <div class="formulario">
             <h2 class="create-account">Bienvenido Avi-Almacen</h2>
-
             <p class="Registrate"> Administrador</p>
-            <p class="texto"> 
-                La gestión de la administración de inventarios desde distintos puntos de distribución; 
-                permite poder liberar espacios de almacenes para poder mantener bajos niveles de stock. 
-                Enfocándonos al servicio al cliente, trabajando de manera comprometida simplificando los 
-                procesos de transporte multimodal, almacenaje y comercio exterior. 
+            <p class="texto">
+                La gestión de la administración de inventarios desde distintos puntos de distribución;
+                permite poder liberar espacios de almacenes para poder mantener bajos niveles de stock.
+                Enfocándonos al servicio al cliente, trabajando de manera comprometida simplificando los
+                procesos de transporte multimodal, almacenaje y comercio exterior.
             </p>
-
-
-        
-
-
-
-        </form>
+        </div>
     </div>
-        
 
     <!--INCIO DE SESION-->
     <div class="container-form sign-in">
         <!--Formulario-->
         <form class="formulario" action="/iniciarsesion" method="post">
             <h2 class="create-account">Iniciar Sesion</h2>
-
             <p class="Registrate"></p>
             <div class="input-field">
                 <i class="fas fa-envelope"></i>
                 <input type="email" name="email" placeholder="Email">
             </div>
-
             <div class="input-field">
                 <i class="fas fa-lock"></i>
                 <input type="password" name="contraseña" placeholder="Contraseña">
                 <input type="submit" value="Iniciar Sesion">
             </div>
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for
+            message in messages %}
+            <!--Top-Start. ARRIBA IZQUIERDA 
+                Top .INICIO EN MEDIO. 
+                Top-End. ESQUINA DERECHA-->
+            <script>
+                Swal.fire({
+                    position: "top",
+                    icon: "warning",
+                    title: "{{message}}",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            </script>
+            {% endfor %} {% endif %} {% endwith %}
         </form>
 
         <div class="welcome-back">
@@ -75,22 +67,8 @@
         </div>
     </div>
 
-    <!--MENSAJE DE ERROR -->
-
-    {% for massage in get_flashed_messages() %}
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <div class="alert alert-danger" role="alert">
-                    {{ massage }}
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-
-    <script src="{{url_for('static', filename = 'dist/login/js/script.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+{% include 'LOGIN/MODULOS/scripts.html' %}
 </body>
 
 </html>

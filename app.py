@@ -49,6 +49,17 @@ def categoria():
 def agregarCategoria():
     return fun_cate.nuevaCategoria()
 
+
+#FUNCION DE INFORMACION CATEGORIA
+@app.route('/informacion-categorias <key>')
+def informacionCategoria(key):
+    return fun_cate.informacionCategorias(key)
+
+#FUNCION ACTUALIZAR CATEGORIA
+@app.route('/actualizar-categorias <key>, <campo>', methods = ['POST'])
+def actualizarCategoria(key,campo):
+    return fun_cate.actualizarCategorias(key,campo)
+
 #FUNCION DE ELIMINAR CATEGORIA.
 @app.route('/eliminar-categorias <key>')
 def eliminarCategorias(key):
@@ -104,6 +115,12 @@ def agregarProveedores():
 @app.route('/informacion-proveedores <key>')
 def informacionProveedor(key):
     return fun_prove.informacionProvedor(key)
+
+
+#FUNCION ACTUALIZAR PROVEDOR
+@app.route('/actualizar-proveedores <key>, <campo>', methods = ['POST'])
+def actualizarProveedores(key,campo):
+    return fun_prove.actualizarProvedor(key, campo)
 
 
 

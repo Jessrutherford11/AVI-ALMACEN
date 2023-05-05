@@ -20,41 +20,62 @@
             <section class="container mt-4">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="card-title"><i class="fas fa-solid fa-boxes"> <font face="Castellar"> CATEGORIAS</i></font> </h1>
+                        <h1 class="card-title"><i class="fas fa-solid fa-boxes">
+                                <font face="Castellar"> CATEGORIAS
+                            </i></font>
+                        </h1>
                     </div>
                     <!--Se pone la tabla-->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th><i class="fas fa-hashtag"><font face="Century">   Codigo    </font></i></th>
-                                    <th><i class="fas fa-boxes"><font face="Calibri">     Categoria  </font></i></th>
-                                    <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"><font face="Calibri">Acciones </i></font></th> 
-                            
-                            
-                                    
+                                    <th><i class="fas fa-hashtag">
+                                            <font face="Century"> Codigo </font>
+                                        </i></th>
+                                    <th><i class="fas fa-boxes">
+                                            <font face="Calibri"> Categoria </font>
+                                        </i></th>
+                                    <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-wrench nav-icon">
+                                            <font face="Calibri">Acciones
+                                        </i></font>
+                                    </th>
+
+
+
                                 </tr>
                             </thead>
-                            <tbody
-                           <!--  Iteracion por cada dato encontrado  -->
+                            <tbody <!-- Iteracion por cada dato encontrado -->
                                 {% for dato in categoriasRecibidas %}
                                 <tr>
                                     <td>{{dato.codigo}}</td>
                                     <td>{{dato.nombreCategoria}}</td>
-                                    <td class="text-center"> <a href="#" class="btn btn-outline-warning"> <i class="fas fa-edit nav-icon"></i> </a> <!--Boton Editar-->
-                                    <a href="{{url_for('eliminarCategorias', key=dato.codigo)}}" 
-                                    class="btn btn-outline-danger"><i class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i> </a>  <!--Boton Eliminar-->
+                                    <td class="text-center"> <a
+                                            href="{{url_for('informacionCategoria', key=dato.codigo)}}"
+                                            class="btn btn-outline-warning"> <i class="fas fa-edit nav-icon"></i> </a>
+                                        <!--Boton Editar-->
+                                        <a href="{{url_for('eliminarCategorias', key=dato.codigo)}}"
+                                            class="btn btn-outline-danger"><i
+                                                class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i> </a>
+                                        <!--Boton Eliminar-->
                                     </td>
-                                   
+
                                 </tr>
                                 {% endfor %}
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th><i class="fas fa-hashtag"><font face="Century">   Codigo    </font></i></th>
-                                    <th><i class="fas fa-boxes"><font face="Calibri">     Categoria  </font></i></th>
-                                    <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"><font face="Calibri">Acciones </i></font></th> 
-                            
+                                    <th><i class="fas fa-hashtag">
+                                            <font face="Century"> Codigo </font>
+                                        </i></th>
+                                    <th><i class="fas fa-boxes">
+                                            <font face="Calibri"> Categoria </font>
+                                        </i></th>
+                                    <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-wrench nav-icon">
+                                            <font face="Calibri">Acciones
+                                        </i></font>
+                                    </th>
+
                                 </tr>
                             </tfoot>
                         </table>
@@ -71,7 +92,8 @@
                     <div class="card-body">
                         <div class="card card-info"> <!---->
                             <div class="card-header">
-                                <h3 class="card-title"> <i class="fas fa-solid fa-boxes"> <font face="Calibri">Agregar Categoria</h3></i></font>
+                                <h3 class="card-title"> <i class="fas fa-solid fa-boxes">
+                                        <font face="Calibri">Agregar Categoria</h3></i></font>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
@@ -79,15 +101,21 @@
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Categoria</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="nombreCate" placeholder="Categoria">
+                                        <div class="col-sm-8">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon1"></span>
+                                                <input type="text" class="form-control" name="nombreCate"
+                                                    placeholder="Categoria" aria-label="Username"
+                                                    aria-describedby="basic-addon1">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-outline-info"><i class="fas fa-solid fa-inbox">   Agregar</i></button>
+                                        <button type="submit" class="btn btn-outline-info"><i
+                                                class="fas fa-solid fa-inbox"> Agregar</i></button>
                                     </div>
                                 </div>
                                 <!-- /.card-footer -->
