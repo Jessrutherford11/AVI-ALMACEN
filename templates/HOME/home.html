@@ -17,8 +17,7 @@
         {% include 'HOME/MODULOS/menu.html' %}
 
         <!--MENSSAJE-->
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-            message in messages %}
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
             <script>
                 Swal.fire({
                     position: "top",

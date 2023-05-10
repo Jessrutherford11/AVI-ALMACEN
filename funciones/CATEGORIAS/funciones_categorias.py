@@ -30,7 +30,7 @@ def nuevaCategoria():
         #Variable que viene del form de html-name
         nombreCategoria = request.form["nombreCate"] 
         #el id aleatorio
-        codigo = str(random.randint(1,7000))
+        codigo = str(random.randint(11,9000))
 
         if codigo and nombreCategoria:
             categoria = Categoria(codigo, nombreCategoria)

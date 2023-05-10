@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, redirect, session, request
+from flask import render_template, redirect, session, request
 #Generacion numeros aleatorios
 import random
 #Conexion BD
@@ -16,7 +16,6 @@ def vistaProvedores():
         provedoresBD = BD['Provedores']
         provedoresRecibidos = provedoresBD.find()
         return render_template('PROVEDORES/provedores.html', titulo = titulo, provedoresRecibidos = provedoresRecibidos)
-    
 
 #AGREGAR PROVEDORES
 def nuevoProveedor():

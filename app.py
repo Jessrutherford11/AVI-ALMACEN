@@ -20,8 +20,9 @@ app.secret_key = b'E\x7f\xa9\xa8tg\xd5l@\xaa\x89\x91\xf9\x96\xf4 \x8c\x05\xf2\xe
 
 
 
+#********************FUNCION LOGIN -ADMINISTRADORES********************
 
-#********************FUNCION LOGIN -ADMINISTRADORES***************  *****
+#FUNCION LOGIN RAIZ
 @app.route('/')
 @app.route('/login')   
 def loginvista():
@@ -36,6 +37,15 @@ def iniciarSesion():
 @app.route('/home')
 def homePage():
     return fun_home.home()
+
+
+#********************FUNCION CERRAR SESION***********************
+
+@app.route('/cerrar-sesion')
+def cerrarsesion():
+    return fun_login.cerrarSesion()
+
+
 
 #********************FUNCIONES CATEGORIAS***********************
 
@@ -79,7 +89,7 @@ def productosOperaciones():
     return fun_prod.consultaProductosOperaciones()
 
 
-#FUNCION PARA *VISTA* DE AGREGAR PRODUCTOS
+#FUNCION *VISTA* DE AGREGAR PRODUCTOS
 @app.route('/ingresar-productos')
 def ingresarProductos():
     return fun_prod.productosAgregar()
@@ -143,6 +153,14 @@ def clientes():
 @app.route('/agregar-clientes', methods = ['POST'])
 def agregarClientees():
     return fun_cli.nuevoCliente()
+
+
+
+
+
+
+
+
 
 
 

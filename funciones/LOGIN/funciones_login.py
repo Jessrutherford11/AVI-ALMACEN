@@ -32,8 +32,17 @@ def inicioSesionAdminis():
                 return redirect('/home')    
             elif(check_password_hash(userRecibido['contraseña'],password)==False):
                 flash('Error: Contraseña incorrecta')
+                return redirect('/') 
         elif usuario == False:
             flash('Error: El usuario no existe')   
-        return vistalogin()
+            return redirect('/') 
     flash('Por favor llene todos los campos')      
-    return vistalogin()
+    return redirect('/') 
+
+
+#Funcion cerrar sesion
+def cerrarSesion():
+    #se destruye la sesion con pop.
+    #Destruye lo que trae session que es el correo de administrador. 
+    session.pop('usuario-administrador', None)
+    return redirect('/')

@@ -12,7 +12,10 @@ BD = Conecbd.conexion()
 def productosAgregar():
     if 'usuario-administrador':
         titulo = "Agregar nuevos productos"
-        return render_template('PRODUCTOS/productosAgregar.html', titulo = titulo)
+        #Para agregar las categorias en prodcuctos
+        categoriasBD = BD['Categorias']
+        categoriasRecibidas = categoriasBD.find() #consulta 
+        return render_template('PRODUCTOS/productosAgregar.html', titulo = titulo, categoriasRecibidas=categoriasRecibidas)
 
 
 
@@ -22,14 +25,18 @@ def nuevoProducto():
         productosBD = BD['Productos']
         #Variable del formulario
         nombreProducto = request.form["nombreProducto"]
-        existencia = request.form["existencia"]
-        descripcion = request.form["descripcion"]
+        categoria = request.form["categoria"]
+        stock = request.form["stock"]
+        precio = request.form["precio"]
+        unidad = request.form["unidad"]
         distribuidor = request.form["distribuidor"]
+        descripcion = request.form["descripcion"]
+        estado = request.form["estado"]
         #id aleatorio
-        codigo = str(random.randint(0,7000))
+        codigo = str(random.randint(66,9000))
 
-        if codigo and nombreProducto and existencia and descripcion and distribuidor:
-            producto = Producto(codigo, nombreProducto, existencia, descripcion, distribuidor)
+        if codigo and nombreProducto and categoria and stock and precio and unidad and distribuidor and  descripcion and estado:
+            producto = Producto(codigo, nombreProducto, categoria, stock, precio, unidad, distribuidor, descripcion, estado)
             #Insercion de datos 
             productosBD.insert_one(producto.datosProductosJson())
             return redirect('/productos') #Redirecciona a la tabla de prodcuctos
