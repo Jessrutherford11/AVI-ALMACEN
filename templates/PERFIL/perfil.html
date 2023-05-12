@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+
+        <!-- CONTENIDO. -->
+        <div class="content-wrapper">
+            <div class="container-fluid mt-4">
+                <!-- Profile Image -->
+                <div class="card card-dark card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle"
+                                src="{{url_for('static', filename='dist/img/imagenes-menu/perfil.jpg')}}">
+                        </div>
+                        <h3 class="profile-username text-center">{{perfilRecibido.name}}</h3>
+                    </div>
+                </div>
+
+                <!-- INFOR PERFIL  -->
+                <div class="card-header">
+                    <h3 class="card-title">Informacion Perfil</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <div class="form-group">
+                                <small>
+                                    <i class="fas fa-user-circle"></i><!-- -->
+                                    Nombre:
+                                    <!--Boton que activara el modal para modificar datos-->
+                                    <button type="button" data-toggle="modal" data-target="#nombre"
+                                        class="btn btn-xs btn-OpenEdit">
+                                        <i class="fa-solid fas fa-user-edit"></i>Editar
+                                    </button>
+                                </small>
+                                <!--Variable-->
+                                <p id="vtitle">{{perfilRecibido.name}}
+                                    <span class="text-muted"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="form-group">
+                                <small> <i class="fas fa-envelope"></i> <!-- -->
+                                    Correo:
+                                    <button type="button" data-toggle="modal" data-target="#correo"
+                                        class="btn btn-xs btn-OpenEdit">
+                                        <i class="fa-solid fas fa-user-edit"></i>Editar
+                                    </button>
+                                </small>
+                                <p id="vtitle">{{perfilRecibido.email}}</p>
+                                <span class="text-muted"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="form-group">
+                                <small> <i class="fas fa-user-lock"></i> <!-- -->
+                                    Contraseña:
+                                    <button type="button" data-toggle="modal" data-target="#contraseña"
+                                        class="btn btn-xs btn-OpenEdit">
+                                        <i class="fa-solid fas fa-user-edit"></i>Editar
+                                    </button>
+                                </small>
+                                <p id="vtitle">*******************</p>
+                                <span class="text-muted"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.MODAL NOMNBRE -->
+            <div class="modal fade" id="nombre">
+                <div class="modal-dialog">
+                    <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
+                    <form action="{{url_for('ActualizarPerfil', key=perfilRecibido.name, campo='name')}}" method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Nombre</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control rounded-pill" placeholder="{{perfilRecibido.name}}"
+                                    type="text" name="dato">
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                        class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                <button type="submit" class="btn btn-outline-success"><i
+                                        class="fa-solid fas fa-user-check"></i>Guardar</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+        <!--Side - bar control-->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+
+</body>
+</html>

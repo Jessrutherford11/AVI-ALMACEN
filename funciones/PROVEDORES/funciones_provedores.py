@@ -64,7 +64,7 @@ def actualizarProvedor(key,campo):
             #$-- set.poner lo que se manda a campo que tre dato(nombres)
             #Campo es el que se actualizara 
             ProveedoresBD.update_one({'codigo':key},{'$set':{campo:dato}})
-        #Se  retorna la funcion de la vista 
+        #Se  retorna la funcion de la vista de arriba
         return informacionProvedor(key)
 
     elif 'usuario-proveedor' in session:

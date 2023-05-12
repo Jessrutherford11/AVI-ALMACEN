@@ -13,7 +13,7 @@ def productosAgregar():
     if 'usuario-administrador':
         titulo = "Agregar nuevos productos"
         #Para agregar las categorias en prodcuctos
-        categoriasBD = BD['Categorias']
+        categoriasBD = BD['Categoria']
         categoriasRecibidas = categoriasBD.find() #consulta 
         return render_template('PRODUCTOS/productosAgregar.html', titulo = titulo, categoriasRecibidas=categoriasRecibidas)
 

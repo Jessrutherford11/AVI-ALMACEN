@@ -25,22 +25,24 @@ def vistaCategoria():
 def nuevaCategoria():
     #Verificacion
     if 'usuario-administrador' in session:
-        #Consulta a la BD 
-        categoriasBD = BD['Categoria'] 
-        #Variable que viene del form de html-name
-        nombreCategoria = request.form["nombreCate"] 
-        #el id aleatorio
-        codigo = str(random.randint(11,9000))
-
-        if codigo and nombreCategoria:
-            categoria = Categoria(codigo, nombreCategoria)
-            #Insercion de datos a la BD 
-            categoriasBD.insert_one(categoria.datosCategoriasJson())
-            return redirect('/categorias')
-        
+        try:
+            #Consulta a la BD 
+            categoriasBD = BD['Categoria'] 
+            #Variable que viene del form de html-name
+            nombreCategoria = request.form["nombreCate"] 
+            #el id aleatorio
+            codigo = str(random.randint(11,9000))
+            if codigo and nombreCategoria:
+                categoria = Categoria(codigo, nombreCategoria)
+                #Insercion de datos a la BD 
+                categoriasBD.insert_one(categoria.datosCategoriasJson())
+                return redirect('/categorias')
+        except Exception :
+            print("error en el servidor")
+        else:
+            return redirect('/home')    
     elif 'usuario-proveedor' in session:
         return redirect('/')
-
 
 #INFORMACION CATEGORIAS
 def informacionCategorias(key):

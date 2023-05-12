@@ -19,159 +19,168 @@
         <div class="content-wrapper">
             <section class="container mt-4">
                 <!--Agregar-->
-                <div class="card card-default">
-                    <div class="card card-lightblue">
-                        <div class="card-header">
-                            <h3 class="card-title"> <i class="fas fa-solid fa-box"></i>
-                                <font face="Century"> Agregar Productos Internos</font>
-                            </h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!--FORMULARIO -->
-                        <form action="/agregar-productos" method="post">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <!--PRODUCTO-->
-                                        <div class="form-group">
-                                            <label>
-                                                <font face="Century">Producto
-                                            </label></font>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text" id="basic-addon1"><i
-                                                        class="fas fa-box"></i></span>
-                                                <!--Cuadrito trasparente-->
-                                                <input type="text" class="form-control" name="nombreProducto">
-                                            </div>
-                                        </div>
-
-                                        <!--STOCK-->
-                                        <div class="form-group">
-                                            <label>
-                                                <font face="Century">Stock
-                                            </label></font>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text" id="basic-addon1"><i
-                                                        class="fab fa-dropbox"></i></span>
-                                                <input type="number" class="form-control" name="stock"
-                                                    placeholder="Existencia del Producto">
-                                            </div>
-                                        </div>
-
-                                        <!--UNIDAD-->
-                                        <div class="form-group">
-                                            <label>
-                                                <font face="Century">Unidad
-                                            </label></font>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text" id="basic-addon1"><i
-                                                        class="fas fa-shipping-fast"></i></span>
-                                                <input type="text" class="form-control" name="unidad"
-                                                    placeholder="Unidad donde se trasporto el producto (Motocicleta, Camioneta...)">
-                                            </div>
-                                        </div>
-
-                                        <!--DESCRIPCION-->
-                                        <div class="form-group">
-                                            <label>
-                                                <font face="Century">Descripcion
-                                            </label></font>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text" id="basic-addon1"><i
-                                                        class="fas fa-clipboard-list"></i></span>
-                                                <textarea class="form-control" rows="3" name="descripcion"></textarea>
-                                            </div>
+                <div class="card card-lightblue">
+                    <div class="card-header">
+                        <h3 class="card-title"> <i class="fas fa-solid fa-box">
+                                <font face="Century"><strong>Agregar Productos Internos</font></strong>
+                            </i>
+                        </h3>
+                    </div>
+                    <!--FORMULARIO -->
+                    <form action="/agregar-productos" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!--PRODUCTO-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Producto
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-box"></i></span>
+                                            <!--Cuadrito trasparente-->
+                                            <input type="text" class="form-control" name="nombreProducto" required>
                                         </div>
                                     </div>
 
-                                    <!-- /.col derecha  CATEGORIA-->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>
-                                                <font face="Century">Categoria
-                                            </label></font>
-                                            <div class="input-group sm-1">
-                                                <span class="input-group-text" id="basic-addon1"><i
-                                                        class="fas fa-boxes"></i></span>
-                                                <select class="form-control" name="categoria">
-                                                    
-                                                    <!-- for CATEGORIA se itera-->
-                                                    {% for dato in categoriasRecibidas %}
-                                                    <option value="{{dato.nombreCategoria}}"> {{dato.nombreCategoria}}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-
-
+                                    <!--STOCK-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Stock
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fab fa-dropbox"></i></span>
+                                            <input type="number" class="form-control" name="stock"
+                                                placeholder="Existencia del Producto" required>
                                         </div>
-                                        <!-- PRECIO -->
-                                        <div class="form-group">
-                                            <label>
-                                                <font face="Century">Precio
-                                            </label></font>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text" id="basic-addon1"><i
-                                                        class="fas fa-comment-dollar"></i></span>
-                                                <input type="number" class="form-control" name="precio" placeholder="$">
-                                            </div>
-                                        </div>
+                                    </div>
 
-                                        <!-- DISTRIBUIDOR -->
-                                        <div class="form-group">
-                                            <label>
-                                                <font face="Century">Distribuidor
-                                            </label></font>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text" id="basic-addon1"><i
-                                                        class="fas fa-dolly"></i></span>
-                                                <input type="text" class="form-control" name="distribuidor"
-                                                    placeholder="Distribuidor del Producto">
-                                            </div>
+                                    <!--UNIDAD-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Unidad
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-shipping-fast"></i></span>
+                                            <input type="text" class="form-control" name="unidad"
+                                                placeholder="Unidad donde se trasporto el producto (Motocicleta, Camioneta...)"
+                                                required>
                                         </div>
+                                    </div>
 
-                                        <!-- ESTADO -->
-                                        <div class="form-group">
-                                            <label>
-                                                <font face="Century">Estado
-                                            </label></font>
-                                            <div class="form-group clearfix">
-                                                <div class="icheck-success d-inline">
-                                                    <input type="checkbox" checked id="checkboxSuccess1" name="estado">
-                                                    <label for="checkboxSuccess1">
-                                                        ACTIVO
-                                                    </label>
-                                                </div>
-                                            </div>
+                                    <!--DESCRIPCION-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Descripcion
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-clipboard-list"></i></span>
+                                            <textarea class="form-control" rows="3" name="descripcion"></textarea required>
                                         </div>
-                                        <!---->
+                                    </div>
+                                </div>
+
+                                <!-- /.col derecha  CATEGORIA-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Categoria
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-boxes"></i></span>
+                                            <select class="form-control" name="categoria">
+                                                <!-- for CATEGORIA se itera para que aparezcan en productos-->
+                                                {% for dato in categoriasRecibidas %}
+                                                <option value="{{dato.nombreCategoria}}">{{dato.nombreCategoria}}</option>                                              </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- PRECIO -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Precio
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-comment-dollar"></i></span>
+                                            <input type="number" class="form-control" name="precio" placeholder="$" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- DISTRIBUIDOR -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Distribuidor
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-dolly"></i></span>
+                                            <input type="text" class="form-control" name="distribuidor"
+                                                placeholder="Distribuidor del Producto" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- ESTADO -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Estado
+                                        </label></font>
                                         <div class="form-group clearfix">
-                                            <div class="icheck-danger d-inline">
-                                                <input type="checkbox" checked id="checkboxDanger1" name="estado">
-                                                <label for="checkboxDanger1">
-                                                    INACTIVO
+                                            <div class="icheck-success d-inline">
+                                                <input type="checkbox" checked id="checkboxDanger2" name="estado" value="ACTIVO">
+                                                <label  for="checkboxDanger2">
+                                                    ACTIVO
                                                 </label>
                                             </div>
                                         </div>
+                                    </div>
+                                    <script>
+                                        var inputs = document.getElementsByTagName('input');
+                                        //Se va iterar i. 
+                                        for (var i = 0; i < inputs.length; i++) {
+                                            if (inputs[i].type == 'checkbox') {
+                                                inputs[i].checked = false;
+                                            }
+                                        }
+                                    </script>
+                                    <!---->
+                                    <div class="form-group clearfix">
+                                        <div class="icheck-danger d-inline">
+                                            <input type="checkbox" checked id="checkboxDanger1" name="estado" value="INACTIVO">
+                                            <label  for="checkboxDanger1">
+                                                INACTIVO
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        var inputs = document.getElementsByTagName('input');
+                                        //Se va iterar i. 
+                                        for (var i = 0; i < inputs.length; i++) {
+                                            if (inputs[i].type == 'checkbox') {
+                                                inputs[i].checked = false;
+                                            }
+                                        }
+                                    </script>
 
-                                    </div>
                                 </div>
-                                <!--BTN AGREGAR-->
-                                <div class="card-footer">
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-outline-primary">
-                                            <i class="fas fa-solid fa-box">
-                                                <font face="Century">Agregar</button></i></font>
-                                    </div>
+                            </div>
+                            <!--BTN AGREGAR-->
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        <i class="fas fa-solid fa-box">
+                                            <font face="Century">Agregar</button></i></font>
                                 </div>
-                        </form>
-                    </div>
+                            </div>
+                        </div>    
+                    </form>
                 </div>
             </section>
         </div>

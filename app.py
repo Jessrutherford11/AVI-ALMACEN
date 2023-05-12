@@ -10,6 +10,7 @@ import funciones.CATEGORIAS.funciones_categorias as fun_cate
 import funciones.PRODUCTOS.funciones_productos as fun_prod
 import funciones.PROVEDORES.funciones_provedores as fun_prove
 import funciones.CLIENTES.funciones_clientes as fun_cli
+import funciones.PERFIL.funciones_perfil as fun_perfil
 
 app = Flask(__name__)
 
@@ -38,6 +39,24 @@ def iniciarSesion():
 def homePage():
     return fun_home.home()
 
+#FUNCION PROTECCION RUTAS
+@app.before_request
+def verificacionRutas():
+    return fun_login.proteccionRutas()
+    
+#********************FUNCIONES PERFIL ********************
+
+#FUNCION DE INFORMACION PERFIL
+@app.route('/vista-perfil')
+def VistaPerfil():
+    return fun_perfil.vistaPefil()
+
+
+#FUNCION ACTUALIZAR PERFIL 
+@app.route('/actualizar-perfil <key>, <campo>', methods = ['POST'])
+def ActualizarPerfil(key,campo):
+    return fun_perfil.actualizarPerfil(key,campo)
+
 
 #********************FUNCION CERRAR SESION***********************
 
@@ -58,8 +77,7 @@ def categoria():
 @app.route('/agregar-categorias', methods = ['POST'])
 def agregarCategoria():
     return fun_cate.nuevaCategoria()
-
-
+    
 #FUNCION DE INFORMACION CATEGORIA
 @app.route('/informacion-categorias <key>')
 def informacionCategoria(key):

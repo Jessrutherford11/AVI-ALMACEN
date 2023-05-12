@@ -40,7 +40,25 @@ def inicioSesionAdminis():
     return redirect('/') 
 
 
-#Funcion cerrar sesion
+#FUNCION DE PROTECCION DE RUTAS
+def proteccionRutas():
+    #respuesta de ruta
+    ruta = request.path
+    if 'usuario-administrador' in session:
+        pass
+    #Si empieza con 'static' no entra. 
+    elif not 'usuario-proveedor' in session and ruta!="/" and ruta!="/login" and ruta!= "/iniciarsesion" and not ruta.startswith("/static"):
+        flash('Inicia sesion para continuar')
+        return redirect('/login')
+
+
+
+
+
+
+
+
+#FFUNCION CERRAR SESION
 def cerrarSesion():
     #se destruye la sesion con pop.
     #Destruye lo que trae session que es el correo de administrador. 
