@@ -1,8 +1,9 @@
 from flask import Flask, render_template, redirect, session, request
+from data_base import baseDatos as Conecdb
 
-from data_base import baseDatos as Conecbd
+from forms.ADMINISTRADOR.adminForm import Administrador
 
-BD = Conecbd.conexion()
+BD = Conecdb.conexion()
 
 
 #FUNCION VISTA PERFIL 
@@ -22,7 +23,5 @@ def actualizarPerfil(key,campo):
         PerfilBD = BD['users']
         dato = request.form['dato']
         if dato:
-            PerfilBD.update_one({'name':key}, {'$set':{campo:dato}})
-            print(key)
-            print(campo)
+            PerfilBD.update_one({'identificador':key}, {'$set':{campo:dato}})
             return vistaPefil()

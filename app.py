@@ -53,7 +53,7 @@ def VistaPerfil():
 
 
 #FUNCION ACTUALIZAR PERFIL 
-@app.route('/actualizar-perfil <key>, <campo>', methods = ['POST'])
+@app.route('/actualizar-perfil/<key>,<campo>', methods = ['POST'])
 def ActualizarPerfil(key,campo):
     return fun_perfil.actualizarPerfil(key,campo)
 

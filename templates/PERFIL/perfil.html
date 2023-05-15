@@ -16,110 +16,211 @@
         <!--Menu-->
         {% include 'HOME/MODULOS/menu.html' %}
 
-        <!-- CONTENIDO. -->
+        <!-- CONTENIDO. 
+        VISTA DONDE SE VIZUALIZA LOS DATOS -->
         <div class="content-wrapper">
             <div class="container-fluid mt-4">
-                <!-- Profile Image -->
-                <div class="card card-dark card-outline">
-                    <div class="card-body box-profile">
-                        <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle"
-                                src="{{url_for('static', filename='dist/img/imagenes-menu/perfil.jpg')}}">
-                        </div>
-                        <h3 class="profile-username text-center">{{perfilRecibido.name}}</h3>
-                    </div>
-                </div>
+                <section class="content">
+                    <!-- Default box -->
+                    <div class="card card-solid">
+                        <div class="card-body pb-0">
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                    <div class="card bg-light d-flex flex-fill">
+                                        <div class="card-header text-muted border-bottom-0">
+                                            Informacion Perfil
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h3 class="profile-username text-center">{{perfilRecibido.name}}
+                                                    </h3>
 
-                <!-- INFOR PERFIL  -->
-                <div class="card-header">
-                    <h3 class="card-title">Informacion Perfil</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4 text-center">
-                            <div class="form-group">
-                                <small>
-                                    <i class="fas fa-user-circle"></i><!-- -->
-                                    Nombre:
-                                    <!--Boton que activara el modal para modificar datos-->
-                                    <button type="button" data-toggle="modal" data-target="#nombre"
-                                        class="btn btn-xs btn-OpenEdit">
-                                        <i class="fa-solid fas fa-user-edit"></i>Editar
-                                    </button>
-                                </small>
-                                <!--Variable-->
-                                <p id="vtitle">{{perfilRecibido.name}}
-                                    <span class="text-muted"></span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <div class="form-group">
-                                <small> <i class="fas fa-envelope"></i> <!-- -->
-                                    Correo:
-                                    <button type="button" data-toggle="modal" data-target="#correo"
-                                        class="btn btn-xs btn-OpenEdit">
-                                        <i class="fa-solid fas fa-user-edit"></i>Editar
-                                    </button>
-                                </small>
-                                <p id="vtitle">{{perfilRecibido.email}}</p>
-                                <span class="text-muted"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <div class="form-group">
-                                <small> <i class="fas fa-user-lock"></i> <!-- -->
-                                    Contraseña:
-                                    <button type="button" data-toggle="modal" data-target="#contraseña"
-                                        class="btn btn-xs btn-OpenEdit">
-                                        <i class="fa-solid fas fa-user-edit"></i>Editar
-                                    </button>
-                                </small>
-                                <p id="vtitle">*******************</p>
-                                <span class="text-muted"></span>
-                            </div>
-                        </div>
+                                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                        <li class="small"><span class="fa-li"><i
+                                                                    class="fas fa-envelope"></i></span>
+                                                            <p id="vtitle"> Correo: {{perfilRecibido.email}}</p>
+                                                            <span class="text-muted"></span>
+                                                        </li>
+                                                        <li class="small"><span class="fa-li"><i
+                                                                    class="fas fa-user-lock"></i></span>
+                                                            <p id="vtitle"> Contraseña:
+                                                        ************</p>
+                                                            <span class="text-muted"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-5 text-center">
+                                                    <img class="profile-user-img img-fluid img-circle"
+                                                        src="{{url_for('static', filename='dist/img/imagenes-menu/perfil.jpg')}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="text-right">
+                                                <a href="#">
+                                                    <i class="fas fa-server"></i>
+                                                </a>
+                                                <a href="/vista-perfil" class="btn btn-outline-dark">
+                                                    <i class="fas fa-user"></i> Ver Perfil
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--FORMULARIO PARA EDITAR-->
+                                <div class="card-body">
+                                    <hr>
+                                    <div class="row justify-content-center">
+                                        <div class="col-align-self-center">
+                                            <div class="card-header text-muted border-bottom-0">
+                                                <font face="Century">Datos Generales </font>
+                                            </div>
+                                            <div class="form-group">
+                                                <lable>
+                                                    <font face="Century">Nombre: </font>
+                                                </lable>
+                                                <!--Boton que activara el modal para modificar datos-->
+                                                <small>
+                                                    <button type="button" data-toggle="modal" data-target="#nombre"
+                                                        class="btn btn-xs btn-OpenEdit">
+                                                        <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                    </button>
+                                                </small>
 
-                    </div>
-                </div>
-            </div>
-
-            <!-- /.MODAL NOMNBRE -->
-            <div class="modal fade" id="nombre">
-                <div class="modal-dialog">
-                    <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
-                    <form action="{{url_for('ActualizarPerfil', key=perfilRecibido.name, campo='name')}}" method="POST">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Editar Nombre</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                                <p id="vtitle">{{perfilRecibido.name}}
+                                                    <span class="text-muted"></span>
+                                                </p>
+                                            </div>
+                                            <!---->
+                                            <div class="form-group">
+                                                <lable>
+                                                    <font face="Century">Correo: </font>
+                                                </lable>
+                                                <small>
+                                                    <button type="button" data-toggle="modal" data-target="#email"
+                                                        class="btn btn-xs btn-OpenEdit">
+                                                        <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                    </button>
+                                                </small>
+                                                <p id="vtitle">{{perfilRecibido.email}}</p>
+                                                <span class="text-muted"></span>
+                                            </div>
+                                            <!---->
+                                            <div class="form-group">
+                                                <lable>
+                                                    <font face="Century">Contraseña: </font>
+                                                </lable>
+                                                <small>
+                                                    <button type="button" data-toggle="modal" data-target="#contraseña"
+                                                        class="btn btn-xs btn-OpenEdit">
+                                                        <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                    </button>
+                                                </small>
+                                                <p id="vtitle">*******************</p>
+                                                <span class="text-muted"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <input class="form-control rounded-pill" placeholder="{{perfilRecibido.name}}"
-                                    type="text" name="dato">
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                        class="fa-solid fas fa-user-minus"></i>Cerrar</button>
-                                <button type="submit" class="btn btn-outline-success"><i
-                                        class="fa-solid fas fa-user-check"></i>Guardar</button>
-                            </div>
-                    </form>
-                </div>
+                        </div>
+                </section>
             </div>
         </div>
+    </div>
+
+
+    <!-- /.MODAL NOMNBRES -->
+    <div class="modal fade" id="nombre">
+        <div class="modal-dialog">
+            <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
+            <form action="{{url_for('ActualizarPerfil', key=perfilRecibido.name, campo='name')}}" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar Nombre</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control rounded-pill" placeholder="{{perfilRecibido.name}}" type="text"
+                            name="dato">
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                class="fa-solid fas fa-user-times"></i>Cerrar</button>
+                        <button type="submit" class="btn btn-outline-success"><i
+                                class="fa-solid fas fa-user-check"></i>Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- /.MODAL EMAIL -->
+    <div class="modal fade" id="email">
+        <div class="modal-dialog">
+            <form action="{{url_for('ActualizarPerfil', key=perfilRecibido.email, campo='email')}}" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar Correo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control rounded-pill" placeholder="{{perfilRecibido.email}}" type="text"
+                            name="dato">
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                class="fa-solid fas fa-user-times"></i>Cerrar</button>
+                        <button type="submit" class="btn btn-outline-success"><i
+                                class="fa-solid fas fa-user-check"></i>Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /.MODAL CONTRASEÑA -->
+    <div class="modal fade" id="contraseña">
+        <div class="modal-dialog">
+            <form action="{{url_for('ActualizarPerfil', key=perfilRecibido.contraseña, campo='contraseña')}}"
+                method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar Contraseña</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control rounded-pill" placeholder="{{perfilRecibido.contraseña}}"
+                            type="number" name="dato">
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                        <button type="submit" class="btn btn-outline-success"><i
+                                class="fa-solid fas fa-user-check"></i>Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
 
     </div>
-
-        <!--Pie de pagina-->
-        {% include 'HOME/MODULOS/footer.html' %}
-        <!--Side - bar control-->
-        {% include 'HOME/MODULOS/side-bar-control.html' %}
-        <!--Sripts-->
-        {% include 'HOME/MODULOS/scripts.html' %}
+    <!--Pie de pagina-->
+    {% include 'HOME/MODULOS/footer.html' %}
+    <!--Side - bar control-->
+    {% include 'HOME/MODULOS/side-bar-control.html' %}
+    <!--Sripts-->
+    {% include 'HOME/MODULOS/scripts.html' %}
 
 </body>
+
 </html>
