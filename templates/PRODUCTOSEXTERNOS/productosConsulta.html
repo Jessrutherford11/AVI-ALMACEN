@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <!--Consultar productos-->
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title"><i class="fas fa-solid fa-box-open">
+                                <font face="Castellar">PRODUCTOS EXTERNOS</h1></i></font>
+                    </div>
+                    <!--Se pone la tabla-->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-solid fa-hashtag">
+                                            <font face="Century">ID</th></i></font>
+                                    <th><i class="fas fa-solid fa-box-open">
+                                            <font face="Calibri">Producto</th></i></font>
+                                    <th><i class="fas fa-solid fa-boxes">
+                                            <font face="Calibri">Categoria</th></i></font>
+                                    <th><i class="fab fa-solid fa-dropbox">
+                                            <font face="Calibri">Stock</th></i></font>
+                                    <th><i class="fas fa-solid fa-dollar-sign">
+                                            <font face="Calibri">Precio</th></i></font>
+                                    <th><i class="fas fa-solid fa-shipping-fast">
+                                            <font face="Calibri">Unidad</th></i></font>
+                                    <th><i class="fas fa-solid fa-dolly">
+                                            <font face="Calibri">Distribuidor</th></i></font>
+                                    <th><i class="fas fa-solid fa-clipboard-list">
+                                            <font face="Calibri">Descripcion</th></i></font>
+                                    <th><i class="fas fa-solid fa-toggle-on">
+                                            <font face="Calibri">Estado</th></i></font>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--Iteracion por cada dato encontrado-->
+                                {% for dato in ProductosRecibidos %}
+                                <tr>
+                                    <td>{{dato.codigo}}</td>
+                                    <td>{{dato.nombreProducto}}</td>
+                                    <td>{{dato.categoria}}</td>
+                                    <td>{{dato.stock}}</td>
+                                    <td>$ {{dato.precio}}</td>
+                                    <td>{{dato.unidad}}</td>
+                                    <td>{{dato.distribuidor}}</td>
+                                    <td>{{dato.descripcion}}</td>
+                                    <td>{{dato.estado}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+        <!--Side- bar control -->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+    </div>
+</body>
+</html>

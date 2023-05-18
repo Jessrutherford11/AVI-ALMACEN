@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+
+        <!-- CONTENIDO. 
+        VISTA DONDE SE VIZUALIZA LOS DATOS -->
+        <div class="content-wrapper">
+            <div class="container-fluid mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title"><i class="fas fa-solid fa-box nav-icon"> Actualizar
+                                        Productos Internos</h1></i>
+                            </div>
+                            <!-- Profile Image -->
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <h3 class="profile-username text-center"><i class="fas fa-solid fa-box nav-icon">
+                                            <i class="fas fa-solid fa-barcode"></i></i></h3>
+                                    <small>
+                                        <span class="text-muted">
+                                            Nombre Producto:
+                                        </span>
+                                    </small>
+                                    <h3> {{ProductosRecibidos.nombreProducto}} </h3>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group">
+                                                    <small>
+                                                        Nombre Producto:
+                                                        <!--Boton que activara el modal para modificar datos-->
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#producto" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <!--Variable-->
+                                                    <p id="vtitle">{{ProductosRecibidos.nombreProducto}}
+                                                        <span class="text-muted"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group">
+                                                    <small>
+                                                        Categoria:
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#categoria" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProductosRecibidos.categoria}}</p>
+
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group">
+                                                    <small>
+                                                        Stock:
+                                                        <button type="button" data-toggle="modal" data-target="#stock"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProductosRecibidos.stock}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Precio:
+                                                        <button type="button" data-toggle="modal" data-target="#precio"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProductosRecibidos.precio}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Unidad:
+                                                        <button type="button" data-toggle="modal" data-target="#unidad"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProductosRecibidos.unidad}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Distribuidor:
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#distribuidor" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProductosRecibidos.distribuidor}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Descripcion:
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#descripcion" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProductosRecibidos.descripcion}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Estado:
+                                                        <button type="button" data-toggle="modal" data-target="#estado"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ProductosRecibidos.estado}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- /.MODAL NOMNBRE PRODUCTO -->
+            <div class="modal fade" id="producto">
+                <div class="modal-dialog">
+                    <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
+                    <form
+                        action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='nombreProducto')}}"
+                        method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Producto</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control rounded-pill"
+                                    placeholder="{{ProductosRecibidos.nombreProducto}}" type="text" name="dato">
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                        class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                <button type="submit" class="btn btn-outline-success"><i
+                                        class="fa-solid fas fa-user-check"></i>Guardar</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.MODAL CATEGORIA -->
+        <div class="modal fade" id="categoria">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='categoria')}}"
+                    method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar categoria</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label>Seleccione la categoria:</label>
+                            <select class="form-control" name="dato">
+                                <!-- for CATEGORIA se itera para que aparezcan en productos-->
+                                {% for dato in categoriasRecibidas %}
+                                <option class="form-control rounded-pill" value="{{dato.nombreCategoria}}">
+                                    {{dato.nombreCategoria}}</option>
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.MODAL STOCK -->
+        <div class="modal fade" id="stock">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='stock')}}"
+                    method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Stock</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProductosRecibidos.stock}}"
+                                type="number" name="dato">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.MODAL PRECIO -->
+        <div class="modal fade" id="precio">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='precio')}}"
+                    method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Precio</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill"
+                                placeholder="$ 000.000  {{ProductosRecibidos.precio}}" type="float" name="dato">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- /.MODAL UNIDAD -->
+        <div class="modal fade" id="unidad">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='unidad')}}"
+                    method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Unidad</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProductosRecibidos.unidad}}"
+                                type="text" name="dato">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.MODAL DISTRIBUIDOR -->
+        <div class="modal fade" id="distribuidor">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='distribuidor')}}"
+                    method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Distribuidor</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control rounded-pill" placeholder="{{ProductosRecibidos.distribuidor}}"
+                            type="text" name="dato">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- /.MODAL DESCRIPCION -->
+        <div class="modal fade" id="descripcion">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='descripcion')}}"
+                    method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Descripcion</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="3" placeholder="{{ProductosRecibidos.descripcion}}"
+                            name="dato"></textarea>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- /.MODAL ESTADO -->
+        <div class="modal fade" id="estado">
+            <div class="modal-dialog">
+                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='estado')}}"
+                    method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar estado del prodcuto</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label>Estado</label>
+                            <div class="form-group clearfix">
+                                <div class="icheck-success d-inline">
+                                    <input type="checkbox" checked id="checkboxDanger2" name="dato" value="ACTIVO">
+                                    <label for="checkboxDanger2">
+                                        ACTIVO
+                                    </label>
+                                </div>
+                            </div>
+                            <script>
+                                var inputs = document.getElementsByTagName('input');
+                                //Se va iterar i. 
+                                for (var i = 0; i < inputs.length; i++) {
+                                    if (inputs[i].type == 'checkbox') {
+                                        inputs[i].checked = false;
+                                    }
+                                }
+                            </script>
+                            <!-- -->
+                            <div class="form-group clearfix">
+                                <div class="icheck-danger d-inline">
+                                    <input type="checkbox" checked id="checkboxDanger1" name="dato" value="INACTIVO">
+                                    <label for="checkboxDanger1">
+                                        INACTIVO
+                                    </label>
+                                </div>
+                            </div>
+                            <script>
+                                var inputs = document.getElementsByTagName('input');
+                                //Se va iterar i. 
+                                for (var i = 0; i < inputs.length; i++) {
+                                    if (inputs[i].type == 'checkbox') {
+                                        inputs[i].checked = false;
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+            <div class="text-center">
+                <a href="/productos-operaciones" class="nav-link text-warning">
+                    <i class="far fa-clipboard"> Consultar Productos Internos</a></i>
+            </div>
+    </div>
+
+    <!--Pie de pagina-->
+    {% include 'HOME/MODULOS/footer.html' %}
+    <!--Side - bar control-->
+    {% include 'HOME/MODULOS/side-bar-control.html' %}
+    <!--Sripts-->
+    {% include 'HOME/MODULOS/scripts.html' %}
+
+</body>
+</html>

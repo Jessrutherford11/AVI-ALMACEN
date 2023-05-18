@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for ('static', filename='dist/404/style.css')}}">
     <title>{{titulo}}</title>
 </head>
+
 <body>
-    <h1>404 PAGINA NO ENCONTRADA</h1>
+    <div class="not-found parallax">
+        <div class="sky-bg"></div>
+        <div class="wave-7"></div>
+        <div class="wave-6"></div>
+        <a class="wave-island" href="/home">
+            <img src="{{url_for('static', filename='dist/404/img/Entrega.png')}}" width="150" height="100" alt="Island">
+        </a>
+        <div class="wave-5"></div>
+        <div class="wave-lost wrp">
+            <span>4</span>
+            <span>0</span>
+            <span>4</span>
+        </div>
+        <div class="wave-4"></div>
+        <div class="wave-boat">
+            <img class="boat" src="{{url_for('static', filename='dist/404/img/EE.png')}}"
+                alt="Boat">
+        </div>
+        <div class="wave-3"></div>
+        <div class="wave-2"></div>
+        <div class="wave-1"></div>
+        <div class="wave-message">
+            <small>¡ E.R.R.O.R. Pagina no encontrada xc!
+            <p> Click en el camion para regresar </small> </p>
+        </div>
+    </div>
+    <script src="{{ url_for('static',filename='dist/404/js/script.js')}}"></script>
+
 </body>
+
 </html>

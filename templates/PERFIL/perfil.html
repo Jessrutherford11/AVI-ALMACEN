@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'HOME/MODULOS/header.html' %}
+
+<head>
+    {% include 'HOME/MODULOS/header.html' %}
+</head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper"> <!--Ajuste de tamaño-->
@@ -12,12 +15,8 @@
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
         <!-- /.navbar -->
-
         <!--Menu-->
         {% include 'HOME/MODULOS/menu.html' %}
-
-        <!-- CONTENIDO. 
-        VISTA DONDE SE VIZUALIZA LOS DATOS -->
         <div class="content-wrapper">
             <div class="container-fluid mt-4">
                 <section class="content">
@@ -35,7 +34,8 @@
                                                 <div class="col-7">
                                                     <h3 class="profile-username text-center">{{perfilRecibido.name}}
                                                     </h3>
-
+                                                    <br>
+                                                    <br>
                                                     <ul class="ml-4 mb-0 fa-ul text-muted">
                                                         <li class="small"><span class="fa-li"><i
                                                                     class="fas fa-envelope"></i></span>
@@ -45,7 +45,7 @@
                                                         <li class="small"><span class="fa-li"><i
                                                                     class="fas fa-user-lock"></i></span>
                                                             <p id="vtitle"> Contraseña:
-                                                        ************</p>
+                                                                ************</p>
                                                             <span class="text-muted"></span>
                                                         </li>
                                                     </ul>
@@ -61,9 +61,7 @@
                                                 <a href="#">
                                                     <i class="fas fa-server"></i>
                                                 </a>
-                                                <a href="/vista-perfil" class="btn btn-outline-dark">
-                                                    <i class="fas fa-user"></i> Ver Perfil
-                                                </a>
+                                                <i class="fas fa-user"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -127,100 +125,140 @@
                         </div>
                 </section>
             </div>
-        </div>
-    </div>
 
 
-    <!-- /.MODAL NOMNBRES -->
-    <div class="modal fade" id="nombre">
-        <div class="modal-dialog">
-            <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
-            <form action="{{url_for('ActualizarPerfil', key=perfilRecibido.name, campo='name')}}" method="POST">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Editar Nombre</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input class="form-control rounded-pill" placeholder="{{perfilRecibido.name}}" type="text"
-                            name="dato">
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                class="fa-solid fas fa-user-times"></i>Cerrar</button>
-                        <button type="submit" class="btn btn-outline-success"><i
-                                class="fa-solid fas fa-user-check"></i>Guardar</button>
-                    </div>
+            <!--MODAL NOMBRE-->
+            <div class="modal fade" id="nombre">
+                <div class="modal-dialog modal-md">
+                    <form class="modal-content"
+                        action="{{url_for('ActualizarPerfilAdministrador', key=perfilRecibido.identificador, campo='name')}}"
+                        method="post">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modificar Nombre</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-control rounded-pill" name="dato"
+                                placeholder="{{perfilRecibido.name}}">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </form>
+                    <!-- /.modal-content -->
                 </div>
-            </form>
-        </div>
-    </div>
+            </div>
 
-
-    <!-- /.MODAL EMAIL -->
-    <div class="modal fade" id="email">
-        <div class="modal-dialog">
-            <form action="{{url_for('ActualizarPerfil', key=perfilRecibido.email, campo='email')}}" method="POST">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Editar Correo</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input class="form-control rounded-pill" placeholder="{{perfilRecibido.email}}" type="text"
-                            name="dato">
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                class="fa-solid fas fa-user-times"></i>Cerrar</button>
-                        <button type="submit" class="btn btn-outline-success"><i
-                                class="fa-solid fas fa-user-check"></i>Guardar</button>
-                    </div>
+            <!--MODAL CORREO-->
+            <div class="modal fade" id="email">
+                <div class="modal-dialog modal-md">
+                    <form class="modal-content"
+                        action="{{url_for('ActualizarPerfilCorreo', key=perfilRecibido.identificador, campo='email')}}"
+                        method="post">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modificar Correo</h4>
+                                <!--Boton Warning-->
+                                <small>
+                                    <button type="button" class="btn btn-outline-warning btn-xs  swalDefaultWarning">
+                                        <i class="fas fa-exclamation-triangle">
+                                    </button></i>
+                                </small>
+                        
+                        </div>
+                        <div class="text-center">
+                            <small>
+                                <span class="text-muted">Al modificar el correo, se cierra sesion.</span>
+                            </small>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-control rounded-pill" name="dato"
+                                placeholder="{{perfilRecibido.email}}">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </form>
+                    <!-- /.modal-content -->
                 </div>
-            </form>
-        </div>
-    </div>
-    <!-- /.MODAL CONTRASEÑA -->
-    <div class="modal fade" id="contraseña">
-        <div class="modal-dialog">
-            <form action="{{url_for('ActualizarPerfil', key=perfilRecibido.contraseña, campo='contraseña')}}"
-                method="post">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Editar Contraseña</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input class="form-control rounded-pill" placeholder="{{perfilRecibido.contraseña}}"
-                            type="number" name="dato">
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                class="fa-solid fas fa-user-minus"></i>Cerrar</button>
-                        <button type="submit" class="btn btn-outline-success"><i
-                                class="fa-solid fas fa-user-check"></i>Guardar</button>
-                    </div>
+            </div>
+
+         
+            <!--MODAL CONTRASEÑA-->
+            <div class="modal fade" id="contraseña">
+                <div class="modal-dialog modal-md">
+                    <form class="modal-content"
+                        action="{{url_for('ActualizarPerfilContraseña', key=perfilRecibido.identificador, campo='contraseña')}}"
+                        method="post">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modificar Contraseña</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label>Cambiar contraseña </label>
+                            <input type="password" class="form-control rounded-pill" name="dato"
+                                placeholder="Contraseña">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-outline-success"><i
+                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                        </div>
+                    </form>
+                    <!-- /.modal-content -->
                 </div>
-            </form>
+            </div>
+
         </div>
+        
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <script>
+            Swal.fire({
+                position: "top",
+                icon: "info",
+                title: "{{message}}",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        </script>
+        {% endfor %} {% endif %} {% endwith %}
+
+
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+        <!--Side - bar control-->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
     </div>
 
+    <!-- Funcion del btn warning-->
+    <script>
+        $(function () {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000
+            });
 
-
-    </div>
-    <!--Pie de pagina-->
-    {% include 'HOME/MODULOS/footer.html' %}
-    <!--Side - bar control-->
-    {% include 'HOME/MODULOS/side-bar-control.html' %}
-    <!--Sripts-->
-    {% include 'HOME/MODULOS/scripts.html' %}
-
+            $('.swalDefaultWarning').click(function () {
+                Toast.fire({
+                    icon: 'warning',
+                    title: 'Al modificar el correo se cierra sesion. '
+                })
+            });
+        });
+    </script>
 </body>
-
 </html>

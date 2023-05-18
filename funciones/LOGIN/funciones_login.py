@@ -27,6 +27,8 @@ def inicioSesionAdminis():
         if userRecibido:
             if(check_password_hash(userRecibido['contraseña'], password)==True):
                 session['usuario-administrador'] = userRecibido['email']
+                #En sesion se guarda una variable que sera nomnbre. 
+                session['nombre'] = userRecibido['name']
                 usuario = True
                 session.pop('usuario-proveedor',None)
                 return redirect('/home')    

@@ -1,6 +1,6 @@
-#Tabla en la BD.
+#BD DE PRODUCTOS EXTERNOS
 
-class Producto:
+class ProductoE:
     def __init__(self, codigo, nombreProducto, categoria, stock, precio, unidad, distribuidor, descripcion, estado):
         self.codigo = codigo
         self.nombreProducto = nombreProducto

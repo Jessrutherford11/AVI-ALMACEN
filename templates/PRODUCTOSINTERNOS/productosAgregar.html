@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
+                alt="LOGO" height="60" width="60" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <!--Agregar-->
+                <div class="card card-olive">
+                    <div class="card-header">
+                        <h3 class="card-title"> <i class="fas fa-solid fa-box"> </i>
+                            <font face="Century"><strong> Agregar Productos Internos </font></strong>
+                        </h3>
+                        <div class="card-tools">
+                            <!--Boton Warning-->
+                            <small>
+                                <button type="button" class="btn btn-warning toastrDefaultWarning">
+                                    <i class="fas fa-exclamation-triangle">
+                                </button></i>
+                            </small>
+                        </div>
+                    </div>
+                    <!--FORMULARIO -->
+                    <form action="/agregar-productos" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!--PRODUCTO-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Producto
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-box"></i></span>
+                                            <!--Cuadrito trasparente-->
+                                            <input type="text" class="form-control" name="nombreProducto" required>
+                                        </div>
+                                    </div>
+
+                                    <!--STOCK-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Stock
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fab fa-dropbox"></i></span>
+                                            <input type="number" class="form-control" name="stock"
+                                                placeholder="Existencia del Producto" required>
+                                        </div>
+                                    </div>
+
+                                    <!--UNIDAD-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Unidad
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-shipping-fast"></i></span>
+                                            <input type="text" class="form-control" name="unidad"
+                                                placeholder="Unidad donde se trasporto el producto (Motocicleta, Camioneta...)"
+                                                required>
+                                        </div>
+                                    </div>
+
+                                    <!--DESCRIPCION-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Descripcion
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-clipboard-list"></i></span>
+                                            <textarea class="form-control" rows="3" name="descripcion"></textarea required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- /.col derecha  CATEGORIA-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Categoria
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-boxes"></i></span>
+                                            <select class="form-control" name="categoria">
+                                                <!-- for CATEGORIA se itera para que aparezcan en productos-->
+                                                {% for dato in categoriasRecibidas %}
+                                                <option value="{{dato.nombreCategoria}}">{{dato.nombreCategoria}}</option>                                              </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- PRECIO -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Precio
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-dollar-sign"></i></span>
+                                            <input type="float" class="form-control" name="precio"  placeholder="000.000" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- DISTRIBUIDOR -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Distribuidor
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-dolly"></i></span>
+                                            <input type="text" class="form-control" name="distribuidor"
+                                                placeholder="Distribuidor del Producto" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- ESTADO -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Estado
+                                        </label></font>
+                                        <div class="form-group clearfix">
+                                            <div class="icheck-success d-inline">
+                                                <input type="checkbox" checked id="checkboxDanger2" name="estado" value="ACTIVO">
+                                                <label  for="checkboxDanger2">
+                                                    ACTIVO
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        var inputs = document.getElementsByTagName('input');
+                                        //Se va iterar i. 
+                                        for (var i = 0; i < inputs.length; i++) {
+                                            if (inputs[i].type == 'checkbox') {
+                                                inputs[i].checked = false;
+                                            }
+                                        }
+                                    </script>
+                                    <!---->
+                                    <div class="form-group clearfix">
+                                        <div class="icheck-danger d-inline">
+                                            <input type="checkbox" checked id="checkboxDanger1" name="estado" value="INACTIVO">
+                                            <label  for="checkboxDanger1">
+                                                INACTIVO
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        var inputs = document.getElementsByTagName('input');
+                                        //Se va iterar i. 
+                                        for (var i = 0; i < inputs.length; i++) {
+                                            if (inputs[i].type == 'checkbox') {
+                                                inputs[i].checked = false;
+                                            }
+                                        }
+                                    </script>
+
+                                </div>
+                            </div>
+                            <!--BTN AGREGAR-->
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-outline-success">
+                                        <i class="fas fa-solid fa-box">
+                                            <font face="Century">Agregar</button></i></font>
+                                </div>
+                            </div>
+                        </div>    
+                    </form>
+                </div>
+            </section>
+        </div>
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+    </div>
+
+    <!--Funcion del btn warning-->
+    <script>
+        $(function () {
+            var Toast = Swal.mixin({
+                toast: true,
+                showConfirmButton: false,
+                timer: 30000
+            });
+
+            $('.toastrDefaultWarning').click(function () {
+                toastr.warning('Productos inernos, aquellos que SI pertenecen directamente a la empresa, asi como uniformes para los operadores, papeleria etc... ')
+                });
+        });
+    </script>
+</body>
+</html>

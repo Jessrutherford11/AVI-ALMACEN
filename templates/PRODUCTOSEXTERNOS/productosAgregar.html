@@ -19,15 +19,23 @@
         <div class="content-wrapper">
             <section class="container mt-4">
                 <!--Agregar-->
-                <div class="card card-lightblue">
+                <div class="card card-teal"><!-- color -->
                     <div class="card-header">
-                        <h3 class="card-title"> <i class="fas fa-solid fa-box">
-                                <font face="Century"><strong>Agregar Productos Internos</font></strong>
-                            </i>
+                        <h3 class="card-title"> <i class="fas fa-solid fa-box-open"> </i>
+                            <font face="Century"><strong> Agregar Productos Externos </font></strong>
                         </h3>
+                        <div class="card-tools">
+                            <!--Boton Warning-->
+                            <small>
+                                <button type="button" class="btn btn-warning toastrDefaultWarning">
+                                    <i class="fas fa-exclamation-triangle">
+                                </button></i>
+                            </small>
+                        </div>
                     </div>
                     <!--FORMULARIO -->
-                    <form action="/agregar-productos" method="post">
+
+                    <form action="/agregar-nuevos-productos-externos" method="post">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -38,7 +46,7 @@
                                         </label></font>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1"><i
-                                                    class="fas fa-box"></i></span>
+                                                    class="fas fa-box-open"></i></span>
                                             <!--Cuadrito trasparente-->
                                             <input type="text" class="form-control" name="nombreProducto" required>
                                         </div>
@@ -95,7 +103,7 @@
                                                     class="fas fa-boxes"></i></span>
                                             <select class="form-control" name="categoria">
                                                 <!-- for CATEGORIA se itera para que aparezcan en productos-->
-                                                {% for dato in categoriasRecibidas %}
+                                                {% for dato in CategoriasRecibidas %}
                                                 <option value="{{dato.nombreCategoria}}">{{dato.nombreCategoria}}</option>                                              </option>
                                                 {% endfor %}
                                             </select>
@@ -109,8 +117,8 @@
                                         </label></font>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1"><i
-                                                    class="fas fa-comment-dollar"></i></span>
-                                            <input type="number" class="form-control" name="precio" placeholder="$" required>
+                                                    class="fas fa-dollar-sign"></i></span>
+                                            <input type="float" class="form-control" name="precio"  placeholder="000.000" required>
                                         </div>
                                     </div>
 
@@ -174,8 +182,8 @@
                             <!--BTN AGREGAR-->
                             <div class="card-footer">
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-outline-primary">
-                                        <i class="fas fa-solid fa-box">
+                                    <button type="submit" class="btn btn-outline-success">
+                                        <i class="fas fa-solid fa-box-open">
                                             <font face="Century">Agregar</button></i></font>
                                 </div>
                             </div>
@@ -184,10 +192,6 @@
                 </div>
             </section>
         </div>
-
-
-
-
         <!--Pie de pagina-->
         {% include 'HOME/MODULOS/footer.html' %}
 
@@ -196,11 +200,21 @@
 
         <!--Sripts-->
         {% include 'HOME/MODULOS/scripts.html' %}
-
     </div>
 
+    <!--Funcion del btn warning-->
+    <script>
+        $(function () {
+            var Toast = Swal.mixin({
+                toast: true,
+                showConfirmButton: false,
+                timer: 30000
+            });
 
-
+            $('.toastrDefaultWarning').click(function () {
+                toastr.warning('Productos externos, aquellos que NO pertenecen directamente a la empresa, como productos de despensa, insumos personales, etc..')
+                });
+        });
+    </script>
 </body>
-
 </html>

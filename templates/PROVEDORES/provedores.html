@@ -38,7 +38,7 @@
                                     <th><i class="fas fa-stamp">
                                             <font face="Calibri"> Apellidos </font>
                                         </i></th>
-                                    <th><i class="fas fa-sort-numeric-up">
+                                    <th><i class="fas fa-history">
                                             <font face="Calibri"> Edad </font>
                                         </i></th>
                                     <th><i class="fas fa-envelope">
@@ -53,7 +53,7 @@
                                     <th><i class="fas fa-building">
                                             <font face="Calibri"> Empresa </font>
                                         </i></th>
-                                    <th><i class="fas fa-solid fa-screwdriver fa-wrench nav-icon" class="text-center">
+                                    <th><i class="fas fa-solid fa-screwdriver fa-tools nav-icon" class="text-center">
                                             <font face="Century"> Acciones </font>
                                     </th></i>
 
@@ -95,10 +95,11 @@
 
             <!--Agregar. FORMULARIO -->
             <section class="container mt-4">
-                <div class="card card-success">
+                <div class="card card-navy"><!---->
                     <div class="card-header">
                         <h5 class="card-title"><i class="fas fa-user-plus ">
-                                    <font face="Calibri"><strong> Agregar Proveedor </strong></i></font>
+                                <font face="Calibri"><strong> Agregar Proveedor </strong>
+                            </i></font>
                         </h5>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -107,111 +108,130 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <!-- form start -->
-                    <div class="card-body">
-                        <form class="form-horizontal" action="/agregar-proveedores" method="post">
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">
-                                    <font face="Century">Nombre
-                                </label></font>
-                                <div class="col-sm-10">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1"></span>
-                                        <input type="text" class="form-control" name="nombres" placeholder="Nombres "
-                                            class="fas fa-user-circle" aria-label="Username"
-                                            aria-describedby="basic-addon1">
+                    <!-- FORMULARIO -->
+                    <form action="/agregar-proveedores" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                    <div class="col-md-6"><!-- -->
+                                        <!--NOMBRES-->
+                                        <div class="form-group">
+                                            <label>
+                                                <font face="Century">Nombre
+                                            </label></font>
+                                            <div class="input-group mb-4"> <!---->
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-user-circle"></i></span>
+                                                <input type="text" class="form-control" name="nombres"
+                                                    placeholder="Nombres " class="fas fa-user-circle"
+                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                            </div>
+                                        </div>
+                                        <!--APELLIDOS-->
+                                        <div class="form-group">
+                                            <label>
+                                                <font face="Century">Apellidos
+                                            </label></font>
+                                            <div class="input-group mb-4">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-stamp"></i></span>
+                                                <input type="text" class="form-control" name="apellidos"
+                                                    placeholder="Apellido Materno/Paterno" aria-label="Username"
+                                                    aria-describedby="basic-addon1">
+                                            </div>
+                                        </div>
+                                        <!--EDAD-->
+                                        <div class="form-group">
+                                            <label>
+                                                <font face="Century">Edad
+                                            </label></font>
+                                            <div class="input-group mb-4">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-history"></i></span>
+                                                <input type="number" class="form-control" name="edad"
+                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                            </div>
+                                        </div>
+                                        <!--CORREO-->
+                                        <div class="form-group">
+                                            <label>
+                                                <font face="Century">Correo Electronico
+                                            </label></font>
+                                            <div class="input-group mb-4">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-envelope"></i></span>
+                                                <input type="email" class="form-control" name="correo"
+                                                    placeholder="example@." aria-label="Username"
+                                                    aria-describedby="basic-addon1">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /.col derecha  TELEFONO-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>
+                                                <font face="Century">Telefono
+                                            </label></font>
+                                            <div class="input-group mb-4">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-phone"></i></span>
+                                                <input type="text" class="form-control" name="telefono"
+                                                    placeholder="00-00-00-00">
+                                            </div>
+                                        </div>
+                                        <!--DIRECCION-->
+                                        <div class="form-group row">
+                                            <label>
+                                                <font face="Century">Direccion
+                                            </label></font>
+                                            <div class="input-group mb-4">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-map-marker-alt"></i></span>
+                                                <input type="text" class="form-control" name="direccion"
+                                                    placeholder="Calle, Colonia, Numero">
+                                            </div>
+                                        </div>
+                                        <!--EMPRESA-->
+                                        <div class="form-group row">
+                                            <label>
+                                                <font face="Century">Empresa
+                                            </label></font>
+                                            <div class="input-group mb-4">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-building"></i></span>
+                                                <input type="text" class="form-control" name="empresa"
+                                                    placeholder="Nombre empresa">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">
-                                    <font face="Century">Apellidos
-                                </label></font>
-                                <div class="col-sm-10">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1"></span>
-                                        <input type="text" class="form-control" name="apellidos"
-                                            placeholder="Apellido Materno/Paterno" aria-label="Username"
-                                            aria-describedby="basic-addon1">
-                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="card-footer">
+                            <div class="text-center">
+                                <div class="icon">
+                                    <button type="submit" class="btn btn-outline-success">
+                                        <i class="fa fa-solid fa-user-circle"></i> Agregar</button>
                                 </div>
                             </div>
+                        </div>
+                    </form>
 
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">
-                                    <font face="Century">Edad
-                                </label></font>
-                                <div class="col-sm-10">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1"></span>
-                                        <input type="number" class="form-control" name="edad" placeholder="Edad"
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">
-                                    <font face="Century">Correo Electronico
-                                </label></font>
-                                <div class="col-sm-10">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1"></span>
-                                    <input type="email" class="form-control" name="correo" placeholder="example@." aria-label="Username"
-                                    aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">
-                                    <font face="Century">Telefono
-                                </label></font>
-                                <div class="col-sm-10">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1"></span>
-                                    <input type="text" class="form-control" name="telefono" placeholder="00-00-00-00">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">
-                                    <font face="Century">Direccion
-                                </label></font>
-                                <div class="col-sm-10">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1"></span>
-                                    <input type="text" class="form-control" name="direccion"
-                                        placeholder="Calle, Colonia, Numero">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">
-                                    <font face="Century">Empresa
-                                </label></font>
-                                <div class="col-sm-10">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1"></span>
-                                    <input type="text" class="form-control" name="empresa" placeholder="Nombre empresa">
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="card-footer">
-                                <div class="text-center">
-                                    <div class="icon">
-                                        <button type="submit" class="btn btn-outline-success">
-                                            <i class="fa fa-solid fa-user-circle"></i> Agregar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     <!-- /.card-body -->
                     <!-- /.card-footer -->
                 </div>

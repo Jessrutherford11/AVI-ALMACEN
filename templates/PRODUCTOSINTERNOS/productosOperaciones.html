@@ -21,9 +21,11 @@
                 <!--Consultar productos-->
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="card-title"><i class="fas fa-solid fa-box">
-                                <font face="Castellar">PRODUCTOS INTERNOS</h1></i></font>
+                        <h1 class="card-title"><i class="fas fa-solid fa-tools"> <i class="fas fa-solid fa-box">
+                                    <font face="Castellar"> OPERACIONES PRODUCTOS INTERNOS </h1></i></i></font>
                     </div>
+
+
                     <!--Se pone la tabla-->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
@@ -47,11 +49,15 @@
                                             <font face="Calibri">Descripcion</th></i></font>
                                     <th><i class="fas fa-solid fa-toggle-on">
                                             <font face="Calibri">Estado</th></i></font>
+                                    <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-wrench nav-icon">
+                                            <font face="Calibri"> Acciones </font>
+                                        </i></th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <!--Iteracion por cada dato encontrado-->
-                                {% for dato in productosRecibidos %}
+                                {% for dato in productosOperacionesRecibidos %}
                                 <tr>
                                     <td>{{dato.codigo}}</td>
                                     <td>{{dato.nombreProducto}}</td>
@@ -62,8 +68,15 @@
                                     <td>{{dato.distribuidor}}</td>
                                     <td>{{dato.descripcion}}</td>
                                     <td>{{dato.estado}}</td>
+                                    <td class="text-center"> <a href="{{url_for('informacionProductos', key=dato.codigo)}}" class="btn btn-outline-warning"> <i
+                                                class="fas fa-edit nav-icon"></i> </a> <!--Boton Editar. Funcion de la app-->
+                                        <a href="{{url_for('eliminarProducto', key=dato.codigo)}}"
+                                            class="btn btn-outline-danger"><i
+                                                class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i> </a>
+                                    </td> <!--Boton Eliminar-->
                                 </tr>
                                 {% endfor %}
+
                             </tbody>
                         </table>
                     </div>
@@ -79,11 +92,7 @@
 
         <!--Sripts-->
         {% include 'HOME/MODULOS/scripts.html' %}
-
     </div>
-
-
-
 </body>
 
 </html>

@@ -3,7 +3,7 @@ from flask import Flask, render_template, redirect, session, request
 import random
 from data_base import baseDatos as Conecbd
 
-from forms.PRODUCTOS.productoForm import Producto
+from forms.PRODUCTOSINTERNOS.productoForm  import Producto
 
 #BD
 BD = Conecbd.conexion()
@@ -11,18 +11,18 @@ BD = Conecbd.conexion()
 #FUNCION *VISTA* DE AGREGAR PRODUCTOS
 def productosAgregar():
     if 'usuario-administrador':
-        titulo = "Agregar nuevos productos"
+        titulo = "Agregar nuevos productos internos"
         #Para agregar las categorias en prodcuctos
         categoriasBD = BD['Categoria']
         categoriasRecibidas = categoriasBD.find() #consulta 
-        return render_template('PRODUCTOS/productosAgregar.html', titulo = titulo, categoriasRecibidas=categoriasRecibidas)
+        return render_template('PRODUCTOSINTERNOS/productosAgregar.html', titulo = titulo, categoriasRecibidas=categoriasRecibidas)
 
 
 
 # FUNCION DE AGREGAR PRODUCTOS. -FORMULARIO. 
 def nuevoProducto():
     if 'usuario-administrador' in session:
-        productosBD = BD['Productos']
+        productosBD = BD['ProductosInternos']
         #Variable del formulario
         nombreProducto = request.form["nombreProducto"]
         categoria = request.form["categoria"]
@@ -46,15 +46,43 @@ def nuevoProducto():
 
 
 
+#FUNCION INFORMACION PRODUCTOS
+def informacionProducto(key):
+    if 'usuario-administrador' in session:
+        titulo = 'Informacion Producto'
+        ProductosBD = BD['ProductosInternos']
+        #Para agregar las categorias en prodcuctos
+        categoriasBD = BD['Categoria']
+        categoriasRecibidas = categoriasBD.find() #consulta 
+
+        ProductosRecibidos = ProductosBD.find_one({'codigo':key})
+        return render_template('PRODUCTOSINTERNOS/productosInfo.html', titulo = titulo, ProductosRecibidos = ProductosRecibidos, categoriasRecibidas=categoriasRecibidas)
+        
+    elif 'usuario-provedor' in session:
+        return redirect('/')
+    
+
+#FUNCION ACTUALIZAR PRODCUTOS
+def actualizarProducto(key,campo):
+    if 'usuario-administrador' in session:
+        ProductosBD = BD['ProductosInternos']
+        dato = request.form['dato']
+        if dato:
+            ProductosBD.update_one({'codigo':key}, {'$set':{campo:dato}})
+            return informacionProducto(key)
+
+    elif 'usuario-provedor' in session:
+        return redirect('/')    
+
+
 #FUNCION CONSULTAR PRODUCTOS EN TABLA
 def consultaProductos():
     if 'usuario-administrador' in session:
         titulo = 'Productos'
         #Consulta 
-        productosBD = BD['Productos']
+        productosBD = BD['ProductosInternos']
         productosRecibidos = productosBD.find()
-        return render_template('PRODUCTOS/productosConsulta.html', titulo = titulo, productosRecibidos = productosRecibidos)
-
+        return render_template('PRODUCTOSINTERNOS/productosConsulta.html', titulo = titulo, productosRecibidos = productosRecibidos)
 
 
 #FUNCION CONSULTAR OPERACIONES DE LOS PRODUCTOS EN TABLA
@@ -62,17 +90,15 @@ def consultaProductosOperaciones():
     if 'usuario-administrador' in session:
         titulo = 'Operaciones-Productos'
         #Consulta 
-        productosBD = BD['Productos']
+        productosBD = BD['ProductosInternos']
         productosOperacionesRecibidos = productosBD.find()
-        return render_template('PRODUCTOS/productosOperaciones.html', titulo = titulo, productosOperacionesRecibidos = productosOperacionesRecibidos)
-
-
+        return render_template('PRODUCTOSINTERNOS/productosOperaciones.html', titulo = titulo, productosOperacionesRecibidos = productosOperacionesRecibidos)
 
 
 #FUNCION ELIMINAR PRODUCTOS
 def eliminarProductos(key):
     if 'usuario-administrador' in session:
-        productosBD = BD['Productos']
+        productosBD = BD['ProductosInternos']
         productosBD.delete_one({'codigo':key})
         return redirect ('/productos-operaciones')
     
