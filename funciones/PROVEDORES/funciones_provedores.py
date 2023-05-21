@@ -71,10 +71,6 @@ def actualizarProvedor(key,campo):
         return redirect('/')
 
 
-
-
-
-
 #ELIMINAR PROVEEDORES
 def eliminarProvedor(key):
     if 'usuario-administrador' in session:

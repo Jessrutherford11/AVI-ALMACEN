@@ -241,10 +241,27 @@ def clientes():
     return fun_cli.vistaClientes()
 
 #FUNCION DE AGREGAR CLIENTES.
-
 @app.route('/agregar-clientes', methods = ['POST'])
 def agregarClientees():
     return fun_cli.nuevoCliente()
+
+#FUNCION EDITAR INFORMACION CLIENTE
+@app.route('/editar-informacion-cliente/<key>')
+def editarInfoClientes(key):
+    return fun_cli.informacionCliente(key)
+
+#FUNCION AZTUALIZAR CLIENTE
+@app.route('/actualizarCliente/ <key>, <campo>', methods=['POST'])
+def actualizarClientes(key,campo):
+    return fun_cli.actualizarCliente(key,campo)
+
+
+
+
+#FUNCION DE ELIMINAR CLIENTES
+@app.route('/eliminar-clientes/ <key>')
+def eliminarClientes(key):
+    return fun_cli.eliminarCliente(key)
 
 
 #********************FUNCION DE PAGINA NO ENCONTRADA********************

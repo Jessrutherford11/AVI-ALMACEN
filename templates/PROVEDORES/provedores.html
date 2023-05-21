@@ -56,10 +56,6 @@
                                     <th><i class="fas fa-solid fa-screwdriver fa-tools nav-icon" class="text-center">
                                             <font face="Century"> Acciones </font>
                                     </th></i>
-
-
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -123,7 +119,7 @@
                                                     <i class="fas fa-user-circle"></i></span>
                                                 <input type="text" class="form-control" name="nombres"
                                                     placeholder="Nombres " class="fas fa-user-circle"
-                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                                    aria-label="Username" aria-describedby="basic-addon1" required>
                                             </div>
                                         </div>
                                         <!--APELLIDOS-->
@@ -136,7 +132,7 @@
                                                     <i class="fas fa-stamp"></i></span>
                                                 <input type="text" class="form-control" name="apellidos"
                                                     placeholder="Apellido Materno/Paterno" aria-label="Username"
-                                                    aria-describedby="basic-addon1">
+                                                    aria-describedby="basic-addon1" required>
                                             </div>
                                         </div>
                                         <!--EDAD-->
@@ -148,7 +144,7 @@
                                                 <span class="input-group-text" id="basic-addon1">
                                                     <i class="fas fa-history"></i></span>
                                                 <input type="number" class="form-control" name="edad"
-                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                                    aria-label="Username" aria-describedby="basic-addon1" required>
                                             </div>
                                         </div>
                                         <!--CORREO-->
@@ -161,7 +157,7 @@
                                                     <i class="fas fa-envelope"></i></span>
                                                 <input type="email" class="form-control" name="correo"
                                                     placeholder="example@." aria-label="Username"
-                                                    aria-describedby="basic-addon1">
+                                                    aria-describedby="basic-addon1" required>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +172,7 @@
                                                 <span class="input-group-text" id="basic-addon1">
                                                     <i class="fas fa-phone"></i></span>
                                                 <input type="text" class="form-control" name="telefono"
-                                                    placeholder="00-00-00-00">
+                                                    placeholder="00-00-00-00" required>
                                             </div>
                                         </div>
                                         <!--DIRECCION-->
@@ -188,7 +184,7 @@
                                                 <span class="input-group-text" id="basic-addon1">
                                                     <i class="fas fa-map-marker-alt"></i></span>
                                                 <input type="text" class="form-control" name="direccion"
-                                                    placeholder="Calle, Colonia, Numero">
+                                                    placeholder="Calle, Colonia, Numero" required>
                                             </div>
                                         </div>
                                         <!--EMPRESA-->
@@ -200,40 +196,22 @@
                                                 <span class="input-group-text" id="basic-addon1">
                                                     <i class="fas fa-building"></i></span>
                                                 <input type="text" class="form-control" name="empresa"
-                                                    placeholder="Nombre empresa">
+                                                    placeholder="Nombre empresa" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div class="card-footer">
                             <div class="text-center">
                                 <div class="icon">
-                                    <button type="submit" class="btn btn-outline-success">
+                                    <button type="submit" class="btn btn-outline-primary">
                                         <i class="fa fa-solid fa-user-circle"></i> Agregar</button>
                                 </div>
                             </div>
                         </div>
                     </form>
-
-                    <!-- /.card-body -->
-                    <!-- /.card-footer -->
                 </div>
             </section>
         </div>
@@ -247,7 +225,5 @@
         <!--Sripts-->
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
-
 </body>
-
 </html>

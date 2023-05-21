@@ -27,14 +27,61 @@ def nuevoCliente():
         correo = request.form["correo"] 
         telefono = request.form["telefono"] 
         direccion = request.form["direccion"]  
+        empresa = request.form["empresa"] 
         #id aleatorio
         codigo = str(random.randint(0,4000))
 
-        if codigo and nombres and apellidos and edad and correo and telefono and direccion:
-            cliente = Clientes(codigo, nombres, apellidos, edad, correo, telefono, direccion)
+        if codigo and nombres and apellidos and edad and correo and telefono and direccion and empresa:
+            cliente = Clientes(codigo, nombres, apellidos, edad, correo, telefono, direccion, empresa)
             #Insercion a la BD
             ClientesBD.insert_one(cliente.datosClientesJson())
             return redirect('clientes')
     
     elif 'usuario-proveedor' in session:
         return redirect('/')
+    
+
+#INFORMACION CLIENTES. EDITAR.
+def informacionCliente(key):
+    if 'usuario-administrador' in session:
+        titulo = 'Editar Informacion Cliente'
+        ClientesBD = BD['Clientes']
+        clientesRecibidos = ClientesBD.find_one({'codigo':key})
+        return render_template('CLIENTES/actualizarInfo.html', titulo=titulo, clientesRecibidos=clientesRecibidos)
+
+    elif 'usuario-proveedor' in session:
+        return redirect('/')
+    
+
+#FUNCION ACTUALIZAR CLIENTES.
+def actualizarCliente(key,campo):
+    if 'usuario-administrador' in session:
+        ClientesBD = BD['Clientes']
+        dato = request.form['dato']
+        if dato:
+            ClientesBD.update_one({'codigo':key}, {'$set':{campo:dato}})
+        return informacionCliente(key)
+
+    elif 'usuario-proveedor' in session:
+        return redirect('/')
+        
+
+
+
+
+
+
+
+
+
+
+#ELIMINAR CLIENTES
+def eliminarCliente(key):
+    if 'usuario-administrador' in session:
+        clientesBD = BD['Clientes']
+        clientesBD.delete_one({'codigo':key})
+        return redirect('/clientes')
+
+    elif 'usuario-proveedor' in session:
+        return redirect('/')
+    

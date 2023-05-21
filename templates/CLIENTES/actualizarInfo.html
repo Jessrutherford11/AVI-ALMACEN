@@ -25,15 +25,15 @@
                         <div class="card">
                             <div class="card-header">
                                 <h1 class="card-title"><i class="fas fa-solid fa-user-circle nav-icon"> Actualizar
-                                        Proveedor</h1></i>
+                                        Cliente</h1></i>
                             </div>
                             <!-- Profile Image -->
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-circle"
                                         src="{{url_for('static', filename='dist/img/imagenes-menu/conductor.png')}}">
-                                    <h3 class="profile-username text-center">{{ProvedoresRecibidos.nombres}}
-                                        {{ProvedoresRecibidos.apellidos}}
+                                    <h3 class="profile-username text-center">{{ clientesRecibidos.nombres}}
+                                        {{ clientesRecibidos.apellidos}}
                                     </h3>
                                 </div>
                                 <div class="card">
@@ -50,7 +50,7 @@
                                                         </button>
                                                     </small>
                                                     <!--Variable-->
-                                                    <p id="vtitle">{{ProvedoresRecibidos.nombres}}
+                                                    <p id="vtitle">{{ clientesRecibidos.nombres}}
                                                         <span class="text-muted"></span>
                                                     </p>
                                                 </div>
@@ -65,7 +65,7 @@
                                                             <i class="fa-solid fas fa-user-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ProvedoresRecibidos.apellidos}}</p>
+                                                    <p id="vtitle">{{ clientesRecibidos.apellidos}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -79,7 +79,7 @@
                                                             <i class="fa-solid fas fa-user-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ProvedoresRecibidos.edad}}</p>
+                                                    <p id="vtitle">{{ clientesRecibidos.edad}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -95,7 +95,7 @@
                                                             <i class="fa-solid fas fa-user-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ProvedoresRecibidos.telefono}}</p>
+                                                    <p id="vtitle">{{ clientesRecibidos.telefono}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -109,7 +109,7 @@
                                                             <i class="fa-solid fas fa-user-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ProvedoresRecibidos.direccion}}</p>
+                                                    <p id="vtitle">{{ clientesRecibidos.direccion}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -123,7 +123,7 @@
                                                             <i class="fa-solid fas fa-user-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ProvedoresRecibidos.correo}}</p>
+                                                    <p id="vtitle">{{ clientesRecibidos.correo}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -139,7 +139,7 @@
                                                             <i class="fa-solid fas fa-user-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ProvedoresRecibidos.empresa}}</p>
+                                                    <p id="vtitle">{{ clientesRecibidos.empresa}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -158,7 +158,7 @@
             <div class="modal fade" id="nombres">
                 <div class="modal-dialog">
                     <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
-                    <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='nombres')}}"
+                    <form action="{{url_for('actualizarClientes', key= clientesRecibidos.codigo, campo='nombres')}}"
                         method="POST">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -168,7 +168,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.nombres}}"
+                                <input class="form-control rounded-pill" placeholder="{{ clientesRecibidos.nombres}}"
                                     type="text" name="dato">
                             </div>
                             <div class="modal-footer justify-content-between">
@@ -184,7 +184,7 @@
         <!-- /.MODAL APELLIDOS -->
         <div class="modal fade" id="apellidos">
             <div class="modal-dialog">
-                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='apellidos')}}"
+                <form action="{{url_for('actualizarClientes', key= clientesRecibidos.codigo, campo='apellidos')}}"
                     method="post">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -194,7 +194,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.apellidos}}"
+                            <input class="form-control rounded-pill" placeholder="{{ clientesRecibidos.apellidos}}"
                                 type="text" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -210,7 +210,7 @@
         <!-- /.MODAL EDAD -->
         <div class="modal fade" id="edad">
             <div class="modal-dialog">
-                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='edad')}}"
+                <form action="{{url_for('actualizarClientes', key= clientesRecibidos.codigo, campo='edad')}}"
                     method="post">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -220,7 +220,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.edad}}"
+                            <input class="form-control rounded-pill" placeholder="{{ clientesRecibidos.edad}}"
                                 type="number" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -236,7 +236,7 @@
         <!-- /.MODAL TELEFONO -->
         <div class="modal fade" id="telefono">
             <div class="modal-dialog">
-                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='telefono')}}"
+                <form action="{{url_for('actualizarClientes', key= clientesRecibidos.codigo, campo='telefono')}}"
                     method="post">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -247,7 +247,7 @@
                         </div>
                         <div class="modal-body">
                             <input class="form-control rounded-pill"
-                                placeholder="(Codigo de area) Numero  {{ProvedoresRecibidos.telefono}}" type="tel"
+                                placeholder="(Codigo de area) Numero  {{ clientesRecibidos.telefono}}" type="tel"
                                 name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -264,7 +264,7 @@
         <!-- /.MODAL Direccion -->
         <div class="modal fade" id="direccion">
             <div class="modal-dialog">
-                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='direccion')}}"
+                <form action="{{url_for('actualizarClientes', key= clientesRecibidos.codigo, campo='direccion')}}"
                     method="post">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -274,7 +274,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.direccion}}"
+                            <input class="form-control rounded-pill" placeholder="{{ clientesRecibidos.direccion}}"
                                 type="text" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -290,7 +290,7 @@
         <!-- /.MODAL CORREO -->
         <div class="modal fade" id="correo">
             <div class="modal-dialog">
-                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='correo')}}"
+                <form action="{{url_for('actualizarClientes', key= clientesRecibidos.codigo, campo='correo')}}"
                     method="post">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -300,7 +300,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.correo}}"
+                            <input class="form-control rounded-pill" placeholder="{{ clientesRecibidos.correo}}"
                                 type="email" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -317,7 +317,7 @@
         <!-- /.MODAL EMPRESA -->
         <div class="modal fade" id="empresa">
             <div class="modal-dialog">
-                <form action="{{url_for('actualizarProveedores', key=ProvedoresRecibidos.codigo, campo='empresa')}}"
+                <form action="{{url_for('actualizarClientes', key= clientesRecibidos.codigo, campo='empresa')}}"
                     method="post">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -327,7 +327,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProvedoresRecibidos.empresa}}"
+                            <input class="form-control rounded-pill" placeholder="{{ clientesRecibidos.empresa}}"
                                 type="text" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -341,9 +341,11 @@
             </div>
         </div>
         <div class="text-center">
-            <a href="/provedores" class="nav-link text-warning">
-                <i class="far fa-clipboard"> Consultar Proveedores</i></a>
-            </div>
+            <a href="/clientes" class="nav-link text-warning">
+                <i class="far fa-clipboard"> Consultar Clientes</i></a>
+        </div>
+
+
     </div>
     <!--Pie de pagina-->
     {% include 'HOME/MODULOS/footer.html' %}
