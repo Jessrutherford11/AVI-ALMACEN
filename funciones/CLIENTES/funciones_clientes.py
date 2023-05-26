@@ -14,8 +14,16 @@ def vistaClientes():
         return render_template('CLIENTES/clientes.html', titulo = titulo, clientesRecibidos = clientesRecibidos)
 
 
+#INGRESAR CLIENTES *VISTA*
+def ingresarCliente():
+    if 'usuario-administrador':
+        titulo = 'Ingresar Nuevo Cliente'
+        ClientesBD = BD['Clientes']
+        ClientesRecibidos = ClientesBD.find()
+        return render_template('CLIENTES/agregarClientes.html', titulo=titulo, ClientesRecibidos=ClientesRecibidos)
 
-#AGREGAR CLIENTES
+
+#AGREGAR CLIENTES. *FORMULARIO*
 def nuevoCliente():
     if 'usuario-administrador' in session:
         #Consulta a la BD
@@ -28,8 +36,15 @@ def nuevoCliente():
         telefono = request.form["telefono"] 
         direccion = request.form["direccion"]  
         empresa = request.form["empresa"] 
-        #id aleatorio
-        codigo = str(random.randint(0,4000))
+        #ID ALEATORIO CON APELLIDOS
+        codigos = str(random.randint(2,5000))
+        Unir = codigos + apellidos
+        Longitud = 9
+        Extencion = random.sample(Unir,Longitud)
+        Aleatorio = "".join(Extencion)
+        codigo = Aleatorio
+        print(codigo)
+
 
         if codigo and nombres and apellidos and edad and correo and telefono and direccion and empresa:
             cliente = Clientes(codigo, nombres, apellidos, edad, correo, telefono, direccion, empresa)

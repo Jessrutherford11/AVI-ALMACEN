@@ -6,8 +6,8 @@
     <div class="wrapper"> <!--Ajuste de tamaño-->
         <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
             <!--Animacion-->
-            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
-                alt="LOGO" height="60" width="60" />
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}"
+                alt="LOGO" height="80" width="80" />
         </div>
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
@@ -23,6 +23,14 @@
                         <h1 class="card-title"><strong><i class="fas fa-solid fa-users nav-icon">
                                     <font face="Castellar"> CLIENTES</strong></i></font>
                         </h1>
+                             <!-- AGREGAR -->
+                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <!--Se pone la ruta del donde esta el formulario para agragar dicho prodcucto-->
+                                <a href="/ingresar-clientes" class="nav-link">
+                                    <button type="submit" class="btn btn-outline-info"><i class="fas fa-solid fa-user-plus">
+                                            Nuevo Cliente</i></button> </a>
+                            </div>
+                            <!-- / / -->
                     </div>
                     <!--Se pone la tabla-->
                     <div class="card-body">
@@ -83,128 +91,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </section>
-
-            <!--Agregar. FORMULARIO -->
-            <section class="container mt-4">
-                <div class="card card-success card-info">
-                    <div class="card-header">
-                        <h5 class="card-title"><strong> <i class="fas fa-user-plus ">
-                                    <font face="Calibri"> Agregar Cliente </strong></i></font>
-                        </h5>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <form action="/agregar-clientes" method="post"> <!---->
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <!--NOMBRES-->
-                                    <div class="form-group">
-                                        <label>
-                                            <font face="Century">Nombre
-                                        </label></font>
-                                        <div class="input-group mb-4"> <!---->
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-user-circle"></i></span>
-                                            <input type="text" class="form-control" name="nombres"
-                                                placeholder="Nombres " class="fas fa-user-circle" aria-label="Username"
-                                                aria-describedby="basic-addon1" required>
-                                        </div>
-                                    </div>
-                                    <!--APELLIDOS-->
-                                    <div class="form-group">
-                                        <label>
-                                            <font face="Century">Apellidos
-                                        </label></font>
-                                        <div class="input-group mb-4">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-stamp"></i></span>
-                                            <input type="text" class="form-control" name="apellidos"
-                                                placeholder="Apellido Materno/Paterno" aria-label="Username"
-                                                aria-describedby="basic-addon1" required>
-                                        </div>
-                                    </div>
-                                    <!--EDAD-->
-                                    <div class="form-group">
-                                        <label>
-                                            <font face="Century">Edad
-                                        </label></font>
-                                        <div class="input-group mb-4">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-history"></i></span>
-                                            <input type="number" class="form-control" name="edad" aria-label="Username"
-                                                aria-describedby="basic-addon1" required>
-                                        </div>
-                                    </div>
-                                    <!--CORREO-->
-                                    <div class="form-group">
-                                        <label>
-                                            <font face="Century">Correo Electronico
-                                        </label></font>
-                                        <div class="input-group mb-4">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-envelope"></i></span>
-                                            <input type="email" class="form-control" name="correo"
-                                                placeholder="example@." aria-label="Username"
-                                                aria-describedby="basic-addon1" required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- /.col derecha  TELEFONO-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>
-                                            <font face="Century">Telefono
-                                        </label></font>
-                                        <div class="input-group mb-4">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-phone"></i></span>
-                                            <input type="text" class="form-control" name="telefono"
-                                                placeholder="00-00-00-00" required>
-                                        </div>
-                                    </div>
-                                    <!--DIRECCION-->
-                                    <div class="form-group row">
-                                        <label>
-                                            <font face="Century">Direccion
-                                        </label></font>
-                                        <div class="input-group mb-4">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-map-marker-alt"></i></span>
-                                            <input type="text" class="form-control" name="direccion"
-                                                placeholder="Calle, Colonia, Numero" required>
-                                        </div>
-                                    </div>
-                                    <!--EMPRESA-->
-                                    <div class="form-group row">
-                                        <label>
-                                            <font face="Century">Empresa
-                                        </label></font>
-                                        <div class="input-group mb-4">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-building"></i></span>
-                                            <input type="text" class="form-control" name="empresa"
-                                                placeholder="Nombre empresa" required>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="text-center">
-                                <div class="icon">
-                                    <button type="submit" class="btn btn-outline-primary">
-                                        <i class="fa fa-solid fa-user-circle"></i> Agregar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </section>
         </div>

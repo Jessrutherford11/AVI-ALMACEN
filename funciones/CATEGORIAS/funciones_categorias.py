@@ -19,7 +19,13 @@ def vistaCategoria():
         categoriasRecibidas = categoriasBD.find()
         return render_template('CATEGORIAS/categorias.html', titulo = titulo, categoriasRecibidas = categoriasRecibidas)
 
-
+#FUNCION VISTA INGRESAR CATEGORIAS
+def agregarCategoria():
+    if 'usuario-administrador' in session:
+        titulo = 'Agregar Categoria'
+        categoriaBD = BD['Categoria']
+        categoriasRecibidas = categoriaBD.find()
+        return render_template('CATEGORIAS/agregarCategorias.html', titulo=titulo, categoriasRecibidas=categoriasRecibidas)
 
 #AGREGAR CATEGORIAS
 def nuevaCategoria():
@@ -31,7 +37,7 @@ def nuevaCategoria():
             #Variable que viene del form de html-name
             nombreCategoria = request.form["nombreCate"] 
             #el id aleatorio
-            codigo = str(random.randint(11,9000))
+            codigo = str(random.randrange(5,5000,2))
             if codigo and nombreCategoria:
                 categoria = Categoria(codigo, nombreCategoria)
                 #Insercion de datos a la BD 
@@ -79,3 +85,5 @@ def eliminarCategoria(key):
     
     elif 'usuario-proveedor' in session:
         return redirect('/')
+
+

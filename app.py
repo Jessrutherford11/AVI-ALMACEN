@@ -12,6 +12,8 @@ import funciones.PRODUCTOSEXTERNOS.funciones_productos as fun_prod_E
 import funciones.PROVEDORES.funciones_provedores as fun_prove
 import funciones.CLIENTES.funciones_clientes as fun_cli
 import funciones.PERFIL.funciones_perfil as fun_perfil
+import funciones.ANAQUEL.funciones_anaquel as fun_anaquel
+import funciones.ENTRADAS.funciones_entradas as fun_entradas
 
 app = Flask(__name__)
 
@@ -89,12 +91,17 @@ def cerrarsesion():
 def categoria():
     return fun_cate.vistaCategoria()
 
-#FUNCION DE AGREGAR CATEGORIA.
+#DUNCION *VISTA* AGREGAR CATEGORIA
+@app.route('/ingresar-categorias')
+def ingresarCategoria():
+    return fun_cate.agregarCategoria()
+
+#FUNCION DE AGREGAR CATEGORIA*FORMULARIO*
 @app.route('/agregar-categorias', methods = ['POST'])
 def agregarCategoria():
     return fun_cate.nuevaCategoria()
     
-#FUNCION DE INFORMACION CATEGORIA
+#FUNCION DE EDITAR INFORMACION CATEGORIA
 @app.route('/informacion-categorias/<key>')
 def informacionCategoria(key):
     return fun_cate.informacionCategorias(key)
@@ -108,6 +115,39 @@ def actualizarCategoria(key,campo):
 @app.route('/eliminar-categorias/ <key>')
 def eliminarCategorias(key):
     return fun_cate.eliminarCategoria(key)
+
+
+#********************FUNCIONES ANAQUELES***********************
+#FUNCION VISTA ANAQUEL
+@app.route('/anaqueles')
+def anaqueles():
+    return fun_anaquel.vistaAnaquel()
+
+#FUNCION *VISTA* INGRESAR ANAQUEL
+@app.route('/ingresar-anaquel')
+def ingresarAnaqueles():
+    return fun_anaquel.ingresarAnaquel()
+
+#FUNCIOM *NUEVO, INSERTAR ANAQUEL
+@app.route('/nuevo-anaquel', methods = ['POST'])
+def agregarAnaqueles():
+    return fun_anaquel.nuevoAnaquel()
+
+#FUNCION ELIMINAR ANAQUEL
+@app.route('/eliminar-anaquel/ <key>')
+def eliminarAnaqueles(key):
+    return fun_anaquel.eliminarAnaquel(key)
+
+#FUNCION *VISTA* EDITAR INFORMACION ANAQUEL
+@app.route('/informacion-anaquel/ <key>')
+def InformacionAnaqueles(key):
+    return fun_anaquel.informacionAnaquel(key)
+
+#FUNCION ACTUALIZAR ANAQUEL
+@app.route('/actualizar-anaquel/ <key>, <campo>', methods=['POST'])
+def actualizarAnaquel(key,campo):
+    return fun_anaquel.actualizarAnaquel(key,campo)
+
 
 
 #********************FUNCIONES PRODUCTOS < INTERNOS >***********************
@@ -208,10 +248,17 @@ def eliminarProductosExternos(key):
 def provedores():
     return fun_prove.vistaProvedores()
 
-#FUNCION DE AGREGAR PROVEDOR.
+
+#FUNCION *VISTA* AGREGAR PROVEDOR.
+@app.route('/ingresar-proveedores')
+def IngresarProvedor():
+    return fun_prove.ingresarProvedores()
+
+#FUNCION DE AGREGAR PROVEDOR. *FORMULARIO*
 @app.route('/agregar-proveedores', methods = ['POST'])
 def agregarProveedores():
     return fun_prove.nuevoProveedor()
+
 
 #FUNCION DE INFORMACION PROVEDOR
 @app.route('/informacion-proveedores/<key>')
@@ -240,6 +287,11 @@ def eliminarProveedores(key):
 def clientes():
     return fun_cli.vistaClientes()
 
+#FUNCION INGRESAR CLIENTES *VISTA*
+@app.route('/ingresar-clientes')
+def ingresarClientes():
+    return fun_cli.ingresarCliente()
+
 #FUNCION DE AGREGAR CLIENTES.
 @app.route('/agregar-clientes', methods = ['POST'])
 def agregarClientees():
@@ -256,12 +308,21 @@ def actualizarClientes(key,campo):
     return fun_cli.actualizarCliente(key,campo)
 
 
-
-
 #FUNCION DE ELIMINAR CLIENTES
 @app.route('/eliminar-clientes/ <key>')
 def eliminarClientes(key):
     return fun_cli.eliminarCliente(key)
+
+
+#********************FUNCIONES ENTRADAS***********************
+@app.route('/entradas')
+def entradas():
+    return fun_entradas.consultaEntradas()
+
+
+
+
+
 
 
 #********************FUNCION DE PAGINA NO ENCONTRADA********************

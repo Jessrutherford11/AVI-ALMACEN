@@ -32,7 +32,10 @@ def ingresarProductos():
         #Agreagcion de categorias dentro de productos
         CategoriasBD = BD['Categoria']
         CategoriasRecibidas = CategoriasBD.find()
-        return render_template ('PRODUCTOSEXTERNOS/productosAgregar.html', titulo=titulo, CategoriasRecibidas=CategoriasRecibidas)
+        #agregacion de anaquel dentro de prodcutos
+        estanteBD = BD['anaquel']
+        estanteRecibidos = estanteBD.find()
+        return render_template ('PRODUCTOSEXTERNOS/productosAgregar.html', titulo=titulo, CategoriasRecibidas=CategoriasRecibidas , estanteRecibidos=estanteRecibidos)
 
 #FUNCION AGREGAR PRODUTCOS *FORMULARIO*
 def AgregarNuevoProducto():
@@ -44,13 +47,14 @@ def AgregarNuevoProducto():
         stock = request.form["stock"]
         precio = request.form["precio"]
         unidad = request.form["unidad"]
+        estante = request.form["estante"]
         distribuidor = request.form["distribuidor"]
         descripcion = request.form["descripcion"]
         estado = request.form["estado"]
         #id aleatorio
-        codigo = str(random.randint(88,8000))
-        if codigo and nombreProducto and categoria and stock and precio and unidad and distribuidor and descripcion and estado:
-            producto = ProductoE(codigo, nombreProducto, categoria, stock, precio, unidad, distribuidor, descripcion, estado)
+        codigo = str(random.randint(200,9000))
+        if codigo and nombreProducto and categoria and stock and precio and unidad and estante and distribuidor and descripcion and estado:
+            producto = ProductoE(codigo, nombreProducto, categoria, stock, precio, unidad, estante, distribuidor, descripcion, estado)
             #Se inserta 
             productosBD.insert_one(producto.datosProductosJson())
             #Si inserta nos mandara a la vista de la tabla de producto extrnos
@@ -67,9 +71,12 @@ def editarInformacionProducto(key):
         #Para agregar las categorias en prodcuctos
         categoriasBD = BD['Categoria']
         categoriasRecibidas = categoriasBD.find() #consulta 
+        #Agregacion de anaqueles 
+        estanteBD = BD['anaquel']
+        estanteRecibidos = estanteBD.find()
 
         ProductosRecibidos = ProductosBD.find_one({'codigo':key})
-        return render_template('PRODUCTOSEXTERNOS/productosInfo.html', titulo = titulo, ProductosRecibidos = ProductosRecibidos, categoriasRecibidas=categoriasRecibidas)
+        return render_template('PRODUCTOSEXTERNOS/productosInfo.html', titulo = titulo, ProductosRecibidos = ProductosRecibidos, categoriasRecibidas=categoriasRecibidas, estanteRecibidos=estanteRecibidos)
         
     elif 'usuario-provedor' in session:
         return redirect('/')

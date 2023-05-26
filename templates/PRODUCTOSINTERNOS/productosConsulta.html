@@ -6,8 +6,8 @@
     <div class="wrapper"> <!--Ajuste de tamaño-->
         <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
             <!--Animacion-->
-            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
-                alt="LOGO" height="60" width="60" />
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}"
+                alt="LOGO" height="80" width="80" />
         </div>
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
@@ -39,8 +39,8 @@
                                             <font face="Calibri">Stock</th></i></font>
                                     <th><i class="fas fa-solid fa-comment-dollar">
                                             <font face="Calibri">Precio</th></i></font>
-                                    <th><i class="fas fa-solid fa-shipping-fast">
-                                            <font face="Calibri">Unidad</th></i></font>
+                                    <th><i class="fas fa-solid fa-people-carry">
+                                            <font face="Calibri">Anaquel</th></i></font>
                                     <th><i class="fas fa-solid fa-dolly">
                                             <font face="Calibri">Distribuidor</th></i></font>
                                     <th><i class="fas fa-solid fa-clipboard-list">
@@ -57,8 +57,8 @@
                                     <td>{{dato.nombreProducto}}</td>
                                     <td>{{dato.categoria}}</td>
                                     <td>{{dato.stock}}</td>
-                                    <td>$ {{dato.precio}}</td>
-                                    <td>{{dato.unidad}}</td>
+                                    <td>{{dato.precio}}</td>
+                                    <td>{{dato.estante}}</td>
                                     <td>{{dato.distribuidor}}</td>
                                     <td>{{dato.descripcion}}</td>
                                     <td>{{dato.estado}}</td>
@@ -79,4 +79,5 @@
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
 </body>
+
 </html>

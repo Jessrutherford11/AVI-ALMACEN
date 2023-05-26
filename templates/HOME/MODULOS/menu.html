@@ -21,7 +21,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        
+
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-user fa-solid"></i> <!--Icono que se muestra dentro del nav-bar-->
@@ -33,7 +33,7 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="/provedores" class="nav-link"> <!---->
-                <i class="fas fa-solid fa-id-card-alt nav-icon"></i>
+                <i class="fas fa-solid fa-user-friends nav-icon"></i>
                 <p>Provedores</p> <!--CONSULTA DE PROVEDORES. Todas las acciones en uno solo.-->
               </a>
             </li>
@@ -54,7 +54,7 @@
             <i class="nav-icon fas fa-box fa-solid"></i> <!--Icono que se muestra dentro del nav-bar-->
             <!--PRODUCTOS INTERNOS-->
             <p>
-              Productos Internos 
+              Productos Internos
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -73,20 +73,20 @@
             </li>
             <li class="nav-item">
               <a href="/productos-operaciones" class="nav-link"><!--operaciones-productos-->
-                <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
+                <i class="fas fa-solid fa-screwdriver fa-tools nav-icon"></i>
                 <p>Operaciones</p>
               </a>
             </li>
           </ul>
         </li>
-        
-        
+
+
         <!--PRODUCTOS EXTERNOS-->
-        <li class="nav-item">  
+        <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-box-open fa-solid"></i> <!--Icono que se muestra dentro del nav-bar-->
             <p>
-              Productos Externos 
+              Productos Externos
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -105,7 +105,7 @@
             </li>
             <li class="nav-item">
               <a href="/productos-externos-operaciones" class="nav-link"><!--operaciones-productos-->
-                <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
+                <i class="fas fa-solid fa-screwdriver fa-tools nav-icon"></i>
                 <p>Operaciones</p>
               </a>
             </li>
@@ -134,6 +134,27 @@
           </ul>
         </li>
 
+        
+        <!--ESTANTE-ANAQUEL-->
+        <li class="nav-header">ESTANTE/ANAQUEL</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-dolly-flatbed"></i> <!--Icono que se muestra dentro del nav-bar-->
+            <p>
+              Administrar
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/anaqueles" class="nav-link"><!---->
+                <i class="fas fa-solid fa-database"></i>
+                <p> Consultar Anaqueles</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
         <!-- ENTRADAS-->
         <li class="nav-header">ENTRADAS</li>
         <li class="nav-item">
@@ -146,14 +167,14 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="" class="nav-link"><!---->
+              <a href="/entradas" class="nav-link"><!---->
                 <i class="fas fa-solid fa-database nav-icon"></i>
-                <p>Consultar Entradas</p>
+                <p>Consulta de Entradas</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link"><!---->
-                <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
+              <a href="#" class="nav-link"><!---->
+                <i class="fas fa-solid fa-tools nav-icon"></i>
                 <p>Operaciones</p>
               </a>
             </li>
@@ -179,59 +200,62 @@
             </li>
             <li class="nav-item">
               <a href="" class="nav-link"><!---->
-                <i class="fas fa-solid fa-screwdriver fa-wrench nav-icon"></i>
+                <i class="fas fa-solid fa-tools fa-tools nav-icon"></i>
                 <p>Operaciones</p>
               </a>
             </li>
           </ul>
         </li>
 
-          <!-- REPORTES-->
-          <li class="nav-header">REPORTES</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file-alt fa-solid"></i> <!--Icono que se muestra dentro del nav-bar-->
-              <p>
-                Reportes
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/provedores" class="nav-link"> <!---->
-                  <i class="fas fa-solid fa-sign-in-alt  nav-icon"></i>
-                  <p>Reporte de Entradas</p> <!--CONSULTA DE PROVEDORES. Todas las acciones en uno solo.-->
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/clientes" class="nav-link"><!---->
-                  <i class="fas fa-solid fa-sign-out-alt nav-icon"></i>
-                  <p>Reporte de Salidas</p> <!--CONSULTA DE CLIENTES-->
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/clientes" class="nav-link"><!---->
-                  <i class="fas fa-solid fa-box-open nav-icon"></i>
-                  <p>Reporte de Productos</p> <!--CONSULTA DE CLIENTES-->
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/clientes" class="nav-link"><!---->
-                  <i class="fas fa-solid fa-users nav-icon"></i>
-                  <p>Reporte de Proveedores</p> <!--CONSULTA DE CLIENTES-->
-                </a>
-              </li>
-            </ul>
-          </li>
-
-
-
-
-
-
-
-
-
+        <!-- REPORTES-->
+        <li class="nav-header">REPORTES</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-file-alt fa-solid"></i> <!--Icono que se muestra dentro del nav-bar-->
+            <p>
+              Reportes
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/" class="nav-link"> <!---->
+                <i class="fas fa-solid fa-sign-in-alt  nav-icon"></i>
+                <p>Reporte de Entradas</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link"><!---->
+                <i class="fas fa-solid fa-sign-out-alt nav-icon"></i>
+                <p>Reporte de Salidas</p> <!--CONSULTA DE CLIENTES-->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link"><!---->
+                <i class="fas fa-solid fa-box nav-icon"></i>
+                <p>Reporte de Productos Internos</p> <!--CONSULTA DE CLIENTES-->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link"><!---->
+                <i class="fas fa-solid fa-box-open nav-icon"></i>
+                <p>Reporte de Productos Externos</p> <!--CONSULTA DE CLIENTES-->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/provedores" class="nav-link"><!---->
+                <i class="fas fa-solid fa-users nav-icon"></i>
+                <p>Reporte de Proveedores</p> <!--CONSULTA DE CLIENTES-->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/clientes" class="nav-link"><!---->
+                <i class="fas fa-solid fa-users nav-icon"></i>
+                <p>Reporte de Clientes</p> <!--CONSULTA DE CLIENTES-->
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

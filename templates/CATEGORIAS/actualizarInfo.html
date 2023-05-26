@@ -6,8 +6,8 @@
     <div class="wrapper"> <!--Ajuste de tamaño-->
         <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
             <!--Animacion-->
-            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
-                alt="LOGO" height="60" width="60" />
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}" alt="LOGO"
+                height="80" width="80" />
         </div>
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
@@ -24,7 +24,7 @@
                     <div class="col-md-11">
                         <div class="card">
                             <div class="card-header">
-                                <h1 class="card-title"><i class="fas fa-solid fa-boxes nav-icon">   Actualizar
+                                <h1 class="card-title"><i class="fas fa-solid fa-boxes nav-icon"> Actualizar
                                         Categoria</h1></i>
                             </div>
                             <!-- Profile Image -->
@@ -43,7 +43,8 @@
                                                     <small text-center>
                                                         Categoria:
                                                         <!--Boton que activara el modal para modificar datos-->
-                                                        <button type="button" data-toggle="modal" data-target="#categoria" data-bs-toggle="modal" 
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#categoria" data-bs-toggle="modal"
                                                             class="btn btn-xs btn-OpenEdit">
                                                             <i class="fa-solid fas fa-edit"></i>Editar
                                                         </button>
@@ -61,40 +62,44 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
 
-                <!-- /.MODAL CATEGORIA -->
-                <div class="modal fade" id="categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
-                        <form
-                            action="{{url_for('actualizarCategoria', key=categoriasRecibidas.codigo, campo='nombreCategoria')}}"
-                            method="POST">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Editar Nombre Categoria</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <input class="form-control rounded-pill"
-                                        placeholder="{{categoriasRecibidas.nombreCategoria}}" type="text" name="dato">
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa-solid fas fa-minus"></i>Cerrar</button>
-                                    <button type="submit" class="btn btn-outline-success"><i class="fa-solid fas fa-check"></i>Guardar</button>
-                               
-                                </div>
-                        </form>
-                    </div>
+            <!-- /.MODAL CATEGORIA -->
+            <div class="modal fade" id="categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
+                    <form
+                        action="{{url_for('actualizarCategoria', key=categoriasRecibidas.codigo, campo='nombreCategoria')}}"
+                        method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Nombre Categoria</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control rounded-pill"
+                                    placeholder="{{categoriasRecibidas.nombreCategoria}}" type="text" name="dato" required>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                        class="fa-solid fas fa-minus"></i>Cerrar</button>
+                                <button type="submit" class="btn btn-outline-success"><i
+                                        class="fa-solid fas fa-check"></i>Guardar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <div class="text-center">
+                <a href="/categorias" class="nav-link text-warning">
+                    <i class="far fa-clipboard"> Consultar Categorias</i></a>
+            </div>
         </div>
-        <br>
-        <br>
-        <br>
-
+            
         <!--Pie de pagina-->
         {% include 'HOME/MODULOS/footer.html' %}
         <!--Side - bar control-->

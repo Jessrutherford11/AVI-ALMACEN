@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}" alt="LOGO"
+                height="80" width="80" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <!--Agregar-->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card card-gray-dark"> <!---->
+                            <div class="card-header">
+                                <h3 class="card-title"> <i class="fas fa-solid fa-boxes">
+                                        <font face="Century">Agregar Categoria</h3></i></font>
+                            </div>
+                            <form class="form-horizontal" action="/agregar-categorias" method="post">
+                                <div class="card-body">
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Categoria</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon1"><i
+                                                        class="fas fa-boxes"></i></span>
+                                                <input type="text" class="form-control" name="nombreCate"
+                                                    aria-label="Username" aria-describedby="basic-addon1" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-outline-warning"><i
+                                                class="fas fa-solid fa-save"> Agregar</i></button>
+                                    </div>
+                                </div>
+                                <!-- /.card-footer -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="text-center">
+                <a href="/categorias" class="nav-link text-warning">
+                    <i class="far fa-clipboard"> Consultar Categorias</i></a>
+            </div>
+        </div>
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+    </div>
+</body>
+</html>

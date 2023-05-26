@@ -6,8 +6,8 @@
     <div class="wrapper"> <!--Ajuste de tamaño-->
         <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
             <!--Animacion-->
-            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
-                alt="LOGO" height="60" width="60" />
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}"
+                alt="LOGO" height="80" width="80" />
         </div>
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
@@ -64,17 +64,21 @@
                                         </div>
                                     </div>
 
-                                    <!--UNIDAD-->
+                                    <!--ESTANTE-->
                                     <div class="form-group">
                                         <label>
-                                            <font face="Century">Unidad
+                                            <font face="Century">Estante/Anaquel
                                         </label></font>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group sm-1">
                                             <span class="input-group-text" id="basic-addon1"><i
-                                                    class="fas fa-shipping-fast"></i></span>
-                                            <input type="text" class="form-control" name="unidad"
-                                                placeholder="Unidad donde se trasporto el producto (Motocicleta, Camioneta...)"
-                                                required>
+                                                    class="fas fa-people-carry"></i></span>
+                                            <select class="form-control" name="estante">
+                                                <!-- for ESTANTE se itera para que aparezcan en productos-->
+                                                <option selected>Selecciona el estante</option>
+                                                {% for dato in estanteRecibidos %}<!--  -->
+                                                <option value="{{dato.nombreAnaquel}}">{{dato.nombreAnaquel}}</option>                                              </option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                     </div>
 
@@ -102,6 +106,7 @@
                                                     class="fas fa-boxes"></i></span>
                                             <select class="form-control" name="categoria">
                                                 <!-- for CATEGORIA se itera para que aparezcan en productos-->
+                                                <option selected>Selecciona la categoria</option>
                                                 {% for dato in categoriasRecibidas %}
                                                 <option value="{{dato.nombreCategoria}}">{{dato.nombreCategoria}}</option>                                              </option>
                                                 {% endfor %}
@@ -117,7 +122,7 @@
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1"><i
                                                     class="fas fa-dollar-sign"></i></span>
-                                            <input type="float" class="form-control" name="precio"  placeholder="000.000" required>
+                                            <input type="float" class="form-control" name="precio"  value= "$" placeholder="000.000" required>
                                         </div>
                                     </div>
 
@@ -211,7 +216,7 @@
             });
 
             $('.toastrDefaultWarning').click(function () {
-                toastr.warning('Productos inernos, aquellos que SI pertenecen directamente a la empresa, asi como uniformes para los operadores, papeleria etc... ')
+                toastr.warning('**PRODUCTOS INTERNOS**, Aquellos que SI pertenecen a la empresa, asi como uniformes para los operadores, papeleria, etc... ')
                 });
         });
     </script>

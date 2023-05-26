@@ -6,8 +6,8 @@
     <div class="wrapper"> <!--Ajuste de tamaño-->
         <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
             <!--Animacion-->
-            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
-                alt="LOGO" height="60" width="60" />
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}"
+                alt="LOGO" height="80" width="80" />
         </div>
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
@@ -107,13 +107,13 @@
                                             <div class="col-md-4 text-center">
                                                 <div class="form-group ">
                                                     <small>
-                                                        Unidad:
-                                                        <button type="button" data-toggle="modal" data-target="#unidad"
+                                                        Estante:
+                                                        <button type="button" data-toggle="modal" data-target="#estante"
                                                             class="btn btn-xs btn-OpenEdit">
                                                             <i class="fa-solid fas fa-user-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ProductosRecibidos.unidad}}</p>
+                                                    <p id="vtitle">{{ProductosRecibidos.estante}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -272,7 +272,7 @@
                         </div>
                         <div class="modal-body">
                             <input class="form-control rounded-pill"
-                                placeholder="$ 000.000  {{ProductosRecibidos.precio}}" type="float" name="dato">
+                                placeholder="{{ProductosRecibidos.precio}}" type="float" value="$" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
@@ -285,21 +285,28 @@
             </div>
         </div>
 
-        <!-- /.MODAL UNIDAD -->
-        <div class="modal fade" id="unidad">
+        <!-- /.MODAL ESTANTE -->
+        <div class="modal fade" id="estante">
             <div class="modal-dialog">
-                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='unidad')}}"
+                <form action="{{url_for('actualizarProducto', key=ProductosRecibidos.codigo, campo='estante')}}"
                     method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Editar Unidad</h4>
+                            <h4 class="modal-title">Editar estante/anaquel</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ProductosRecibidos.unidad}}"
-                                type="text" name="dato">
+                            <label>Seleccione el estante:</label>
+                            <select class="form-control" name="dato">
+                                <!-- for ESTANTE se itera para que aparezcan en productos-->
+                                {% for dato in estanteRecibidos %} <!-- -->
+                                <option class="form-control rounded-pill" value="{{dato.nombreAnaquel}}">
+                                    {{dato.nombreAnaquel}}</option>
+                                </option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i

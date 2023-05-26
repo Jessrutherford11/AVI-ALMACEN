@@ -6,8 +6,8 @@
     <div class="wrapper"> <!--Ajuste de tamaño-->
         <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
             <!--Animacion-->
-            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
-                alt="LOGO" height="60" width="60" />
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}"
+                alt="LOGO" height="80" width="80" />
         </div>
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
@@ -23,9 +23,15 @@
                     <div class="card-header">
                         <h1 class="card-title"><i class="fas fa-solid fa-tools"> <i class="fas fa-solid fa-box">
                                     <font face="Castellar"> OPERACIONES PRODUCTOS INTERNOS </h1></i></i></font>
+                                        <!-- BOTON AGREGAR -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <!--Se pone la ruta del donde esta el formulario para agragar dicho prodcucto-->
+                            <a href="/ingresar-productos" class="nav-link">
+                                <button type="submit" class="btn btn-outline-success"><i class="fas fa-solid fa-inbox">
+                                        Nuevo Producto Interno</i></button> </a>
+                        </div>
+                        <!-- / / -->
                     </div>
-
-
                     <!--Se pone la tabla-->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
@@ -41,8 +47,8 @@
                                             <font face="Calibri">Stock</th></i></font>
                                     <th><i class="fas fa-solid fa-comment-dollar">
                                             <font face="Calibri">Precio</th></i></font>
-                                    <th><i class="fas fa-solid fa-shipping-fast">
-                                            <font face="Calibri">Unidad</th></i></font>
+                                    <th><i class="fas fa-solid fa-people-carry">
+                                            <font face="Calibri">Anaquel</th></i></font>
                                     <th><i class="fas fa-solid fa-dolly">
                                             <font face="Calibri">Distribuidor</th></i></font>
                                     <th><i class="fas fa-solid fa-clipboard-list">
@@ -64,7 +70,7 @@
                                     <td>{{dato.categoria}}</td>
                                     <td>{{dato.stock}}</td>
                                     <td>{{dato.precio}}</td>
-                                    <td>{{dato.unidad}}</td>
+                                    <td>{{dato.estante}}</td>
                                     <td>{{dato.distribuidor}}</td>
                                     <td>{{dato.descripcion}}</td>
                                     <td>{{dato.estado}}</td>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{url_for('static', filename = 'dist/img/icons/LOGO.png')}}" alt="LOGO"
+                height="80" width="80" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+
+        <!-- CONTENIDO. 
+        VISTA DONDE SE VIZUALIZA LOS DATOS -->
+        <div class="content-wrapper">
+            <div class="container-fluid mt-4">
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title"><i class="fas fa-solid fa-dolly-flatbed nav-icon"> Actualizar
+                                        Anaquel</h1></i>
+                            </div>
+                            <!-- Profile Image -->
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <h6> <b>Datos Generales</b></h6>
+                                    <small>Nombre anaquel</small>
+                                    <h3 class="profile-username text-center">{{anaquelRecibido.nombreAnaquel}}
+                                    </h3>
+                                </div>
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <div class="form-group">
+                                                    <small text-center>
+                                                        Nombre Anaquel:
+                                                        <!--Boton que activara el modal para modificar datos-->
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#anaquel" data-bs-toggle="modal"
+                                                            class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-edit"></i>Editar
+                                                        </button>
+                                                    </small text-center>
+                                                    <!--Variable-->
+                                                    <p id="vtitle">{{anaquelRecibido.nombreAnaquel}}
+                                                        <span class="text-muted"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- /.MODAL CATEGORIA -->
+            <div class="modal fade" id="anaquel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. 
+                        Junto con el metodo.-->
+                    <form
+                        action="{{url_for('actualizarAnaquel', key=anaquelRecibido.identificador, campo='nombreAnaquel')}}"
+                        method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Nombre Anaquel</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control rounded-pill"
+                                    placeholder="{{anaquelRecibido.nombreAnaquel}}" type="text" name="dato" required>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                        class="fa-solid fas fa-minus"></i>Cerrar</button>
+                                <button type="submit" class="btn btn-outline-success"><i
+                                        class="fa-solid fas fa-check"></i>Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="/anaqueles" class="nav-link text-warning">
+                    <i class="far fa-clipboard"> Consultar Anaqueles</i></a>
+            </div>
+        </div>
+            
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+        <!--Side - bar control-->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+    </div>
+</body>
+</html>

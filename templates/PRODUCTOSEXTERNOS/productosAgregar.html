@@ -6,8 +6,8 @@
     <div class="wrapper"> <!--Ajuste de tamaño-->
         <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
             <!--Animacion-->
-            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
-                alt="LOGO" height="60" width="60" />
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}" alt="LOGO"
+                height="80" width="80" />
         </div>
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
@@ -19,9 +19,9 @@
         <div class="content-wrapper">
             <section class="container mt-4">
                 <!--Agregar-->
-                <div class="card card-teal"><!-- color -->
+                <div class="card card-teal">
                     <div class="card-header">
-                        <h3 class="card-title"> <i class="fas fa-solid fa-box-open"> </i>
+                        <h3 class="card-title"> <i class="fas fa-solid fa-box"> </i>
                             <font face="Century"><strong> Agregar Productos Externos </font></strong>
                         </h3>
                         <div class="card-tools">
@@ -34,8 +34,7 @@
                         </div>
                     </div>
                     <!--FORMULARIO -->
-
-                    <form action="/agregar-nuevos-productos-externos" method="post">
+                    <form action="/agregar-nuevos-productos-externos" method="POST">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -46,7 +45,7 @@
                                         </label></font>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1"><i
-                                                    class="fas fa-box-open"></i></span>
+                                                    class="fas fa-box"></i></span>
                                             <!--Cuadrito trasparente-->
                                             <input type="text" class="form-control" name="nombreProducto" required>
                                         </div>
@@ -70,12 +69,35 @@
                                         <label>
                                             <font face="Century">Unidad
                                         </label></font>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group sm-1">
                                             <span class="input-group-text" id="basic-addon1"><i
-                                                    class="fas fa-shipping-fast"></i></span>
-                                            <input type="text" class="form-control" name="unidad"
-                                                placeholder="Unidad donde se trasporto el producto (Motocicleta, Camioneta...)"
-                                                required>
+                                                    class="fas fa-truck"></i></span>
+                                            <select class="form-control" name="unidad">
+                                                <option selected>Selecciona la unidad de trasporte</option>                                           
+                                                <option >Moto</option>
+                                                <option >Sede</option>
+                                                <option >Unidad 1.5 toneladas</option>
+                                                <option >Unidad 3 toneladas</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!--ESTANTE-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Estante/Anaquel
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-people-carry"></i></span>
+                                            <select class="form-control" name="estante">
+                                                <!-- for ESTANTE se itera para que aparezcan en productos-->
+                                                <option selected>Selecciona el estante</option>
+                                                {% for dato in estanteRecibidos %}<!--  -->
+                                                <option value="{{dato.nombreAnaquel}}">{{dato.nombreAnaquel}}</option>
+                                                </option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                     </div>
 
@@ -103,6 +125,7 @@
                                                     class="fas fa-boxes"></i></span>
                                             <select class="form-control" name="categoria">
                                                 <!-- for CATEGORIA se itera para que aparezcan en productos-->
+                                                <option selected>Selecciona la categoria</option>
                                                 {% for dato in CategoriasRecibidas %}
                                                 <option value="{{dato.nombreCategoria}}">{{dato.nombreCategoria}}</option>                                              </option>
                                                 {% endfor %}
@@ -118,7 +141,7 @@
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1"><i
                                                     class="fas fa-dollar-sign"></i></span>
-                                            <input type="float" class="form-control" name="precio"  placeholder="000.000" required>
+                                            <input type="float" class="form-control" name="precio"  value= "$" placeholder="000.000" required>
                                         </div>
                                     </div>
 
@@ -183,7 +206,7 @@
                             <div class="card-footer">
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-outline-success">
-                                        <i class="fas fa-solid fa-box-open">
+                                        <i class="fas fa-solid fa-box">
                                             <font face="Century">Agregar</button></i></font>
                                 </div>
                             </div>
@@ -212,8 +235,8 @@
             });
 
             $('.toastrDefaultWarning').click(function () {
-                toastr.warning('Productos externos, aquellos que NO pertenecen directamente a la empresa, como productos de despensa, insumos personales, etc..')
-                });
+                toastr.warning('**PRODUCTOS INTERNOS**, Aquellos que SI pertenecen a la empresa, asi como uniformes para los operadores, papeleria, etc... ')
+            });
         });
     </script>
 </body>

@@ -6,8 +6,8 @@
     <div class="wrapper"> <!--Ajuste de tamaño-->
         <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
             <!--Animacion-->
-            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/loader.png')}}"
-                alt="LOGO" height="60" width="60" />
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/logo.png')}}"
+                alt="LOGO" height="80" width="80" />
         </div>
         <!--Navbar-->
         {% include 'HOME/MODULOS/nav-bar.html' %}
@@ -18,17 +18,17 @@
 
         <!--MENSSAJE-->
         {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-            <script>
-                Swal.fire({
-                    position: "top",
-                    icon: "success",
-                    title: "BIENVENIDO",
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
-            </script>
-            {% endfor %} {% endif %} {% endwith %}
-            
+        <script>
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "BIENVENIDO",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        </script>
+        {% endfor %} {% endif %} {% endwith %}
+
         <!--CONTENIDO-->
         <div class="content-wrapper">
             <div class="container-fluid mt-4"> <!--fluid. Ocupe todo el espacio en la pantalla-->
@@ -52,16 +52,39 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <!-- small box PRODUCTOS -->
-                        <div class="info-box bg-gradient-lightblue">
+                        <div class="info-box bg-gradient-olive">
                             <span class="info-box-icon"><i class="fas fa-box"></i></span>
+                            <div class="icon">
+                                <i class="fa fa-solid fa-box"></i>
+                            </div>
+                            <div class="info-box-content">
+                                <h5 class="info-box-text"><strong>Productos-Internos</strong></h5>
+                                <span class="info-box-number">41</span> <!--Variable que se ira incrementando-->
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 50%">
+                                    </div><!--Variable-->
+                                </div>
+                                <span class="progress-description">
+                                    Productos en stock: <!--Regal de 3 . Variable que se ira incremetando-->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <!-- small box PRODUCTOS -->
+                        <div class="info-box bg-gradient-teal">
+                            <span class="info-box-icon"><i class="fas fa-box-open"></i></span>
                             <div class="icon">
                                 <i class="fa fa-solid fa-box-open"></i>
                             </div>
                             <div class="info-box-content">
-                                <h4 class="info-box-text"><strong>Productos</strong></h4>
+                                <h5 class="info-box-text"><strong>Productos-Externos</strong></h5>
                                 <span class="info-box-number">41</span> <!--Variable que se ira incrementando-->
                                 <div class="progress">
-                                    <div class="progress-bar" style="width: 50%"></div><!--Variable-->
+                                    <div class="progress-bar" style="width: 50%">
+
+                                    </div><!--Variable-->
                                 </div>
                                 <span class="progress-description">
                                     Productos en stock: <!--Regal de 3 . Variable que se ira incremetando-->
@@ -72,7 +95,7 @@
 
                     <div class="col-sm-3">
                         <!-- small box VENTAS-->
-                        <div class="info-box bg-gradient-olive">
+                        <div class="info-box bg-gradient-gray">
                             <span class="info-box-icon"><i class="fas fa-sign-in-alt"></i></span>
                             <div class="icon">
                                 <i class="fa fa-solid fa-sort-amount-up"></i>
@@ -81,7 +104,9 @@
                                 <h4 class="info-box-text"><strong>Entradas</strong></h4>
                                 <span class="info-box-number">49</span> <!--Variable que se ira incrementando-->
                                 <div class="progress">
-                                    <div class="progress-bar" style="width: 50%"></div><!--Variable-->
+                                    <div class="progress-bar" style="width: 50%">
+                                    
+                                    </div><!--Variable-->
                                 </div>
                                 <span class="progress-description">
                                     ----: <!--Regal de 3 . Variable que se ira incremetando-->
@@ -92,7 +117,7 @@
 
                     <div class="col-sm-3">
                         <!-- small box COMPRAS -->
-                        <div class="info-box bg-gradient-navy">
+                        <div class="info-box bg-gradient-info">
                             <span class="info-box-icon"><i class="fas fa-sign-out-alt"></i></span>
                             <div class="icon">
                                 <i class="fa fa-solid fa-sort-amount-down"></i>
@@ -101,31 +126,11 @@
                                 <h4 class="info-box-text"><strong>Salidas</strong></h4>
                                 <span class="info-box-number">16</span> <!--Variable que se ira incrementando-->
                                 <div class="progress">
-                                    <div class="progress-bar" style="width: 50%"></div><!--Variable-->
+                                    <div class="progress-bar" style="width: 50%">
+                                    </div><!--Variable-->
                                 </div>
                                 <span class="progress-description">
                                     -----: <!--Regal de 3 . Variable que se ira incremetando-->
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- small box Clientes -->
-                    <div class="col-sm-3">
-                        <div class="info-box bg-gradient-gray-dark">
-                            <span class="info-box-icon"><i class="fas fa-users"></i></span>
-                            <div class="icon">
-                                <i class="fa fa-solid fa-user-check"></i>
-                            </div>
-                            <div class="info-box-content">
-                                <h4 class="info-box-text"><strong>Proveedores</strong></h4>
-                                <span class="info-box-number">20</span> <!--Variable-->
-
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 20%"></div><!--Variable-->
-                                </div>
-                                <span class="progress-description">
-                                   Proveedores nuevos : <!-- *CLIENTES* Regal de 3 -->
                                 </span>
                             </div>
                         </div>
@@ -154,10 +159,11 @@
             <!--CUADRITOS COLLAPSE-->
             <div class="container text-center">
                 <div class="row aling-items-start">
-                    <div class="col-md-4">
-                        <div class="card card-outline card-dark">
+                    <div class="col-md-7">
+                        <div class="card card-outline card-olive">
                             <div class="card-header">
-                                <h3 class="card-title"><strong>Nuevos Productos</strong></h3>
+                                <h3 class="card-title"><strong><i class="fas fa-box">
+                                            Nuevos Productos Internos</strong></h3></i>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -172,16 +178,16 @@
                                     Producto 1
                                 </p>
                                 <div class="text-center">
-                                    <a href="/productos" class="nav-link">Ver Todos los productos</a>
+                                    <a href="/productos" class="nav-link text-success">Ver Todos los productos</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!---->
-                    <div class="col-md-4">
-                        <div class="card card-outline card-dark">
+                    <div class="col-md-5">
+                        <div class="card card-outline card-olive">
                             <div class="card-header">
-                                <h3 class="card-title"><strong>Productos que faltan</strong></h3>
+                                <h3 class="card-title"><strong><i class="fas fa-box">   Productos que faltan</strong></i></h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -196,16 +202,19 @@
                                     Producto 1
                                 </p>
                                 <div class="text-center">
-                                    <a href="/productos" class="nav-link">Ver Todos los productos</a>
+                                    <a href="/productos" class="nav-link text-success">Ver Todos los productos</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!---->
-                    <div class="col-md-4">
-                        <div class="card card-outline card-dark">
+                </div>  
+                <!--PRODUCTOS EXTERNOS-->
+                <div class="row aling-items-start">
+                    <div class="col-md-7">
+                        <div class="card card-outline card-teal">
                             <div class="card-header">
-                                <h3 class="card-title"><strong>Productos...</strong></h3>
+                                <h3 class="card-title"><strong><i class="fas fa-box-open">
+                                            Nuevos Productos Externos</strong></h3></i>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -219,25 +228,53 @@
                                 <p class="text-left">
                                     Producto 1
                                 </p>
+                                <div class="text-center">
+                                    <a href="/productos-externos" class="nav-link text-info">Ver Todos los productos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="col-md-5">
+                        <div class="card card-outline card-teal">
+                            <div class="card-header">
+                                <h3 class="card-title"><strong><i class="fas fa-box-open">   Productos que faltan</strong></i></h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-left">
+                                    Producto
+                                </p>
+                                <p class="text-left">
+                                    Producto 1
+                                </p>
+                                <div class="text-center">
+                                    <a href="/productos-externos" class="nav-link text-info">Ver Todos los productos</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--Pie de pagina-->
-    {% include 'HOME/MODULOS/footer.html' %}
+        
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
 
-    <!--Side - bar control-->
-    {% include 'HOME/MODULOS/side-bar-control.html' %}
+        <!--Side - bar control-->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
 
-    <!--Sripts-->
-    {% include 'HOME/MODULOS/scripts.html' %}
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+        
+        <!--Reloj-->
+        <script src="{{ url_for('static',filename='dist/js/Admin/Reloj/reloj.js')}}"></script>
+        <!--Graficas reportes-->
+        <script src="{{url_for('static', filename = 'dist/js/graficas/graficaReportes.js')}}"></script>
     </div>
-    <!--Reloj-->
-    <script src="{{ url_for('static',filename='dist/js/Admin/Reloj/reloj.js')}}"></script>
-    <!--Graficas reportes-->
-    <script src="{{url_for('static', filename = 'dist/js/graficas/graficaReportes.js')}}"></script>
 </body>
 </html>
