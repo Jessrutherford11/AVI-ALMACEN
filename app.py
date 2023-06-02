@@ -76,13 +76,6 @@ def ActualizarPerfilContraseña(key, campo):
 
 
 
-#********************FUNCION CERRAR SESION***********************
-
-@app.route('/cerrar-sesion')
-def cerrarsesion():
-    return fun_login.cerrarSesion()
-
-
 
 #********************FUNCIONES CATEGORIAS***********************
 
@@ -91,7 +84,7 @@ def cerrarsesion():
 def categoria():
     return fun_cate.vistaCategoria()
 
-#DUNCION *VISTA* AGREGAR CATEGORIA
+#FUNCION *VISTA* AGREGAR CATEGORIA
 @app.route('/ingresar-categorias')
 def ingresarCategoria():
     return fun_cate.agregarCategoria()
@@ -147,52 +140,6 @@ def InformacionAnaqueles(key):
 @app.route('/actualizar-anaquel/ <key>, <campo>', methods=['POST'])
 def actualizarAnaquel(key,campo):
     return fun_anaquel.actualizarAnaquel(key,campo)
-
-
-
-#********************FUNCIONES PRODUCTOS < INTERNOS >***********************
-
-#FUNCION DE VISTA PRODUCTO. 
-@app.route('/productos')
-def productos():
-    return fun_prod_I.consultaProductos()
-
-#FUNCION DE VISTA OPERACIONES PRODUCTO. 
-@app.route('/productos-operaciones')
-def productosOperaciones():
-    return fun_prod_I.consultaProductosOperaciones()
-
-
-
-#FUNCION *VISTA* DE AGREGAR PRODUCTOS
-@app.route('/ingresar-productos')
-def ingresarProductos():
-    return fun_prod_I.productosAgregar()
-
-#FUNCION DE AGREGAR PRODUCTO. INSERT.
-@app.route('/agregar-productos', methods = ['POST'])
-def agregarProducto():
-    return fun_prod_I.nuevoProducto()
-
-
-
-#FUNCION *VISTA* DE ACTUALIZAR PRODCUTOS.
-@app.route('/informacion-productos/<key>')
-def informacionProductos(key):
-    return fun_prod_I.informacionProducto(key)
-
-#FUNCION ACTUALIZAR PRUDUCTOS
-@app.route('/actualizar-producto/<key>, <campo>', methods = ['POST'])
-def actualizarProducto(key, campo):
-    return fun_prod_I.actualizarProducto(key, campo)
-
-
-
-#FUNCION DE ELIMINAR PRODUCTO
-@app.route('/eliminar-producto/<key>')
-#funcion que se ponen dentro del btn del form
-def eliminarProducto(key):
-    return fun_prod_I.eliminarProductos(key)
 
 
 
@@ -315,20 +262,75 @@ def eliminarClientes(key):
 
 
 #********************FUNCIONES ENTRADAS***********************
+
+#FUNCION *VISTA* CONSULTA ENTRADAS
 @app.route('/entradas')
-def entradas():
-    return fun_entradas.consultaEntradas()
+def Entradas():
+    return fun_entradas.vistaEntrada()
+
+#FUNCION *VISTA* CONSULTA ENTRADAS OPERACIONES
+@app.route('/operaciones-entradas')
+def entradaOperaciones():
+    return fun_entradas.operacionesEntradas()
+
+
+#FUNCION *VISTA* AGREGAR FORMULARIO ENTRADAS
+@app.route('/agregar-entradas')
+def agregarEntrada():
+    return fun_entradas.agregarEntradas()
+
+#FUNCION AGREGAR NUEVAS ENTRADAS 
+@app.route('/agregar-nuevas-entradas', methods = ['POST'])
+def agregarNuevaEntrada():
+    return fun_entradas.agregarNuevaEntrada()
+
+
+#FUNCION *VISTA* EDITAR ENTRADAS
+@app.route('/editar-informacion-entradas/<key>')
+def editarInfoEntradas(key):
+    return fun_entradas.editarInfoEntrada(key)
+
+#FUNCION ACTUALIZAR ENTRADAS
+@app.route('/actualizar-entradas/ <key> , <campo>', methods = ['POST'] )
+def actualizarInfoEntrada(key,campo):
+    return fun_entradas.actualizarEntradas(key,campo)
+
+
+#FUNCION ELIMINAR PRODUCTO
+@app.route('/eliminar-entrada/<key>')
+#funcion que se ponen dentro del btn del form
+def eliminarEntradas(key):
+    return fun_entradas.eliminarEntrada(key)
 
 
 
 
 
+
+
+#****************************FUNCIONES REPORTES***************************
+@app.route('/reporte-cliente')
+def resporteClientes():
+    return fun_cli.reporteCliente()
+
+@app.route('/reporte-proveedor')
+def reporteProveedores():
+    return fun_prove.reporteProvedor()
+
+
+
+
+
+#********************FUNCION CERRAR SESION***********************
+
+@app.route('/cerrar-sesion')
+def cerrarsesion():
+    return fun_login.cerrarSesion()
 
 
 #********************FUNCION DE PAGINA NO ENCONTRADA********************
 def paginaNoEncontrada(error):
     return fun_serv.error_404(error)
-
 #***COMPROBADOR***. Por si falta un elemento y si no lo tiene no correra dicha pagina. 
 if __name__ == '__main__':
     app.register_error_handler(404,paginaNoEncontrada)

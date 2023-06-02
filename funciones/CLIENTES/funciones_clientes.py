@@ -5,6 +5,17 @@ from forms.CLIENTES.clientesForm import Clientes
 
 BD = Conecbd.conexion()
 
+
+#CONSULTA CLIENTES*REPORTE*
+def reporteCliente():
+    if 'usuario-administrador' in session:
+        titulo = 'Reporte Clientes'
+        clientesBD = BD['Clientes']
+        clientesRecibidos = clientesBD.find()
+        return render_template('CLIENTES/consultaClientes.html', titulo = titulo, clientesRecibidos = clientesRecibidos)
+
+
+
 #VISTA CLIENTES
 def vistaClientes():
     if 'usuario-administrador' in session:

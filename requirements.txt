@@ -2,7 +2,6 @@ flask
 werkzeug *Para hashear 
 certifi
 pymongo 
-
 pandas
 
 

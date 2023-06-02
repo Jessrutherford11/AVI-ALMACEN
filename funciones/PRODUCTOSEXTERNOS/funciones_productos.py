@@ -37,6 +37,7 @@ def ingresarProductos():
         estanteRecibidos = estanteBD.find()
         return render_template ('PRODUCTOSEXTERNOS/productosAgregar.html', titulo=titulo, CategoriasRecibidas=CategoriasRecibidas , estanteRecibidos=estanteRecibidos)
 
+
 #FUNCION AGREGAR PRODUTCOS *FORMULARIO*
 def AgregarNuevoProducto():
     if 'usuario-administrador' in session:
@@ -93,8 +94,6 @@ def ActualizarProductos(key,campo):
 
     elif 'usuario-provedor' in session:
         return redirect('/')    
-
-
 
 
 #FUNCION ELIMINAR PRODUCTOS

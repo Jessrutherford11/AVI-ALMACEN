@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}" alt="LOGO"
+                height="80" width="80" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title"><strong><i class="fas fa-solid fa-users nav-icon">
+                                    <font face="Castellar">  <i class="fas fa-solid fa-chart-line nav-icon">   REPORTE CLIENTE</strong></i></i></font>
+                        </h1>
+                    </div>
+                    <!--Se pone la tabla-->
+                    <table id="example1" class="table table-hover  table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th><i class="fas fa-hashtag">
+                                        <font face="Century"> ID </font>
+                                    </i></th>
+                                <th><i class="fas fa-user-circle">
+                                        <font face="Calibri"> Nombre </font>
+                                    </i></th>
+                                <th><i class="fas fa-stamp">
+                                        <font face="Calibri"> Apellidos </font>
+                                    </i></th>
+                                <th><i class="fas fa-sort-numeric-up">
+                                        <font face="Calibri"> Edad </font>
+                                    </i></th>
+                                <th><i class="fas fa-envelope">
+                                        <font face="Calibri"> Correo </font>
+                                    </i></th>
+                                <th><i class="fas fa-phone">
+                                        <font face="Calibri"> Telefono </font>
+                                    </i></th>
+                                <th><i class="fas fa-map-marker-alt">
+                                        <font face="Calibri"> Direccion </font>
+                                    </i></th>
+                                <th><i class="fas fa-building">
+                                        <font face="Calibri"> Empresa </font>
+                                    </i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--Iteracion por cada dato encontrado-->
+                            {% for dato in clientesRecibidos %}
+                            <tr>
+                                <td>{{dato.codigo}}</td>
+                                <td>{{dato.nombres}}</td>
+                                <td>{{dato.apellidos}}</td>
+                                <td>{{dato.edad}}</td>
+                                <td>{{dato.correo}}</td>
+                                <td>{{dato.telefono}}</td>
+                                <td>{{dato.direccion}}</td>
+                                <td>{{dato.empresa}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'CLIENTES/MODULOS/scripts.html' %}
+    </div>
+
+</body>
+
+</html>
