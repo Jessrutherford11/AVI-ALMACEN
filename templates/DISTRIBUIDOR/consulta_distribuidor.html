@@ -20,18 +20,18 @@
             <section class="container mt-4">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="card-title"><i class="fas fa-solid fa-people-carry">
-                                <font face="Castellar"> ANAQUEL
+                        <h1 class="card-title"><i class="fas fa-solid fa-dolly-flatbed">
+                                <font face="Castellar"> DISTRIBUIDOR
                             </i></font>
                         </h1>
                     </div>
-                         <!-- AGREGAR -->
-                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <!--Se pone la ruta de la vista donde se agregara-->
-                            <a href="ingresar-anaquel" class="nav-link">
-                                <button type="submit" class="btn btn-outline-warning"><i class="fas fa-solid fa-plus">
-                                        Nuevo Anaquel</i></button> </a>
-                        </div>
+                    <!-- AGREGAR -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <!--Se pone la ruta de la vista donde se agregara-->
+                        <a href="ingresar-distribuidor" class="nav-link">
+                            <button type="submit" class="btn btn-outline-warning"><i class="fas fa-solid fa-plus">
+                                    Nuevo Distribuidor</i></button> </a>
+                    </div>
                     <!--Se pone la tabla-->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
@@ -40,8 +40,14 @@
                                     <th><i class="fas fa-hashtag">
                                             <font face="Century"> Identificador </font>
                                         </i></th>
-                                    <th><i class="fas fa-people-carry">
-                                            <font face="Calibri"> Anaquel </font>
+                                    <th><i class="fas fa-user-circle">
+                                            <font face="Calibri"> Nombre </font>
+                                        </i></th>
+                                    <th><i class="fas fa-map-marker-alt">
+                                            <font face="Calibri"> Dirrecion </font>
+                                        </i></th>
+                                    <th><i class="fas fa-phone">
+                                            <font face="Calibri"> Telefono </font>
                                         </i></th>
                                     <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-tools nav-icon">
                                             <font face="Calibri">Acciones
@@ -50,16 +56,18 @@
                                 </tr>
                             </thead>
                             <tbody <!-- Iteracion por cada dato encontrado -->
-                                {% for dato in  anaquelRecibido %} <!-- -->
+                                {% for dato in distribuidorRecibido %} <!-- -->
                                 <tr>
                                     <td>{{dato.identificador}}</td>
-                                    <td>{{dato.nombreAnaquel}}</td>
+                                    <td>{{dato.nombre}}</td>
+                                    <td>{{dato.direccion}}</td>
+                                    <td>{{dato.telefono}}</td>
                                     <!-- se pone la funcion de que esta en la ruta, el key 'dato' junto con el ID  -->
                                     <td class="text-center"> <a
-                                            href="{{url_for('InformacionAnaqueles', key=dato.identificador)}}"
+                                            href="{{url_for('InformacionDistribuidor', key=dato.identificador)}}"
                                             class="btn btn-outline-warning"> <i class="fas fa-edit nav-icon"></i> </a>
                                         <!--Boton Editar-->
-                                        <a href="{{url_for('eliminarAnaqueles', key=dato.identificador)}}"
+                                        <a href="{{url_for('eliminarDistribuidor', key=dato.identificador)}}"
                                             class="btn btn-outline-danger"><i
                                                 class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i> </a>
                                         <!--Boton Eliminar-->
@@ -70,15 +78,21 @@
                             <tfoot>
                                 <tr>
                                     <th><i class="fas fa-hashtag">
-                                            <font face="Century"> Identificador </font>
-                                        </i></th>
-                                    <th><i class="fas fa-people-carry">
-                                            <font face="Calibri"> Anaquel </font>
-                                        </i></th>
-                                    <th class="text-center"><i class="fas fa-solid fa-tools nav-icon">
-                                            <font face="Calibri">Acciones
-                                        </i></font>
-                                    </th>
+                                        <font face="Century"> Identificador </font>
+                                    </i></th>
+                                <th><i class="fas fa-user-circle">
+                                        <font face="Calibri"> Nombre </font>
+                                    </i></th>
+                                <th><i class="fas fa-map-marker-alt">
+                                        <font face="Calibri"> Dirrecion </font>
+                                    </i></th>
+                                <th><i class="fas fa-phone">
+                                        <font face="Calibri"> Telefono </font>
+                                    </i></th>
+                                <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-tools nav-icon">
+                                        <font face="Calibri">Acciones
+                                    </i></font>
+                                </th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -97,4 +111,5 @@
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
 </body>
+
 </html>

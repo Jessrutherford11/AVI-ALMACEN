@@ -7,13 +7,15 @@ import servidor.funciones_servidor as fun_serv
 import funciones.LOGIN.funciones_login as fun_login
 import funciones.HOME.funciones_home  as fun_home
 import funciones.CATEGORIAS.funciones_categorias as fun_cate
-import funciones.PRODUCTOSINTERNOS.funciones_productos as fun_prod_I
-import funciones.PRODUCTOSEXTERNOS.funciones_productos as fun_prod_E
 import funciones.PROVEDORES.funciones_provedores as fun_prove
 import funciones.CLIENTES.funciones_clientes as fun_cli
 import funciones.PERFIL.funciones_perfil as fun_perfil
 import funciones.ANAQUEL.funciones_anaquel as fun_anaquel
+import funciones.DISTRIBUIDOR.funciones_distribuidor as fun_distribuidor
 import funciones.ENTRADAS.funciones_entradas as fun_entradas
+import funciones.SALIDAS.funciones_salidas as fun_salidas
+
+import funciones.PRODUCTOSEXTERNOS.funciones_productos as fun_prod_E
 
 app = Flask(__name__)
 
@@ -140,6 +142,21 @@ def InformacionAnaqueles(key):
 @app.route('/actualizar-anaquel/ <key>, <campo>', methods=['POST'])
 def actualizarAnaquel(key,campo):
     return fun_anaquel.actualizarAnaquel(key,campo)
+
+
+
+#********************FUNCIONES DISTRIBUIDOR ***********************
+#FUNCION *VISTA* CONSULTA DISTRIBUIDOR
+@app.route('/distribuidor')
+def distribuidor():
+    return fun_distribuidor.vistaDistribuidor()
+
+#FUNCION *VISTA* INGRESAR DISTRIBUIDOR
+@app.route('/ingresar-distribuidor')
+def IngresarDistribuidor():
+    return fun_distribuidor.ingresarDistribuidor()
+
+
 
 
 
@@ -296,11 +313,21 @@ def actualizarInfoEntrada(key,campo):
     return fun_entradas.actualizarEntradas(key,campo)
 
 
-#FUNCION ELIMINAR PRODUCTO
+#FUNCION ELIMINAR ENTRADA
 @app.route('/eliminar-entrada/<key>')
 #funcion que se ponen dentro del btn del form
 def eliminarEntradas(key):
     return fun_entradas.eliminarEntrada(key)
+
+
+#********************FUNCIONES SALIDAS ***********************
+@app.route('/salidas')
+def Salidas():
+    return fun_salidas.vistasSalidas()
+
+
+
+
 
 
 

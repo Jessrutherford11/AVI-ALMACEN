@@ -5,3 +5,12 @@ from forms.SALIDAS.salidasForm import Salidas
 
 #BD
 BD = ConecBD.conexion()
+
+#FUNCION *VISTA* CONSULTA SALIDAS 
+def vistasSalidas():
+    if 'usuario-administrador' in session:
+        titulo = 'Salidas'
+        salidasBD = BD['Salidas']
+        salidasRecibidas = salidasBD.find()
+        return render_template('SALIDAS/salidas.html', titulo=titulo, salidasRecibidas=salidasRecibidas)
+
