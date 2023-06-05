@@ -382,8 +382,15 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{entradasRecibidas.distribuidor}}"
-                                type="text" name="dato">
+                            <label>Seleccione el ditribuidor:</label>
+                            <select class="form-control" name="dato">
+                                <!-- for DISTRIBUIDOR se itera para que aparezcan en ENTRADAS-->
+                                {% for dato in distribuidorRecibido %} <!-- -->
+                                <option class="form-control rounded-pill" value="{{dato.nombre}}">
+                                    {{dato.nombre}}</option>
+                                </option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i

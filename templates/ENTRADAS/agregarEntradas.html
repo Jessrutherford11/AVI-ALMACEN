@@ -148,11 +148,16 @@
                                         <label>
                                             <font face="Century">Distribuidor
                                         </label></font>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group sm-1">
                                             <span class="input-group-text" id="basic-addon1"><i
                                                     class="fas fa-dolly"></i></span>
-                                            <input type="text" class="form-control" name="distribuidor"
-                                                placeholder="Distribuidor del Producto" required>
+                                            <select class="form-control" name="distribuidor">
+                                                <!-- for DISTRIBUIDORse itera para que aparezcan en ENTRADAS-->
+                                                <option selected>Selecciona el distribuidor</option>
+                                                {% for dato in distribuidorRecibido %}
+                                                <option value="{{dato.nombre}}">{{dato.nombre}}</option>                                              </option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                     </div>
 

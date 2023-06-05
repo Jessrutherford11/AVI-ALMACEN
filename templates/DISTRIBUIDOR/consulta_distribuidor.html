@@ -64,10 +64,10 @@
                                     <td>{{dato.telefono}}</td>
                                     <!-- se pone la funcion de que esta en la ruta, el key 'dato' junto con el ID  -->
                                     <td class="text-center"> <a
-                                            href="{{url_for('InformacionDistribuidor', key=dato.identificador)}}"
+                                            href="{{url_for('EditarDistribuidor', key=dato.identificador)}}"
                                             class="btn btn-outline-warning"> <i class="fas fa-edit nav-icon"></i> </a>
                                         <!--Boton Editar-->
-                                        <a href="{{url_for('eliminarDistribuidor', key=dato.identificador)}}"
+                                        <a href="{{url_for('EliminarDistribuidor', key=dato.identificador)}}"
                                             class="btn btn-outline-danger"><i
                                                 class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i> </a>
                                         <!--Boton Eliminar-->

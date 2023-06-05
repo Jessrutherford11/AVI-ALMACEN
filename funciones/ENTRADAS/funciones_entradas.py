@@ -29,16 +29,19 @@ def operacionesEntradas():
 def agregarEntradas():
     if 'usuario-administrador' in session:
         titulo = 'Agregar Entradas'
-            #Agreagcion de categorias dentro de entradas
+            #Agreagcion de categorias* dentro de entradas
         CategoriasBD = BD['Categoria']
         CategoriasRecibidas = CategoriasBD.find()
-            #Agregacion de anaquel dentro de prodcutos
+            #Agregacion de anaquel* dentro de entradas
         estanteBD = BD['anaquel']
         estanteRecibidos = estanteBD.find()
+            #Agregacion de distribuidor*  dentro de entradas
+        distribuidorBD = BD['Distribuidor']
+        distribuidorRecibido = distribuidorBD.find()
             #Consulta de entradas
         entradasBD = BD['Entradas']
         entradasRecibidas = entradasBD.find()
-        return render_template('ENTRADAS/agregarEntradas.html', titulo=titulo,  entradasRecibidas=entradasRecibidas, CategoriasRecibidas=CategoriasRecibidas, estanteRecibidos=estanteRecibidos)
+        return render_template('ENTRADAS/agregarEntradas.html', titulo=titulo,  entradasRecibidas=entradasRecibidas, CategoriasRecibidas=CategoriasRecibidas, estanteRecibidos=estanteRecibidos, distribuidorRecibido=distribuidorRecibido)
 
 #FUNCION AGREGAR ENTRADAS *FORMULARIO*
 def agregarNuevaEntrada():
@@ -83,15 +86,18 @@ def editarInfoEntrada(key):
     if 'usuario-administrador' in session:
         titulo = 'Editar Informacion Entradas'
         entradasBD = BD['Entradas']
-         #Agreagcion de categorias dentro de entradas
+            #Agreagcion de categorias dentro de entradas
         CategoriasBD = BD['Categoria']
         CategoriasRecibidas = CategoriasBD.find()
             #Agregacion de anaquel dentro de prodcutos
         estanteBD = BD['anaquel']
         estanteRecibidos = estanteBD.find()
+            #Agregacion de distribuidor*  dentro de entradas
+        distribuidorBD = BD['Distribuidor']
+        distribuidorRecibido = distribuidorBD.find()
 
         entradasRecibidas = entradasBD.find_one({'identificador':key})
-        return render_template('ENTRADAS/actualizarEntradas.html', titulo=titulo, entradasRecibidas=entradasRecibidas , CategoriasRecibidas=CategoriasRecibidas , estanteRecibidos=estanteRecibidos)
+        return render_template('ENTRADAS/actualizarEntradas.html', titulo=titulo, entradasRecibidas=entradasRecibidas , CategoriasRecibidas=CategoriasRecibidas , estanteRecibidos=estanteRecibidos, distribuidorRecibido=distribuidorRecibido)
     
     elif 'usuario-proveedor' in session:
         return redirect('/')
@@ -108,6 +114,7 @@ def actualizarEntradas(key,campo):
         
     elif 'usuario-proveedor' in session:
         return redirect('/')
+
 
 
 #FUNCION ELIMINAR ENTRADAS 

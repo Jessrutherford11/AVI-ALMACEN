@@ -77,8 +77,6 @@ def ActualizarPerfilContraseña(key, campo):
 
 
 
-
-
 #********************FUNCIONES CATEGORIAS***********************
 
 #FUNCION DE VISTA CATEGORIA. 
@@ -146,6 +144,7 @@ def actualizarAnaquel(key,campo):
 
 
 #********************FUNCIONES DISTRIBUIDOR ***********************
+
 #FUNCION *VISTA* CONSULTA DISTRIBUIDOR
 @app.route('/distribuidor')
 def distribuidor():
@@ -156,53 +155,26 @@ def distribuidor():
 def IngresarDistribuidor():
     return fun_distribuidor.ingresarDistribuidor()
 
+#FUNCION AGREGAR NUEVO DISTRUUIDOR *FORMULARIO*
+@app.route('/nuevo-distribuidor', methods = ['POST'])
+def agregarDistribuudo():
+    return fun_distribuidor.agregarNuevoDistribuidor()
 
+#FUNCION EDITAR DISTRIBUIDOR *VISTA*
+@app.route('/editar-distribuidor/ <key>')
+def EditarDistribuidor(key):
+    return fun_distribuidor.informacionDistribuidor(key)
 
+#FUNCION ACTUALIZAR DISTRIBUIDOR 
+@app.route('/actualizar-distribuidor/ <key> , <campo>', methods=['POST'])
+def ActualizarDistribuidor(key,campo):
+    return fun_distribuidor.actualizarDistribuidor(key,campo)
 
+#FUNCION EDITAR DISTRIBUIDOR *VISTA*
+@app.route('/eliminar-distribuidor/ <key>')
+def EliminarDistribuidor(key):
+    return fun_distribuidor.eliminarDistribuidor(key)
 
-#********************FUNCIONES PRODUCTOS < EXTERNOS >***********************
-
-#FUNCION *VISTA* DE CONSULTA DE PRODUCTOS
-@app.route('/productos-externos')
-def productosExternos():
-    return fun_prod_E.consultaProductos()
-
-#FUNCION *VISTA* CONSULTA PRODCUTOS OPERACIONES
-@app.route('/productos-externos-operaciones')
-def operacionesProductosExtrernos():
-    return fun_prod_E.consultaProductosOperaciones()
-
-
-
-#FUNCION *VISTA* AGREGAR PRODUCTOS 
-@app.route('/ingresar-productos-externos')
-def IngresarProducto():
-    return fun_prod_E.ingresarProductos()
-
-#FUNCION AGREGRA NUEVOS PRODCUTOS*FORMULRIO*
-@app.route('/agregar-nuevos-productos-externos', methods=['POST'])
-def AgregarProductoExterno():
-    return fun_prod_E.AgregarNuevoProducto()
-
-
-
-#FUNCION *VISTA* EDITAR PRODUCTOS 
-@app.route('/informacion-productos-externos/<key>')
-def InformacionProductosExternos(key):
-    return fun_prod_E.editarInformacionProducto(key)
-
-#FUNCION ACTUALIZAR PRODUCTOS
-@app.route('/actualizar-productos-externos/<key>, <campo>', methods = ['POST'])
-def actualizarProductosExternos(key, campo):
-    return fun_prod_E.ActualizarProductos(key, campo)
-
-
-
-#FUNCION ELIMINAR PRODUCTO
-@app.route('/eliminar-producto-externo/<key>')
-#funcion que se ponen dentro del btn del form
-def eliminarProductosExternos(key):
-    return fun_prod_E.eliminarProductos(key)
 
 
 #********************FUNCIONES PROVEDORES***********************
