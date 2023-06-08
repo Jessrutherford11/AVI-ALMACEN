@@ -1,9 +1,9 @@
-class Salidas ():
-    def __init__(self, identificador, fecha, nombreProducto, tipoProducto, categoria, cantidad, distribuidor, unidad, placas, operador ):
+class Salidas():
+    def __init__(self, identificador, fecha, tipoProducto, nombreProducto, categoria, cantidad, distribuidor, unidad, placas, operador ):
         self.identificador = identificador
         self.fecha = fecha
-        self.nombreProducto = nombreProducto
         self.tipoProducto = tipoProducto
+        self.nombreProducto = nombreProducto
         self.categoria = categoria
         self.cantidad = cantidad
         self.distribuidor = distribuidor
@@ -16,8 +16,8 @@ class Salidas ():
         return{
             "identificador": self.identificador,
             "fecha": self.fecha,
-            "nombreProducto" : self.nombreProducto,
             "tipoProducto": self.tipoProducto,
+            "nombreProducto" : self.nombreProducto,         
             "categoria" : self.categoria,
             "cantidad": self.cantidad,
             "distribuidor":self.distribuidor,

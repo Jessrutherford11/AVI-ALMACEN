@@ -293,11 +293,43 @@ def eliminarEntradas(key):
 
 
 #********************FUNCIONES SALIDAS ***********************
+#FUNCION VISTA* SALIDAS
 @app.route('/salidas')
 def Salidas():
-    return fun_salidas.vistasSalidas()
+    return fun_salidas.vistaSalidas()
+
+#FUNCION *VISTA* OPERACIONES SALIDAS
+@app.route('/operaciones-salidas')
+def salidasOperaciones():
+    return fun_salidas.operacionesSalidas()
 
 
+#FUNCION *VISTA* AGREGAR FORMULARIO SALIDAS
+@app.route('/agregar-salidas')
+def agregarSalida():
+    return fun_salidas.agregarSalidas()
+
+#FUNCION *FORMULARIO* AGREGAR SALIDAS
+@app.route('/agregar-nuevas-salidas', methods = ['POST'])
+def agregarNuevaSalida():
+    return fun_salidas.agregarNuevasSalidas()
+
+
+#FUNCION *VISTA* EDITAR SALIDAS
+@app.route('/editar-informacion-salidas/<key>')
+def editarInfoSalida(key):
+    return fun_salidas.editarInfoSalidas(key)
+
+#FUNCION ACTUALIZAR SALIDAS
+@app.route('/actualizar-salidas/ <key> , <campo>', methods = ['POST'] )
+def actualizarSalida(key,campo):
+    return fun_salidas.actualizarSalidas(key,campo)
+
+
+#FUNCION ELIMINAR SALIDAS 
+@app.route('/eliminar-salidas/ <key>')
+def eliminarSalida(key):
+    return fun_salidas.eliminarSalidas(key)
 
 
 

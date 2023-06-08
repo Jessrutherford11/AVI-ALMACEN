@@ -22,9 +22,9 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title"> <strong><i class="fas fa-solid fa-box ">
-                                    <i class="fas fa-solid fa-sign-out-alt "></i></i>
-                                        <font face="Castellar"> Salidas </h3>
+                                <h3 class="card-title"> <strong> <i class="fas fa-solid fa-tools"> <i
+                                                class="fas fa-solid fa-sign-out-alt nav-icon"></i></i>
+                                        <font face="Castellar"> Operaciones Salidas </h3>
                                 </font></strong>
                             </div>
                             <!-- AGREGAR -->
@@ -38,8 +38,7 @@
                             <!-- / / -->
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example" class="table-bordered table-striped text-nowrap "
-                                    style="width:100%">
+                                <table id="example" class="table-bordered table-striped text-nowrap" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th><i class="fas fa-solid fa-hashtag">
@@ -60,8 +59,11 @@
                                                     <font face="Calibri">Unidad</th></i></font>
                                             <th><i class="fas fa-solid fa-newspaper">
                                                     <font face="Calibri">Placas</th></i></font>
-                                            <th><i class ="fas fa-solid fa-user-tag">
+                                            <th><i class="fas fa-solid fa-user-tag">
                                                     <font face="Calibri">Operador</th></i></font>
+                                            <th><i class="fas fa-solid fa-tools">
+                                                    <font face="Calibri">Acciones</th></i></font>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -78,11 +80,18 @@
                                             <td class="text-center">{{dato.unidad}}</span></td>
                                             <td class="text-center">{{dato.placas}}</td>
                                             <td class="text-center">{{dato.operador}}</td>
+                                            <!--Boton Editar-->
+                                            <td class="text-center"> <a href="{{url_for('editarInfoSalida', key=dato.identificador)}}" 
+                                                class="btn btn-outline-warning"><i class="fas fa-edit nav-icon"></i></a>
+                                            <!--Boton Eliminar-->
+                                            <a href="{{url_for('eliminarSalida', key=dato.identificador)}}" 
+                                            class="btn btn-outline-danger"><i class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i>
+                                                </a>
+                                            </td> 
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
-
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -91,7 +100,6 @@
                 </div>
                 <!-- /.container-fluid -->
             </section>
-
         </div>
 
         <!--Pie de pagina-->
@@ -102,16 +110,46 @@
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
 </body>
-
-
 </html>
+
 <!--Para tabla reponsiva y scoll horizontal-->
 <script>
-
     $(document).ready(function () {
         $('#example').DataTable({
             scrollX: true,
+            //para usar los botones   
+            responsive: "true",
+            dom: 'Bfrtilp',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i> ',
+                    titleAttr: 'Exportar a Excel',
+                    className: 'btn btn-success'
+                },
+
+                {
+                    extend: 'print',
+                    text: '<i class="fas fa-print"></i> ',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-info'
+                },
+            ]
         });
     });
 
 </script>
+
+<style>
+    div.dataTables_wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /*para alinear los botones y cuadro de busqueda*/
+    .btn {
+        display: inline-block;
+        margin-right: 7px;
+        cursor: pointer;
+    }
+</style>

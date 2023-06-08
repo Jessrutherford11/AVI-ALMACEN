@@ -59,7 +59,16 @@ def agregarNuevaEntrada():
         validacion = request.form["validacion"]
         observaciones = request.form["observaciones"]
         #ID´s aleatorio identificador
-        identificador= str(random.randint(200,9000))
+        identificadorE= str(random.randrange(200,8000,4))
+        entrada =str('E')
+        Unir = identificadorE + entrada
+        Longi = 4
+        Extencion = random.sample(Unir,Longi)
+        Aleatorio = "".join(Extencion)
+        identificador = Aleatorio
+        print(identificador)
+
+
         #ID CodigoProducto 
         codigoProductos = str(random.randint(100,8000))
         Unir = codigoProductos + nombreProducto

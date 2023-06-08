@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}" alt="LOGO"
+                height="80" width="80" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <!--Agregar-->
+                <div class="card card-teal">
+                    <div class="card-header">
+                        <h3 class="card-title"> <i class="fas fa-solid fa-sign-out-alt"> </i>
+                            <font face="Century"><strong> Agregar Salidas </font></strong>
+                        </h3>
+                    </div>
+                    <!--FORMULARIO -->
+                    <form action="/agregar-nuevas-salidas" method="POST">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!--FECHA Y HORA-->
+                                    <!-- Date and time -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Fecha y hora de salida:
+                                        </label></font>
+                                        <div class="input-group date" id="reservationdatetime"
+                                            data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input"
+                                                data-target="#reservationdatetime"
+                                                placeholder="Dar click en el icono de la derecha. dd/mm/yyyy 00:00"
+                                                name="fecha" />
+                                            <div class="input-group-append" data-target="#reservationdatetime"
+                                                data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- TIPO PRODCUTO. 
+                                    INTERNO O EXTERNO -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Tipo Producto
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-box-open"></i></span>
+                                            <select class="form-control" name="tipoProducto">
+                                                <option>
+                                                    INTERNO
+                                                </option>
+                                                <option>
+                                                    EXTERNO
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!--NOMBRE PRODUCTO-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Nombre Producto
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-boxes"></i></span>
+                                            <select class="form-control" name="nombreProducto">
+                                                <!-- for PRODUCTO se itera para que aparezcan en productos-->
+                                                <option selected>Selecciona el Producto</option>
+                                                {% for dato in entradasRecibidas %}
+                                                <option value="{{dato.nombreProducto}}">{{dato.nombreProducto}}</option>
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Categoria
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-boxes"></i></span>
+                                            <select class="form-control" name="categoria">
+                                                <!-- for CATEGORIA se itera para que aparezcan en productos-->
+                                                <option selected>Selecciona la categoria</option>
+                                                {% for dato in CategoriasRecibidas %}
+                                                <option value="{{dato.nombreCategoria}}">{{dato.nombreCategoria}}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- CANTIDAD -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Cantidad
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-calendar-plus"></i></span>
+                                            <input type="number" class="form-control" name="cantidad" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- /. *COL DERECHA*  -->
+                                <div class="col-md-6">
+                                    <!-- DISTRIBUIDOR -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Distribuidor
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-dolly"></i></span>
+                                            <select class="form-control" name="distribuidor">
+                                                <!-- for DISTRIBUIDORse itera para que aparezcan en ENTRADAS-->
+                                                <option selected>Selecciona el distribuidor</option>
+                                                {% for dato in distribuidorRecibido %}
+                                                <option value="{{dato.nombre}}">{{dato.nombre}}</option>
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- UNIDAD -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Unidad
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-truck"></i></span>
+                                            <select class="form-control" name="unidad">
+                                                <!-- for UNIDAD se itera para que aparezcan en SALIDAS-->
+                                                <option selected>Selecciona la Unidad</option>
+                                                <option>Motos</option>
+                                                <option>Sedan</option>
+                                                <option>Unidad 1.5</option>
+                                                <option>Unidad 3.5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!--PLACAS-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Placas
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-newspaper"></i></span>
+                                            <input class="form-control" type="text" name="placas" id="placas" onblur="upperCase()" required>
+                                        </div>
+                                    </div>
+
+                                    <!--OPERADOR-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Operador
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-user-tag"></i></span>
+                                            <input class="form-control" name="operador" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--BTN AGREGAR-->
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-outline-success">
+                                        <i class="fas fa-solid fa-save">
+                                            <font face="Century">Agregar</button></i></font>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+        <!--Side- bar control -->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+    </div>
+<!--FUNCION PARA FECHA Y HORA-->
+    <script>
+        $(function () {
+            //Date and time picker
+            $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+        })
+    </script>
+
+<!--FUNCION MAYUSCULAS-->
+    <script type="text/javascript">
+        function upperCase() {
+            var x = document.getElementById("placas").value
+            document.getElementById("placas").value = x.toUpperCase();
+        }
+    </script>
+
+
+
+<!--FUNCION MAYUSCULAS
+CAPITALIZE. Primera letra en mayusculas-->
+<style type="text/css">
+    .transformation1 {text-transform: capitalize;} 
+    .transformation2 {text-transform: uppercase;}
+</style>
+
+
+</body>
+
+</html>
