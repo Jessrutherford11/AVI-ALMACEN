@@ -15,8 +15,6 @@ import funciones.DISTRIBUIDOR.funciones_distribuidor as fun_distribuidor
 import funciones.ENTRADAS.funciones_entradas as fun_entradas
 import funciones.SALIDAS.funciones_salidas as fun_salidas
 
-import funciones.PRODUCTOSEXTERNOS.funciones_productos as fun_prod_E
-
 app = Flask(__name__)
 
 #Para que se pueda entrar desde cualquier IP y no marque error al entrar sin una llave secreta. 
@@ -334,11 +332,6 @@ def eliminarSalida(key):
 
 
 
-
-
-
-
-
 #****************************FUNCIONES REPORTES***************************
 @app.route('/reporte-cliente')
 def resporteClientes():
@@ -347,6 +340,7 @@ def resporteClientes():
 @app.route('/reporte-proveedor')
 def reporteProveedores():
     return fun_prove.reporteProvedor()
+
 
 
 
