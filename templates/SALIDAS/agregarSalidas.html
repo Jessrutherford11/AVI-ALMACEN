@@ -79,7 +79,7 @@
                                                     class="fas fa-boxes"></i></span>
                                             <select class="form-control" name="nombreProducto">
                                                 <!-- for PRODUCTO se itera para que aparezcan en productos-->
-                                                <option selected>Selecciona el Producto</option>
+                                                <option selected>Selecciona el producto</option>
                                                 {% for dato in entradasRecibidas %}
                                                 <option value="{{dato.nombreProducto}}">{{dato.nombreProducto}}</option>
                                                 </option>
@@ -123,18 +123,37 @@
 
                                 <!-- /. *COL DERECHA*  -->
                                 <div class="col-md-6">
-                                    <!-- DISTRIBUIDOR -->
+                                    <!-- SELLER / DISTRIBUIDOR -->
                                     <div class="form-group">
                                         <label>
-                                            <font face="Century">Distribuidor
+                                            <font face="Century">Seller
                                         </label></font>
                                         <div class="input-group sm-1">
                                             <span class="input-group-text" id="basic-addon1"><i
-                                                    class="fas fa-dolly"></i></span>
+                                                    class="fas fa-truck-loading"></i></span>
                                             <select class="form-control" name="distribuidor">
                                                 <!-- for DISTRIBUIDORse itera para que aparezcan en ENTRADAS-->
-                                                <option selected>Selecciona el distribuidor</option>
+                                                <option selected>Selecciona el seller</option>
                                                 {% for dato in distribuidorRecibido %}
+                                                <option value="{{dato.nombre}}">{{dato.nombre}}</option>
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- TRANSPORTISTA -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Transportista
+                                        </label></font>
+                                        <div class="input-group sm-1">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-shipping-fast"></i></span>
+                                            <select class="form-control" name="transportista">
+                                                <!-- for DISTRIBUIDORse itera para que aparezcan en ENTRADAS-->
+                                                <option selected>Selecciona el transportista</option>
+                                                {% for dato in transportistaRecibido %}
                                                 <option value="{{dato.nombre}}">{{dato.nombre}}</option>
                                                 </option>
                                                 {% endfor %}
@@ -169,7 +188,8 @@
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1"><i
                                                     class="fas fa-newspaper"></i></span>
-                                            <input class="form-control" type="text" name="placas" id="placas" onblur="upperCase()" required>
+                                            <input class="form-control" type="text" name="placas" id="placas"
+                                                onblur="upperCase()" required>
                                         </div>
                                     </div>
 
@@ -207,7 +227,7 @@
         <!--Sripts-->
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
-<!--FUNCION PARA FECHA Y HORA-->
+    <!--FUNCION PARA FECHA Y HORA-->
     <script>
         $(function () {
             //Date and time picker
@@ -215,7 +235,7 @@
         })
     </script>
 
-<!--FUNCION MAYUSCULAS-->
+    <!--FUNCION MAYUSCULAS-->
     <script type="text/javascript">
         function upperCase() {
             var x = document.getElementById("placas").value
@@ -225,12 +245,17 @@
 
 
 
-<!--FUNCION MAYUSCULAS
+    <!--FUNCION MAYUSCULAS
 CAPITALIZE. Primera letra en mayusculas-->
-<style type="text/css">
-    .transformation1 {text-transform: capitalize;} 
-    .transformation2 {text-transform: uppercase;}
-</style>
+    <style type="text/css">
+        .transformation1 {
+            text-transform: capitalize;
+        }
+
+        .transformation2 {
+            text-transform: uppercase;
+        }
+    </style>
 
 
 </body>

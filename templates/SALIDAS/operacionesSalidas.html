@@ -53,8 +53,10 @@
                                                     <font face="Calibri">Categoria</th></i></font>
                                             <th><i class="fas fa-solid fa-calendar-plus">
                                                     <font face="Calibri">Cantidad</th></i></font>
-                                            <th><i class="fas fa-solid fa-dolly">
-                                                    <font face="Calibri">Distribuidor</th></i></font>
+                                            <th><i class="fas fa-solid fa-truck-loading">
+                                                    <font face="Calibri">Seller</th></i></font>
+                                            <th><i class="fas fa-solid fa-shipping-fast">
+                                                    <font face="Calibri">Transportista</th></i></font>
                                             <th><i class="fas fa-solid fa-truck">
                                                     <font face="Calibri">Unidad</th></i></font>
                                             <th><i class="fas fa-solid fa-newspaper">
@@ -77,17 +79,21 @@
                                             <td class="text-center">{{dato.categoria}}</td>
                                             <td class="text-center">{{dato.cantidad}}</td>
                                             <td class="text-center">{{dato.distribuidor}}</td>
+                                            <td class="text-center">{{dato.transportista}}</td>
                                             <td class="text-center">{{dato.unidad}}</span></td>
                                             <td class="text-center">{{dato.placas}}</td>
                                             <td class="text-center">{{dato.operador}}</td>
                                             <!--Boton Editar-->
-                                            <td class="text-center"> <a href="{{url_for('editarInfoSalida', key=dato.identificador)}}" 
-                                                class="btn btn-outline-warning"><i class="fas fa-edit nav-icon"></i></a>
-                                            <!--Boton Eliminar-->
-                                            <a href="{{url_for('eliminarSalida', key=dato.identificador)}}" 
-                                            class="btn btn-outline-danger"><i class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i>
+                                            <td class="text-center"> <a
+                                                    href="{{url_for('editarInfoSalida', key=dato.identificador)}}"
+                                                    class="btn btn-outline-warning"><i
+                                                        class="fas fa-edit nav-icon"></i></a>
+                                                <!--Boton Eliminar-->
+                                                <a href="{{url_for('eliminarSalida', key=dato.identificador)}}"
+                                                    class="btn btn-outline-danger"><i
+                                                        class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i>
                                                 </a>
-                                            </td> 
+                                            </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -110,31 +116,15 @@
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
 </body>
+
 </html>
 
 <!--Para tabla reponsiva y scoll horizontal-->
 <script>
+
     $(document).ready(function () {
         $('#example').DataTable({
             scrollX: true,
-            //para usar los botones   
-            responsive: "true",
-            dom: 'Bfrtilp',
-            buttons: [
-                {
-                    extend: 'excelHtml5',
-                    text: '<i class="fas fa-file-excel"></i> ',
-                    titleAttr: 'Exportar a Excel',
-                    className: 'btn btn-success'
-                },
-
-                {
-                    extend: 'print',
-                    text: '<i class="fas fa-print"></i> ',
-                    titleAttr: 'Imprimir',
-                    className: 'btn btn-info'
-                },
-            ]
         });
     });
 

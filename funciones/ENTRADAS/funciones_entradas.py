@@ -36,7 +36,7 @@ def agregarEntradas():
         estanteBD = BD['anaquel']
         estanteRecibidos = estanteBD.find()
             #Agregacion de distribuidor*  dentro de entradas
-        distribuidorBD = BD['Distribuidor']
+        distribuidorBD = BD['Seller']
         distribuidorRecibido = distribuidorBD.find()
             #Consulta de entradas
         entradasBD = BD['Entradas']
@@ -102,7 +102,7 @@ def editarInfoEntrada(key):
         estanteBD = BD['anaquel']
         estanteRecibidos = estanteBD.find()
             #Agregacion de distribuidor*  dentro de entradas
-        distribuidorBD = BD['Distribuidor']
+        distribuidorBD = BD['Seller']
         distribuidorRecibido = distribuidorBD.find()
 
         entradasRecibidas = entradasBD.find_one({'identificador':key})

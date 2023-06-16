@@ -12,6 +12,7 @@ import funciones.CLIENTES.funciones_clientes as fun_cli
 import funciones.PERFIL.funciones_perfil as fun_perfil
 import funciones.ANAQUEL.funciones_anaquel as fun_anaquel
 import funciones.DISTRIBUIDOR.funciones_distribuidor as fun_distribuidor
+import funciones.TRANSPORTISTA.funciones_transportista as fun_transpor
 import funciones.ENTRADAS.funciones_entradas as fun_entradas
 import funciones.SALIDAS.funciones_salidas as fun_salidas
 
@@ -37,10 +38,21 @@ def loginvista():
 def iniciarSesion():
     return fun_login.inicioSesionAdminis()
 
+
+#********************FUNCION HOME********************
+
 #FUNCION DE HOME
 @app.route('/home')
 def homePage():
     return fun_home.home()
+
+#FUNCION GRAFICA DINAMICA
+@app.route('/API')
+def apiChart():
+    return fun_home.Grafica()
+
+
+#********************FUNCION PROTECCION RUTAS********************
 
 #FUNCION PROTECCION RUTAS
 @app.before_request
@@ -172,6 +184,49 @@ def ActualizarDistribuidor(key,campo):
 @app.route('/eliminar-distribuidor/ <key>')
 def EliminarDistribuidor(key):
     return fun_distribuidor.eliminarDistribuidor(key)
+
+
+
+#********************FUNCIONES TRANSPORTISTA ***********************
+
+#FUNCION *VISTA* CONSULTA TRANSPORTISTA
+@app.route('/transportista')
+def transportista():
+    return fun_transpor.vistaTransportista()
+
+#FUNCION *VISTA* INGRESAR TRANSPORTISTA
+@app.route('/ingresar-transportista')
+def IngresarTransportista():
+    return fun_transpor.ingresarTransportista()
+
+#FUNCION AGREGAR NUEVO TRASNPORTISTA
+@app.route('/nuevo-transportista', methods = ['POST'])
+def agregarTransportista():
+    return fun_transpor.agregarNuevoTransportista()
+
+#FUNCION *VISTA* EDITAR INFO TRANSPORTISTA
+@app.route('/editar-transportista/ <key>')
+def editarTransportista(key):
+    return fun_transpor.editarInfoTransportista(key)
+
+
+#FUNCION ACTUALIZAR TRANSPORTISTA
+@app.route('/actualizar-transportista/ <key>, <campo>', methods = ['POST'])
+def ActualizarTransportista(key, campo):
+    return fun_transpor.actualizarTransportista(key,campo)
+
+
+#FUNCION ELIMINAR TRANSPORTISTA
+@app.route('/eliminar-transportista/ <key>')
+def EliminarTransportista(key):
+    return fun_transpor.eliminarTransportista(key)
+
+
+
+
+
+
+
 
 
 

@@ -23,42 +23,67 @@
                     <div class="card-body">
                         <div class="card card-gray-dark"> <!---->
                             <div class="card-header">
-                                <h3 class="card-title"> <i class="fas fa-solid fa-dolly">
-                                        <font face="Century">Agregar Seller</h3></i></font>
+                                <h3 class="card-title"> <i class="fas fa-solid fa-shipping-fast">
+                                        <font face="Century">Agregar Transportista</h3></i></font>
                             </div>
+
                             <!-- se pone la ruta del app del formulario que tiene el metodo Post -->
-                            <form class="form-horizontal" action="/nuevo-distribuidor" method="post">
+                            <form class="form-horizontal" action="/nuevo-transportista" method="post">
                                 <div class="row">
                                     <div class="col-md-6"><!-- -->
+
                                         <!--NOMBRES-->
                                         <div class="form-group">
                                             <label>
-                                                <font face="Century">Seller
+                                                <font face="Century">Nombre Completo
                                             </label></font>
                                             <div class="input-group mb-4"> <!---->
                                                 <span class="input-group-text" id="basic-addon1">
-                                                    <i class="fas fa-truck-loading"></i></span>
+                                                    <i class="fas fa-user-circle"></i></span>
                                                 <input type="text" class="form-control" name="nombre"
                                                     class="fas fa-user-circle" aria-label="Username"
                                                     aria-describedby="basic-addon1" required>
                                             </div>
                                         </div>
-                                        <!--DIRECCION-->
+
+                                        <!--UNIDAD-->
                                         <div class="form-group">
                                             <label>
-                                                <font face="Century">Direccion
+                                                <font face="Century">Tipología/Unidad
                                             </label></font>
-                                            <div class="input-group mb-4">
-                                                <span class="input-group-text" id="basic-addon1">
-                                                    <i class="fas fa-map-marker-alt"></i></span>
-                                                <input type="text" class="form-control" name="direccion"
-                                                    placeholder="Calle, Colonia, Numero" required>
+                                            <div class="input-group sm-1">
+                                                <span class="input-group-text" id="basic-addon1"><i
+                                                        class="fas fa-truck"></i></span>
+                                                <select class="form-control" id="unidad" name="unidad">
+                                                    <option selected>Selecciona la Unidad</option>
+                                                    <option>Motos</option>
+                                                    <option>Sedan</option>
+                                                    <option>Unidad 1.5</option>
+                                                    <option>Unidad 3.5</option>
+                                                </select>
+                                                <button type="button" data-toggle="modal" data-target="#tipologia"
+                                                    class="btn btn-xs btn-OpenEdit">
+                                                    <i class="fa-solid fas fa-plus"></i>Agregar Otro
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- /.col derecha  TELEFONO-->
+                                    <!-- /.col derecha -->
+                                    <!--LINEA TRASNPORTISTA-->
                                     <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>
+                                                <font face="Century">Linea Transportista
+                                            </label></font>
+                                            <div class="input-group mb-4">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-route"></i></span>
+                                                <input type="text" class="form-control" name="linea" required>
+                                            </div>
+                                        </div>
+
+                                        <!--TELEFONO-->
                                         <div class="form-group">
                                             <label>
                                                 <font face="Century">Telefono
@@ -84,10 +109,40 @@
                     </div>
                 </div>
             </section>
-            <div class="text-center">
-                <a href="/distribuidor" class="nav-link text-warning">
-                    <i class="far fa-clipboard"> Consultar Seller</i></a>
+
+            
+            <div class="modal fade" id="tipologia">
+                <div class="modal-dialog">
+                    <form action="{{url_for('IngresarTransportista', key=transportistaRecibido.identificador, campo='unidad')}}" method="post">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Agregar Tipologia/Unidad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label> Agregar otro tipo de unidad:</label>
+                                <input class="form-control rounded-pill" type="text" name="unidad">
+                            </div>
+                            <div class="modal-footer justify-content-between">>
+                                <button type="submit" class="btn btn-outline-success"><i
+                                        class="fa-solid fas fa-user-check"></i>Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
+
+
+
+
+
+            <div class="text-center">
+                <a href="/transportista" class="nav-link text-warning">
+                    <i class="far fa-clipboard"> Consultar Transportista</i></a>
+            </div>
+
         </div>
         <!--Pie de pagina-->
         {% include 'HOME/MODULOS/footer.html' %}

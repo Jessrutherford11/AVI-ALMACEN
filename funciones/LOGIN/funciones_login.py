@@ -52,6 +52,11 @@ def proteccionRutas():
     elif not 'usuario-proveedor' in session and ruta!="/" and ruta!="/login" and ruta!= "/iniciarsesion" and not ruta.startswith("/static"):
         flash('Inicia sesion para continuar')
         return redirect('/login')
+    if 'usuario-administrador' in session:
+        pass
+    #Si empieza con 'static' no entra. 
+    elif not 'usuario-proveedor' in session and ruta!="/" and ruta!="/login" and ruta!= "/iniciarsesion" and not ruta.startswith("/static"):
+        flash('Inicia sesion para continuar')
 
 
 

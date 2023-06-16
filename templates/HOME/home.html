@@ -48,180 +48,230 @@
                     </div>
                 </div>
 
-                <!--Cuadritos. -->
+
+                <!--TABLA DE BARRAS-->
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-md-8">
+                        <div class="card card-outline card-dark">
+                            <div class="card-header">
+                                <h3 class="card-title">Reporte de entradas/salidas</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body"> <!--Para que funcione el boton. -->
+                                <div class="container-fluid mt-4">
+                                    <canvas id="Pastel"> <!--Nombre de Grafica-->
+                                    </canvas>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-sm-3 col-6">
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block border-right">
+                                            <span class="description-percentage text-success"><i
+                                                    class="fas fa-caret-left"></i> </span>
+                                            <h5 class="description-header">{{entradasTotales}}</h5>
+                                            <span class="description-text">ENTRADAS TOTALES</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block border-right">
+                                            <span class="description-percentage text-primary"><i
+                                                    class="fas fa-caret-right"></i> </span>
+                                            <h5 class="description-header">{{salidasTotales}}</h5>
+                                            <span class="description-text">SALIDAS TOTALES</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <!-- /.description-block -->
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                    </div>
+
+
+                    <!--Cuadritos.
+                    SMALL BOX-->
+                    <div class="col-md-4">
                         <!-- small box ENTRADAS-->
-                        <div class="info-box bg-gradient-olive">
-                            <span class="info-box-icon"><i class="fas fa-sign-in-alt"></i></span>
-                            <div class="icon">
-                                <i class="fa fa-solid fa-box-open"></i>
-                            </div>
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-gradient-olive elevation-3"><i
+                                    class="fas fa-sign-in-alt"></i></span>
                             <div class="info-box-content">
-                                <h4 class="info-box-text"><strong>Entradas</strong></h4>
-                                <span class="info-box-number">49</span> <!--Variable que se ira incrementando-->
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 50%">
-
-                                    </div><!--Variable-->
-                                </div>
+                                <h5 class="info-box-text">Entradas</h5>
+                                <span class="info-box-number">{{entradasTotales}}</span>
                                 <span class="progress-description">
-                                    ----: <!--Regal de 3 . Variable que se ira incremetando-->
+                                    Entradas Totales: {{entradasTotales}} <!-- Variable que se ira incremetando-->
                                 </span>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-sm-3">
-                        <!-- small box SALIDAS -->
-                        <div class="info-box bg-gradient-teal">
-                            <span class="info-box-icon"><i class="fas fa-sign-out-alt"></i></span>
-                            <div class="icon">
-                                <i class="fa fa-solid fa-box"></i>
-                            </div>
+                        <!-- small box SALIDAS-->
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-gradient-teal elevation-3"><i
+                                    class="fas fa-sign-out-alt"></i></span>
                             <div class="info-box-content">
-                                <h4 class="info-box-text"><strong>Salidas</strong></h4>
-                                <span class="info-box-number">16</span> <!--Variable que se ira incrementando-->
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 50%">
-                                    </div><!--Variable-->
-                                </div>
+                                <h5 class="info-box-text">Salidas</h5>
+                                <span class="info-box-number">{{salidasTotales}}</span>
                                 <span class="progress-description">
-                                    -----: <!--Regal de 3 . Variable que se ira incremetando-->
+                                    Salidas Totales: {{salidasTotales}} <!-- Variable que se ira incremetando-->
                                 </span>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-sm-3">
-                        <!-- small box DISTRIBUIDOR O PROVEEDOR  -->
-                        <div class="info-box bg-gradient-gray">
-                            <span class="info-box-icon"><i class="fas fa-"></i></span>
-                            <div class="icon">
-                                <i class="fa fa-solid fa-"></i>
-                            </div>
+                        <!-- small box TRASNPORTISTAS-->
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-gradient-gray-dark elevation-3"><i
+                                    class="fas fa-sign-out-alt"></i></span>
                             <div class="info-box-content">
-                                <h4 class="info-box-text"><strong>Distribuidor/Provee</strong></h4>
-                                <span class="info-box-number">10</span> <!--Variable que se ira incrementando-->
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 50%">
-                                    </div><!--Variable-->
-                                </div>
+                                <h5 class="info-box-text">Transportistas</h5>
+                                <span class="info-box-number">{{transportistaTotales}}</span>
                                 <span class="progress-description">
-                                    -----: <!--Regal de 3 . Variable que se ira incremetando-->
+                                    Transportistas Existentes: {{transportistaTotales}}
+                                    <!-- Variable que se ira incremetando-->
                                 </span>
                             </div>
                         </div>
-                    </div>
 
-
-                    <div class="col-sm-3">
-                        <!-- small box  CLIENTES -->
-                        <div class="info-box bg-gradient-info">
-                            <span class="info-box-icon"><i class="fas fa-users"></i></span>
-                            <div class="icon">
-                                <i class="fa fa-solid fa-user-tie"></i>
-                            </div>
+                        <!-- small box SELLER / DISTRIBUIDOR-->
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-gradient-lightblue elevation-3"><i
+                                    class="fas fa-sign-out-alt"></i></span>
                             <div class="info-box-content">
-                                <h4 class="info-box-text"><strong>Clientes</strong></h4>
-                                <span class="info-box-number">4</span> <!--Variable que se ira incrementando-->
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 50%">
-                                    </div><!--Variable-->
-                                </div>
+                                <h5 class="info-box-text">Seller</h5>
+                                <span class="info-box-number">{{sellerTotales}}</span>
                                 <span class="progress-description">
-                                    -----: <!--Regal de 3 . Variable que se ira incremetando-->
+                                    Seller Existentes: {{sellerTotales}} <!-- Variable que se ira incremetando-->
                                 </span>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <br>
+                    </div> <!--./col-->
 
-            <!--CUADRITOS COLLAPSE
-            
-            PRODCUTOS ENTRADAS. -->
-            <div class="card card-outline card-ligth">
-                <div class="container text-center">
-                    <div class="row aling-items-start">
-                        <div class="col-md-6">
-                            <div class="card card-outline card-olive">
-                                <div class="card-header">
-                                    <h3 class="card-title"><strong><i class="fas fa-truck-loading">
 
-                                                Nuevos Productos </strong></h3></i></i>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p class="text-left">
-                                        Sillas y mesas
-                                    </p>
-                                    <p class="text-left">
-                                        Ventiladores
-                                    </p>
-                                    <div class="text-center">
-                                        <a href="/entradas" class="nav-link text-success">Consultar Entradas</a>
-                                    </div>
+                    <!-- TABLA: ENTRADAS DE PRODUCTOS  -->
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-header border-transparent">
+                                <h3 class="card-title">
+                                    <font face="Century">Entrada Productos </font>
+                                </h3>
+
+                                <div class="card-tools">
+                                    <!-- -->
+                                    <span class="badge badge-success"> {{entradasTotales}} Productos Nuevos</span>
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-
-                        <!--PRODUCTOS  SALIDAS-->
-                        <div class="col-md-6">
-                            <div class="card card-outline card-teal">
-                                <div class="card-header">
-                                    <h3 class="card-title"><strong><i class="fas fa-truck-moving">
-                                                Productos que salieron </strong></h3></i></i>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                    </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table m-0 table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Entrada ID</th>
+                                                <th>Fecha y Hora</th>
+                                                <th>Producto</th>
+                                                <th>Cantidad</th>
+                                                <th>Tipo Producto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for dato in entradasRecibidas %}
+                                            <tr>
+                                                <td>{{dato.identificador}}</td>
+                                                <td>{{dato.fecha}}</td>
+                                                <td>{{dato.nombreProducto}}</td>
+                                                <td>{{dato.cantidad}}</td>
+                                                <td class="text-primary text-center">{{dato.tipoProducto}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="card-body">
-                                    
-                                    <p class="text-left">
-                                        Uniformes temporada
-                                    </p>
-                                    
-                                    <p class="text-left">
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix">
+                                <a href="/agregar-entradas" class="btn btn-sm btn-outline-success float-left">
+                                    <font face="Calibri"> Nueva Entrada</font>
+                                </a>
+                                <a href="/entradas" class="btn btn-sm btn-outline-info float-right">
+                                    <font face="Calibri"> Consultar Entradas </font>
+                                </a>
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                    </div><!--./tableEntradas-->
 
-                                    </p>
-                                    <div class="text-center">
-                                        <a href="/salidas" class="nav-link text-info">Consultar Salidas</a>
-                                    </div>
+                    <!-- TABLA: SALIDAS DE PRODUCTOS  -->
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-header border-transparent">
+                                <h3 class="card-title">
+                                    <font face="Century"> Salida Productos </font>
+                                </h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
                                 </div>
                             </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table m-0 table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Salida ID</th>
+                                                <th>Fecha y Hora</th>
+                                                <th>Producto</th>
+                                                <th>Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for dato in salidasRecibidas %}
+                                            <tr>
+                                                <td>{{dato.identificador}}</td>
+                                                <td>{{dato.fecha}}</td>
+                                                <td>{{dato.nombreProducto}}</td>
+                                                <td>{{dato.cantidad}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix">
+                                <div class="class-text-center">
+                                    <a href="/entradas" class="btn btn-sm btn-outline-info float-right">
+                                        <font face="Calibri"> Consultar Salidas
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.card-footer -->
                         </div>
-                    </div>
-
-                </div>
-            </div>
-            <br>
-
-            <!--TABLA DE BARRAS-->
-            <div class="card card-outline card-dark">
-                <div class="card-header">
-                    <h3 class="card-title">Reporte de entradas/salidas</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body"> <!--Para que funcione el boton. -->
-                    <div class="container-fluid mt-4">
-                        <canvas id="reportes">
-                        </canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div><!--./tableSalidas-->
+                </div><!--./row-->
+            </div><!--container-fluid-->
+        </div><!--wapper-->
 
         <!--Pie de pagina-->
         {% include 'HOME/MODULOS/footer.html' %}
@@ -232,11 +282,16 @@
         <!--Sripts-->
         {% include 'HOME/MODULOS/scripts.html' %}
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <!--Reloj-->
         <script src="{{ url_for('static',filename='dist/js/Admin/Reloj/reloj.js')}}"></script>
         <!--Graficas reportes-->
         <script src="{{url_for('static', filename = 'dist/js/graficas/graficaReportes.js')}}"></script>
-    </div>
+
+
+        <script src="{{ url_for('static',filename='dist/js/Admin/Graficas/Pastel.js')}}"></script>
+
+    </div><!--wapperAjuste-->
 </body>
 
 </html>

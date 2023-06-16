@@ -22,7 +22,7 @@
                 <div class="card card-olive">
                     <div class="card-header">
                         <h3 class="card-title"> <i class="fas fa-solid fa-sign-in-alt"> </i>
-                            <font face="Century"><strong>  Agregar Entradas </font></strong>
+                            <font face="Century"><strong> Agregar Entradas </font></strong>
                         </h3>
                     </div>
                     <!--FORMULARIO -->
@@ -40,7 +40,8 @@
                                             data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
                                                 data-target="#reservationdatetime"
-                                                placeholder="Dar click en el icono de la derecha. dd/mm/yyyy 00:00" name="fecha" />
+                                                placeholder="Dar click en el icono de la derecha. mm/dd/yyyy 00:00"
+                                                name="fecha" />
                                             <div class="input-group-append" data-target="#reservationdatetime"
                                                 data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -143,14 +144,14 @@
                                         </div>
                                     </div>
 
-                                    <!-- DISTRIBUIDOR -->
+                                    <!-- SELLER / DISTRIBUIDOR -->
                                     <div class="form-group">
                                         <label>
-                                            <font face="Century">Distribuidor
+                                            <font face="Century">Seller 
                                         </label></font>
                                         <div class="input-group sm-1">
                                             <span class="input-group-text" id="basic-addon1"><i
-                                                    class="fas fa-dolly"></i></span>
+                                                    class="fas fa-truck-loading"></i></span>
                                             <select class="form-control" name="distribuidor">
                                                 <!-- for DISTRIBUIDORse itera para que aparezcan en ENTRADAS-->
                                                 <option selected>Selecciona el distribuidor</option>
@@ -241,7 +242,10 @@
     <script>
         $(function () {
             //Date and time picker
-            $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+            $('#reservationdatetime').datetimepicker({ 
+                format:'Y/dd/mm',
+                icons: { time: 'far fa-clock' }
+            });
         })
     </script>
 </body>

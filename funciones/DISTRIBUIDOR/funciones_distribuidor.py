@@ -5,29 +5,30 @@ from forms.DISTRIBUIDOR.distribuidorForm import Distribuidor
 
 
 #BD
+
 BD = ConectBD.conexion()
 
-#FUNCION CONSULTA DISTRIBUIDOR *VISTA* 
+#FUNCION CONSULTA SELLER / DISTRIBUIDOR *VISTA* 
 def vistaDistribuidor():
     if 'usuario-administrador' in session:
-        titulo = 'Distribuidor'
-        distribuidorBD = BD['Distribuidor']
+        titulo = 'Seller'
+        distribuidorBD = BD['Seller']
         distribuidorRecibido = distribuidorBD.find()
         return render_template('DISTRIBUIDOR/consulta_distribuidor.html', titulo=titulo, distribuidorRecibido=distribuidorRecibido)
 
-#FUNCION INGRESAR DISTRIBUIDOR *VISTA*
+#FUNCION INGRESAR SELLER / DISTRIBUIDOR *VISTA*
 def ingresarDistribuidor():
     if 'usuario-administrador' in session:
-        titulo = 'Agregar Distribuidor'
-        distribuidorBD = BD['Distribuidor']
+        titulo = 'Agregar Seller'
+        distribuidorBD = BD['Seller']
         distribuidorRecibido = distribuidorBD.find()
         return render_template('DISTRIBUIDOR/agregarDistribuidor.html', titulo=titulo, distribuidorRecibido=distribuidorRecibido)
 
 
-#FUNCION DE AGREGAR NUEVO DISTRIBUIDOR*FORMULARIO*
+#FUNCION DE AGREGAR NUEVO SELLER / DISTRIBUIDOR*FORMULARIO*
 def agregarNuevoDistribuidor():
     if 'usuario-administrador' in session:
-        distribuidorBD = BD['Distribuidor']
+        distribuidorBD = BD['Seller']
         nombre = request.form['nombre']
         direccion = request.form['direccion'] 
         telefono = request.form['telefono']
@@ -50,21 +51,21 @@ def agregarNuevoDistribuidor():
         return redirect('/')    
 
 
-#FUNCION *VISTA¨EDITAR INFO DISTRIBUIDOR
+#FUNCION *VISTA¨EDITAR INFO SELLER / DISTRIBUIDOR
 def informacionDistribuidor(key):
     if 'usuario-administrador' in session:
         titulo = 'Editar Infomacion Distribuidor'
-        distribuidorBD = BD['Distribuidor']
+        distribuidorBD = BD['Seller']
         distribuidorRecibido = distribuidorBD.find_one({'identificador':key})
         return render_template('DISTRIBUIDOR/actualizarDistribuidor.html', titulo=titulo, distribuidorRecibido=distribuidorRecibido)
     
     elif 'usuario-proveedor' in session:
         return redirect('/')
     
-#FUNCION ACTUALIZAR INFO DISTRIBUIDOR
+#FUNCION ACTUALIZAR INFO SELLER / DISTRIBUIDOR
 def actualizarDistribuidor(key,campo):
     if 'usuario-administrador' in session:
-        distribuidorBD = BD['Distribuidor']
+        distribuidorBD = BD['Seller']
         dato = request.form['dato']
         if dato:
             distribuidorBD.update_one({'identificador':key}, {'$set':{campo:dato}})
@@ -77,10 +78,10 @@ def actualizarDistribuidor(key,campo):
 
 
 
-#FUNCION ELIMINAR DISTRIBUIDOR 
+#FUNCION ELIMINAR SELLER / DISTRIBUIDOR 
 def eliminarDistribuidor(key):
     if 'usuario-administrador' in session:
-        distribuidorBD = BD['Distribuidor']
+        distribuidorBD = BD['Seller']
         distribuidorBD.delete_one({'identificador':key})
         return redirect('/distribuidor')
     

@@ -1,10 +1,39 @@
-from flask import render_template, flash
+from flask import render_template, session,redirect, flash
+from data_base import baseDatos as ConecBD 
 
+BD = ConecBD.conexion()
+
+#FUNCION HOME
 def home(): 
-    titulo = "Inicio"
-    flash('')
-    
-    return render_template('HOME/home.html', titulo = titulo)
+    if 'usuario-administrador' in session:    
+        titulo = "Inicio"
+        entradas = BD['Entradas']
+        salidas = BD['Salidas']
+        transportista = BD['Transportista']
+        seller = BD['Seller']
+        entradasTotales = entradas.count_documents({})
+        salidasTotales = salidas.count_documents({})
+        transportistaTotales = transportista.count_documents({})
+        sellerTotales = seller.count_documents({})
+        entradasRecibidas = entradas.find()
+        salidasRecibidas = salidas.find()
+        flash('')
+        return render_template('HOME/home.html', titulo = titulo, entradasTotales=entradasTotales, salidasTotales=salidasTotales, entradasRecibidas=entradasRecibidas, 
+        salidasRecibidas=salidasRecibidas, transportistaTotales=transportistaTotales, sellerTotales=sellerTotales)
+    elif 'usuario-empleado' in session:
+        return redirect('/')
 
 
+def Grafica():
+    entradasBD = BD['Entradas']
+    salidasBD = BD['Salidas']
+    entradasTotales = entradasBD.count_documents({})
+    salidasTotales = salidasBD.count_documents({})
 
+    entradasSalidasTotales = entradasTotales + salidasTotales
+
+    todo={
+        'entradas': [entradasTotales],
+        'salidas':[salidasTotales]
+    }
+    return todo

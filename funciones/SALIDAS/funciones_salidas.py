@@ -36,15 +36,18 @@ def agregarSalidas():
         CategoriasBD = BD['Categoria']
         CategoriasRecibidas = CategoriasBD.find()
         #Agregacion de distribuidor*  dentro de SalidAa
-        distribuidorBD = BD['Distribuidor']
+        distribuidorBD = BD['Seller']
         distribuidorRecibido = distribuidorBD.find()
+        #Agregacion de transportista*  dentro de SalidAa
+        transportistaBD = BD['Transportista']
+        transportistaRecibido = transportistaBD.find()
         #Agregacion de entradas->Productos*  dentro de Salidas
         entradaBD = BD['Entradas']
         entradasRecibidas = entradaBD.find()
     #Consulta de Salidas
         salidasBD = BD['Salidas']
         salidasRecibidas = salidasBD.find()
-        return render_template('SALIDAS/agregarSalidas.html', titulo=titulo, salidasRecibidas=salidasRecibidas, CategoriasRecibidas=CategoriasRecibidas, distribuidorRecibido=distribuidorRecibido, entradasRecibidas=entradasRecibidas)
+        return render_template('SALIDAS/agregarSalidas.html', titulo=titulo, salidasRecibidas=salidasRecibidas, CategoriasRecibidas=CategoriasRecibidas, distribuidorRecibido=distribuidorRecibido, entradasRecibidas=entradasRecibidas, transportistaRecibido=transportistaRecibido)
         
 
 #FUNCION AGREGAR SALIDAS *FORMULARIO*
@@ -58,6 +61,7 @@ def agregarNuevasSalidas():
         categoria = request.form["categoria"]
         cantidad = request.form["cantidad"]
         distribuidor = request.form["distribuidor"]
+        transportista = request.form['transportista']
         unidad = request.form["unidad"]
         placas = request.form["placas"]
         operador = request.form["operador"]
@@ -71,8 +75,8 @@ def agregarNuevasSalidas():
         identificador = Aleatorio
         print(identificador)
 
-        if identificador and fecha and  tipoProducto and nombreProducto  and categoria and cantidad  and distribuidor and unidad and placas and operador :
-            salidas = Salidas(identificador,fecha, tipoProducto,nombreProducto,categoria,cantidad, distribuidor,unidad,placas, operador)
+        if identificador and fecha and  tipoProducto and nombreProducto  and categoria and cantidad  and distribuidor and transportista and unidad and placas and operador :
+            salidas = Salidas(identificador,fecha, tipoProducto,nombreProducto,categoria,cantidad, distribuidor,transportista,unidad,placas, operador)
             salidasBD.insert_one(salidas.datosSalidasJson())
             #Si se inserta nos llevara a la tabla para consultar 
             return redirect('/salidas')
@@ -93,11 +97,14 @@ def editarInfoSalidas(key):
         CategoriasBD = BD['Categoria']
         CategoriasRecibidas = CategoriasBD.find()
         #Agregacion de distribuidor*  dentro de SalidAa
-        distribuidorBD = BD['Distribuidor']
+        distribuidorBD = BD['Seller']
         distribuidorRecibido = distribuidorBD.find()
+        #Agregacion de transportista*  dentro de SalidAa
+        transportistaBD = BD['Transportista']
+        transportistaRecibido = transportistaBD.find()
 
         salidasRecibidas = salidasBD.find_one({'identificador':key})
-        return render_template('SALIDAS/actualizarSalidas.html', titulo=titulo, salidasRecibidas=salidasRecibidas, entradasRecibidas=entradasRecibidas, CategoriasRecibidas=CategoriasRecibidas, distribuidorRecibido=distribuidorRecibido)
+        return render_template('SALIDAS/actualizarSalidas.html', titulo=titulo, salidasRecibidas=salidasRecibidas, entradasRecibidas=entradasRecibidas, CategoriasRecibidas=CategoriasRecibidas, distribuidorRecibido=distribuidorRecibido, transportistaRecibido=transportistaRecibido)
         
     elif 'usuario-provedor' in session:
         return redirect('/')

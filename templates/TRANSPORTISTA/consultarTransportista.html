@@ -20,17 +20,17 @@
             <section class="container mt-4">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="card-title"><i class="fas fa-solid fa-truck-loading">
-                                <font face="Castellar"> SELLER
+                        <h1 class="card-title"><i class="fas fa-solid fa-shipping-fast">
+                                <font face="Castellar"> TRANSPORTISTA
                             </i></font>
                         </h1>
                     </div>
                     <!-- AGREGAR -->
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <!--Se pone la ruta de la vista donde se agregara-->
-                        <a href="ingresar-distribuidor" class="nav-link">
+                        <a href="ingresar-transportista" class="nav-link">
                             <button type="submit" class="btn btn-outline-warning"><i class="fas fa-solid fa-plus">
-                                    Nuevo Seller</i></button> </a>
+                                    Nuevo Transportista</i></button> </a>
                     </div>
                     <!--Se pone la tabla-->
                     <div class="card-body">
@@ -40,15 +40,22 @@
                                     <th><i class="fas fa-hashtag">
                                             <font face="Century"> Identificador </font>
                                         </i></th>
-                                    <th><i class="fas fa-truck-loading">
-                                            <font face="Calibri"> Seller </font>
+                                    <th><i class="fas fa-user-circle">
+                                            <font face="Calibri"> Nombre Completo </font>
                                         </i></th>
-                                    <th><i class="fas fa-map-marker-alt">
-                                            <font face="Calibri"> Dirrecion </font>
+
+                                    <th><i class="fas fa-route">
+                                            <font face="Calibri"> Linea Transportista </font>
                                         </i></th>
+
+                                    <th><i class="fas fa-truck">
+                                            <font face="Calibri"> Tipología/Unidad </font>
+                                        </i></th>
+
                                     <th><i class="fas fa-phone">
                                             <font face="Calibri"> Telefono </font>
                                         </i></th>
+
                                     <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-tools nav-icon">
                                             <font face="Calibri">Acciones
                                         </i></font>
@@ -56,18 +63,19 @@
                                 </tr>
                             </thead>
                             <tbody <!-- Iteracion por cada dato encontrado -->
-                                {% for dato in distribuidorRecibido %} <!-- -->
+                                {% for dato in transportistaRecibido %} <!-- -->
                                 <tr>
                                     <td>{{dato.identificador}}</td>
                                     <td>{{dato.nombre}}</td>
-                                    <td>{{dato.direccion}}</td>
+                                    <td>{{dato.lineaTransportista}}</td>
+                                    <td>{{dato.unidad}}</td>
                                     <td>{{dato.telefono}}</td>
                                     <!-- se pone la funcion de que esta en la ruta, el key 'dato' junto con el ID  -->
                                     <td class="text-center"> <a
-                                            href="{{url_for('EditarDistribuidor', key=dato.identificador)}}"
+                                            href="{{url_for('editarTransportista', key=dato.identificador)}}"
                                             class="btn btn-outline-warning"> <i class="fas fa-edit nav-icon"></i> </a>
                                         <!--Boton Editar-->
-                                        <a href="{{url_for('EliminarDistribuidor', key=dato.identificador)}}"
+                                        <a href="{{url_for('EliminarTransportista', key=dato.identificador)}}"
                                             class="btn btn-outline-danger"><i
                                                 class="fas fa-solid fa-screwdriver fa-trash-alt nav-icon"></i> </a>
                                         <!--Boton Eliminar-->
@@ -80,15 +88,22 @@
                                     <th><i class="fas fa-hashtag">
                                         <font face="Century"> Identificador </font>
                                     </i></th>
-                                <th><i class="fas fa-truck-loading">
-                                        <font face="Calibri"> Seller </font>
+                                <th><i class="fas fa-user-circle">
+                                        <font face="Calibri"> Nombre Completo </font>
                                     </i></th>
-                                <th><i class="fas fa-map-marker-alt">
-                                        <font face="Calibri"> Dirrecion </font>
+
+                                <th><i class="fas fa-route">
+                                        <font face="Calibri"> Linea Transportista </font>
                                     </i></th>
+
+                                <th><i class="fas fa-truck">
+                                        <font face="Calibri"> Tipología/Unidad </font>
+                                    </i></th>
+
                                 <th><i class="fas fa-phone">
                                         <font face="Calibri"> Telefono </font>
                                     </i></th>
+
                                 <th class="text-center"><i class="fas fa-solid fa-screwdriver fa-tools nav-icon">
                                         <font face="Calibri">Acciones
                                     </i></font>

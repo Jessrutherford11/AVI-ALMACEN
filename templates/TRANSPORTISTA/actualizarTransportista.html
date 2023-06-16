@@ -24,21 +24,16 @@
                     <div class="col-md-11">
                         <div class="card">
                             <div class="card-header">
-                                <h1 class="card-title"><i class="fas fa-solid fa-dolly "> Actualizar
-                                        Seller</h1></i>
+                                <h1 class="card-title"><i class="fas fa-solid fa-shipping-fast "> Actualizar
+                                        Transportista</h1></i>
                             </div>
                             <!-- Profile Image -->
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <h3 class="profile-username text-center"><i class="fas fa-solid fa-dolly nav-icon"></i> {{ distribuidorRecibido.nombre}}
-
+                                    <img class="profile-user-img img-fluid img-circle"
+                                        src="{{url_for('static', filename='dist/img/imagenes-menu/conductor.png')}}">
+                                    <h3 class="profile-username text-center">{{ transportistaRecibido.nombre}}
                                     </h3>
-                                    <small>
-                                        <span class="text-muted">
-                                            Nombre Seller:
-                                        </span>
-                                    </small>
-                                    <h3> {{distribuidorRecibido.nombre}} </h3>
                                 </div>
                                 <div class="card text-center">
                                     <div class="card-body">
@@ -46,7 +41,7 @@
                                             <div class="col-md-4 text-center">
                                                 <div class="form-group">
                                                     <small>
-                                                        Seller:
+                                                        Nombre:
                                                         <!--Boton que activara el modal para modificar datos-->
                                                         <button type="button" data-toggle="modal" data-target="#nombre"
                                                             class="btn btn-xs btn-OpenEdit">
@@ -54,7 +49,7 @@
                                                         </button>
                                                     </small>
                                                     <!--Variable-->
-                                                    <p id="vtitle">{{ distribuidorRecibido.nombre}}
+                                                    <p id="vtitle">{{ transportistaRecibido.nombre}}
                                                         <span class="text-muted"></span>
                                                     </p>
                                                 </div>
@@ -62,13 +57,26 @@
                                             <div class="col-md-4 text-center">
                                                 <div class="form-group ">
                                                     <small>
-                                                        Direccion:
+                                                        Linea Transportista:
                                                         <button type="button" data-toggle="modal"
-                                                            data-target="#direccion" class="btn btn-xs btn-OpenEdit">
-                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                            data-target="#linea" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ distribuidorRecibido.direccion}}</p>
+                                                    <p id="vtitle">{{ transportistaRecibido.lineaTransportista}}</p>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 text-center">
+                                                <div class="form-group ">
+                                                    <small>
+                                                        Tipologia/Unidad:
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#unidad" class="btn btn-xs btn-OpenEdit">
+                                                            <i class="fa-solid fas fa-edit"></i>Editar
+                                                        </button>
+                                                    </small>
+                                                    <p id="vtitle">{{ transportistaRecibido.unidad}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -79,10 +87,10 @@
                                                         Telefono:
                                                         <button type="button" data-toggle="modal"
                                                             data-target="#telefono" class="btn btn-xs btn-OpenEdit">
-                                                            <i class="fa-solid fas fa-user-edit"></i>Editar
+                                                            <i class="fa-solid fas fa-edit"></i>Editar
                                                         </button>
                                                     </small>
-                                                    <p id="vtitle">{{ distribuidorRecibido.telefono}}</p>
+                                                    <p id="vtitle">{{ transportistaRecibido.telefono}}</p>
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
@@ -100,16 +108,16 @@
             <div class="modal fade" id="nombre">
                 <div class="modal-dialog">
                     <!--Se manda la funcion de app ruta, key del id de la busqueda  y en campo el  que se va actualizar. Junto con el metodo-->
-                    <form action="{{url_for('ActualizarDistribuidor', key=distribuidorRecibido.identificador, campo='nombre')}}" method="POST">
+                    <form action="{{url_for('ActualizarTransportista', key=transportistaRecibido.identificador, campo='nombre')}}" method="POST">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Editar Seller</h4>
+                                <h4 class="modal-title">Editar Nombre de Transportista</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <input class="form-control rounded-pill" placeholder="{{ distribuidorRecibido.nombre}}"
+                                <input class="form-control rounded-pill" placeholder="{{transportistaRecibido.nombre}}"
                                     type="text" name="dato">
                             </div>
                             <div class="modal-footer justify-content-between">
@@ -123,19 +131,19 @@
             </div>
         </div>
 
-        <!-- /.MODAL Direccion -->
-        <div class="modal fade" id="direccion">
+        <!-- /.MODAL LINEA TRANSPORTISTA -->
+        <div class="modal fade" id="linea">
             <div class="modal-dialog">
-                <form action="{{url_for('ActualizarDistribuidor', key=distribuidorRecibido.identificador, campo='direccion')}}" method="post">
+                <form action="{{url_for('ActualizarTransportista', key=transportistaRecibido.identificador, campo='lineaTransportista')}}" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Editar Direccion</h4>
+                            <h4 class="modal-title">Editar Linea Transportista</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control rounded-pill" placeholder="{{ distribuidorRecibido.direccion}}"
+                            <input class="form-control rounded-pill" placeholder="{{transportistaRecibido.lineaTransportista}}"
                                 type="text" name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -149,11 +157,43 @@
             </div>
         </div>
 
+            <!-- /.MODAL UNIDAD -->
+            <div class="modal fade" id="unidad">
+                <div class="modal-dialog">
+                    <form action="{{url_for('ActualizarTransportista', key=transportistaRecibido.identificador, campo='unidad')}}" method="post">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Tipologia/Unidad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label>Tipo de Unidad:</label>
+                                <select class="form-control" name="dato">
+                                    <option selected>Seleccione la Unidad</option>
+                                    <option>Moto</option>
+                                    <option>Sedan</option>
+                                    <option>Unidad 1.5</option>
+                                    <option>Unidad 3.5</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
+                                        class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                <button type="submit" class="btn btn-outline-success"><i
+                                        class="fa-solid fas fa-user-check"></i>Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
 
         <!-- /.MODAL TELEFONO -->
         <div class="modal fade" id="telefono">
             <div class="modal-dialog">
-                <form action="{{url_for('ActualizarDistribuidor', key=distribuidorRecibido.identificador, campo='telefono')}}" method="post">
+                <form action="{{url_for('ActualizarTransportista', key=transportistaRecibido.identificador, campo='telefono')}}" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Editar Telefono</h4>
@@ -163,7 +203,7 @@
                         </div>
                         <div class="modal-body">
                             <input class="form-control rounded-pill"
-                                placeholder="(Codigo de area) Numero  {{ distribuidorRecibido.telefono}}" type="tel"
+                                placeholder="(Codigo de area) Numero  {{transportistaRecibido.telefono}}" type="tel"
                                 name="dato">
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -177,7 +217,7 @@
             </div>
         </div>
         <div class="text-center">
-            <a href="/distribuidor" class="nav-link text-warning">
+            <a href="/transportista" class="nav-link text-warning">
                 <i class="far fa-clipboard"> Consultar Seller</i></a>
         </div>
     </div>
