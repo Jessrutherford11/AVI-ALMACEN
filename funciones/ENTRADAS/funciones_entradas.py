@@ -3,6 +3,10 @@ from data_base import baseDatos as ConecBD
 import random
 from forms.ENTRADAS.entradasForm import Entradas
 
+#
+import locale
+from time import gmtime, strftime
+
 #BD
 BD = ConecBD.conexion()
 
@@ -43,21 +47,23 @@ def agregarEntradas():
         entradasRecibidas = entradasBD.find()
         return render_template('ENTRADAS/agregarEntradas.html', titulo=titulo,  entradasRecibidas=entradasRecibidas, CategoriasRecibidas=CategoriasRecibidas, estanteRecibidos=estanteRecibidos, distribuidorRecibido=distribuidorRecibido)
 
+
 #FUNCION AGREGAR ENTRADAS *FORMULARIO*
 def agregarNuevaEntrada():
     if 'usuario-administrador' in session:
         entradasBD = BD['Entradas']
+        salidasCantidad = BD['Salidas']
         #
-        fecha = request.form["fecha"]
         nombreProducto = request.form["nombreProducto"]
         tipoProducto = request.form["tipoProducto"]
         descripcion = request.form["descripcion"]
-        cantidad = request.form["cantidad"]
+        stock = request.form["stock"] 
         categoria = request.form["categoria"]
         anaquel = request.form["anaquel"]
         distribuidor = request.form["distribuidor"]
         validacion = request.form["validacion"]
         observaciones = request.form["observaciones"]
+
         #ID´s aleatorio identificador
         identificadorE= str(random.randrange(200,8000,4))
         entrada =str('E')
@@ -68,7 +74,6 @@ def agregarNuevaEntrada():
         identificador = Aleatorio
         print(identificador)
 
-
         #ID CodigoProducto 
         codigoProductos = str(random.randint(100,8000))
         Unir = codigoProductos + nombreProducto
@@ -78,8 +83,21 @@ def agregarNuevaEntrada():
         codigoProducto = Aleatorio
         print(codigoProducto)
 
-        if identificador and fecha and codigoProducto and nombreProducto and tipoProducto and descripcion and cantidad and categoria and anaquel and distribuidor and validacion and observaciones:
-            entradas = Entradas(identificador,fecha,codigoProducto,nombreProducto,tipoProducto,descripcion,cantidad,categoria,anaquel,distribuidor,validacion,observaciones)
+        #FECHA Actual
+        locale.setlocale(locale.LC_ALL, "es")
+        """A-> Dia de la semana
+        d ->dia del mes
+        b ->Abrebacion de mes
+        Y -> Año
+        H : M -> Hora y minuto
+        """ 
+        fecha = strftime("%A  %d de %b de %Y a las %H:%M")
+        print(fecha)
+        
+
+
+        if identificador and fecha and codigoProducto and nombreProducto and tipoProducto and descripcion and stock and categoria and anaquel and distribuidor and validacion and observaciones:
+            entradas = Entradas(identificador,fecha,codigoProducto,nombreProducto,tipoProducto,descripcion,stock,categoria,anaquel,distribuidor,validacion,observaciones)
             entradasBD.insert_one(entradas.datosEntradasJson())
             #Si se inserta nos llevara a la tabla para consultar 
             return redirect('/entradas')

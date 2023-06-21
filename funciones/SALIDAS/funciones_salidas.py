@@ -3,6 +3,9 @@ from data_base import baseDatos as ConecBD
 import random
 from forms.SALIDAS.salidasForm import Salidas
 
+import locale
+from time import gmtime, strftime
+
 #BD
 BD = ConecBD.conexion()
 
@@ -53,18 +56,20 @@ def agregarSalidas():
 #FUNCION AGREGAR SALIDAS *FORMULARIO*
 def agregarNuevasSalidas():
     if 'usuario-administrador' in session:
+        #Consulta
         salidasBD = BD['Salidas']
-        #
-        fecha = request.form["fecha"]
+        #Busca el ID de entradas
         tipoProducto = request.form["tipoProducto"]
         nombreProducto = request.form["nombreProducto"]
         categoria = request.form["categoria"]
         cantidad = request.form["cantidad"]
+        motivo = request.form["motivo"]
         distribuidor = request.form["distribuidor"]
         transportista = request.form['transportista']
         unidad = request.form["unidad"]
         placas = request.form["placas"]
         operador = request.form["operador"]
+        
         #ID´s aleatorio identificador
         identificadorS= str(random.randrange(400,9000,4))
         salida =str('S')
@@ -75,10 +80,42 @@ def agregarNuevasSalidas():
         identificador = Aleatorio
         print(identificador)
 
-        if identificador and fecha and  tipoProducto and nombreProducto  and categoria and cantidad  and distribuidor and transportista and unidad and placas and operador :
-            salidas = Salidas(identificador,fecha, tipoProducto,nombreProducto,categoria,cantidad, distribuidor,transportista,unidad,placas, operador)
+        #FECHA Actual
+        locale.setlocale(locale.LC_ALL, "es")
+        fecha = strftime("%A  %d de %b de %Y a las %H:%M")
+        print(fecha)
+
+        if identificador and fecha and  tipoProducto and nombreProducto  and categoria and cantidad and motivo and distribuidor and transportista and unidad and placas and operador :
+            salidas = Salidas(identificador,fecha, tipoProducto,nombreProducto,categoria,cantidad, motivo, distribuidor,transportista,unidad,placas, operador)
             salidasBD.insert_one(salidas.datosSalidasJson())
-            #Si se inserta nos llevara a la tabla para consultar 
+            #Si se inserta nos llevara a la tabla para consultar
+
+            #Consulta Entradas para 'stock'
+            entradasBD = BD['Entradas']
+            if nombreProducto and cantidad:
+                print("Hola cantidad dentro del if", cantidad)
+                print("Hola soy procuto dentro del if", nombreProducto)
+                #Se parcea cantidad
+                cantidad = str(cantidad)
+                """
+                Sa va actualizar el nombreProd, 
+                se va poner en el campo stock lo que se pone en cantidad
+                """
+                #Resta cantidad con el stock
+                for d in entradasBD.find():
+                    print (d)
+
+
+
+
+
+
+
+                entradasBD.update_one({'nombreProducto': nombreProducto}, {'$set':{'stock':cantidad}})
+                
+
+                
+
             return redirect('/salidas')
         
     elif 'usuario-provedor' in session:

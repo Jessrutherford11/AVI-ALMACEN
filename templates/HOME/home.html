@@ -54,7 +54,7 @@
                     <div class="col-md-8">
                         <div class="card card-outline card-dark">
                             <div class="card-header">
-                                <h3 class="card-title">Reporte de entradas/salidas</h3>
+                                <h3 class="card-title"><i class="fa fa-chart-bar">   Reporte de entradas/salidas</h3></i>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -166,12 +166,11 @@
                         <div class="card">
                             <div class="card-header border-transparent">
                                 <h3 class="card-title">
-                                    <font face="Century">Entrada Productos </font>
+                                    <font face="Century">Productos con stock minimo </font>
                                 </h3>
 
                                 <div class="card-tools">
-                                    <!-- -->
-                                    <span class="badge badge-success"> {{entradasTotales}} Productos Nuevos</span>
+                                    <span class="badge badge-danger">{{entradasTotales}} </span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
@@ -183,21 +182,23 @@
                                     <table class="table m-0 table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Entrada ID</th>
-                                                <th>Fecha y Hora</th>
                                                 <th>Producto</th>
-                                                <th>Cantidad</th>
                                                 <th>Tipo Producto</th>
+                                                <th>Categoria</th>
+                                                <th>Seller</th>
+                                                <th>Cantidad Actual</th>
+                                                <th>Cantidad Minima</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for dato in entradasRecibidas %}
                                             <tr>
-                                                <td>{{dato.identificador}}</td>
-                                                <td>{{dato.fecha}}</td>
                                                 <td>{{dato.nombreProducto}}</td>
-                                                <td>{{dato.cantidad}}</td>
-                                                <td class="text-primary text-center">{{dato.tipoProducto}}</td>
+                                                <td>{{dato.tipoProducto}}</td>
+                                                <td>{{dato.categoria}}</td>
+                                                <td>{{dato.distribuidor}}</td>
+                                                <td class="text-success text-center">{{dato.cantidad}}</td>
+                                                <td class="text-danger text-center">{{dato.cantidad}}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -223,7 +224,7 @@
                         <div class="card">
                             <div class="card-header border-transparent">
                                 <h3 class="card-title">
-                                    <font face="Century"> Salida Productos </font>
+                                    <font face="Century"> Ultimas Salidas </font>
                                 </h3>
 
                                 <div class="card-tools">
@@ -238,10 +239,10 @@
                                     <table class="table m-0 table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Salida ID</th>
+                                                <th>ID Salida</th>
                                                 <th>Fecha y Hora</th>
                                                 <th>Producto</th>
-                                                <th>Cantidad</th>
+                                                <th>Cantidad que salio</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -250,7 +251,7 @@
                                                 <td>{{dato.identificador}}</td>
                                                 <td>{{dato.fecha}}</td>
                                                 <td>{{dato.nombreProducto}}</td>
-                                                <td>{{dato.cantidad}}</td>
+                                                <td class="text-success text-center">{{dato.cantidad}}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>

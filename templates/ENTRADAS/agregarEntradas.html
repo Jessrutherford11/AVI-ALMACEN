@@ -30,26 +30,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <!--FECHA Y HORA-->
-                                    <!-- Date and time -->
-                                    <div class="form-group">
-                                        <label>
-                                            <font face="Century">Fecha y hora de registro:
-                                        </label></font>
-                                        <div class="input-group date" id="reservationdatetime"
-                                            data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input"
-                                                data-target="#reservationdatetime"
-                                                placeholder="Dar click en el icono de la derecha. mm/dd/yyyy 00:00"
-                                                name="fecha" />
-                                            <div class="input-group-append" data-target="#reservationdatetime"
-                                                data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
+                                    <!--FECHA-->
+                        
                                     <!--NOMBRE PRODUCTO-->
                                     <div class="form-group">
                                         <label>
@@ -72,7 +54,7 @@
                                             <span class="input-group-text" id="basic-addon1"><i
                                                     class="fas fa-box-open"></i></span>
                                             <select class="form-control" name="tipoProducto">
-                                                <option selected>Selecciona el tipo de Producto</option>
+                                                <option selected disabled>Selecciona el tipo de Producto</option>
                                                 <option>INTERNO</option>
                                                 <option>EXTERNO</option>
                                             </select>
@@ -94,12 +76,12 @@
                                     <!-- CANTIDAD -->
                                     <div class="form-group">
                                         <label>
-                                            <font face="Century">Cantidad
+                                            <font face="Century">Stock
                                         </label></font>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1"><i
                                                     class="fas fa-calendar-plus"></i></span>
-                                            <input type="number" class="form-control" name="cantidad" required>
+                                            <input type="number" class="form-control" name="stock" required>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +99,7 @@
                                                     class="fas fa-boxes"></i></span>
                                             <select class="form-control" name="categoria">
                                                 <!-- for CATEGORIA se itera para que aparezcan en productos-->
-                                                <option selected>Selecciona la categoria</option>
+                                                <option selected disabled >Selecciona la categoria</option>
                                                 {% for dato in CategoriasRecibidas %}
                                                 <option value="{{dato.nombreCategoria}}">{{dato.nombreCategoria}}</option>                                              </option>
                                                 {% endfor %}
@@ -135,7 +117,7 @@
                                                     class="fas fa-people-carry"></i></span>
                                             <select class="form-control" name="anaquel">
                                                 <!-- for ESTANTE se itera para que aparezcan en productos-->
-                                                <option selected>Selecciona el estante</option>
+                                                <option selected disabled>Selecciona el estante</option>
                                                 {% for dato in estanteRecibidos %}<!--  -->
                                                 <option value="{{dato.nombreAnaquel}}">{{dato.nombreAnaquel}}</option>
                                                 </option>
@@ -154,7 +136,7 @@
                                                     class="fas fa-truck-loading"></i></span>
                                             <select class="form-control" name="distribuidor">
                                                 <!-- for DISTRIBUIDORse itera para que aparezcan en ENTRADAS-->
-                                                <option selected>Selecciona el distribuidor</option>
+                                                <option selected disabled>Selecciona el distribuidor</option>
                                                 {% for dato in distribuidorRecibido %}
                                                 <option value="{{dato.nombre}}">{{dato.nombre}}</option>                                              </option>
                                                 {% endfor %}
@@ -239,14 +221,5 @@
         <!--Sripts-->
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
-    <script>
-        $(function () {
-            //Date and time picker
-            $('#reservationdatetime').datetimepicker({ 
-                format:'Y/dd/mm',
-                icons: { time: 'far fa-clock' }
-            });
-        })
-    </script>
 </body>
 </html>

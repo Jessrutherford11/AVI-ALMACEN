@@ -224,12 +224,6 @@ def EliminarTransportista(key):
 
 
 
-
-
-
-
-
-
 #********************FUNCIONES PROVEDORES***********************
 
 #FUNCION DE VISTA PROVEDOR. 

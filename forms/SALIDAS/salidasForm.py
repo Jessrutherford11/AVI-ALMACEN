@@ -1,11 +1,12 @@
 class Salidas():
-    def __init__(self, identificador, fecha, tipoProducto, nombreProducto, categoria, cantidad, distribuidor, transportista, unidad, placas, operador ):
+    def __init__(self, identificador, fecha, tipoProducto, nombreProducto, categoria, cantidad, motivo, distribuidor, transportista, unidad, placas, operador ):
         self.identificador = identificador
         self.fecha = fecha
         self.tipoProducto = tipoProducto
         self.nombreProducto = nombreProducto
         self.categoria = categoria
         self.cantidad = cantidad
+        self.motivo = motivo
         self.distribuidor = distribuidor
         self.transportista = transportista
         self.unidad = unidad
@@ -21,6 +22,7 @@ class Salidas():
             "nombreProducto" : self.nombreProducto,         
             "categoria" : self.categoria,
             "cantidad": self.cantidad,
+            "motivo": self.motivo,
             "distribuidor":self.distribuidor,
             "transportista":self.transportista,
             "unidad": self.unidad,

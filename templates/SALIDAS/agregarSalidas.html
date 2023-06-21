@@ -30,25 +30,6 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <!--FECHA Y HORA-->
-                                    <!-- Date and time -->
-                                    <div class="form-group">
-                                        <label>
-                                            <font face="Century">Fecha y hora de salida:
-                                        </label></font>
-                                        <div class="input-group date" id="reservationdatetime"
-                                            data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input"
-                                                data-target="#reservationdatetime"
-                                                placeholder="Dar click en el icono de la derecha. dd/mm/yyyy 00:00"
-                                                name="fecha" />
-                                            <div class="input-group-append" data-target="#reservationdatetime"
-                                                data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <!-- TIPO PRODCUTO. 
                                     INTERNO O EXTERNO -->
                                     <div class="form-group">
@@ -59,6 +40,8 @@
                                             <span class="input-group-text" id="basic-addon1"><i
                                                     class="fas fa-box-open"></i></span>
                                             <select class="form-control" name="tipoProducto">
+                                                
+                                                <option selected disabled>Selecciona el Tipo producto</option>
                                                 <option>
                                                     INTERNO
                                                 </option>
@@ -79,7 +62,7 @@
                                                     class="fas fa-boxes"></i></span>
                                             <select class="form-control" name="nombreProducto">
                                                 <!-- for PRODUCTO se itera para que aparezcan en productos-->
-                                                <option selected>Selecciona el producto</option>
+                                                <option selected disabled>Selecciona el producto</option>
                                                 {% for dato in entradasRecibidas %}
                                                 <option value="{{dato.nombreProducto}}">{{dato.nombreProducto}}</option>
                                                 </option>
@@ -97,7 +80,7 @@
                                                     class="fas fa-boxes"></i></span>
                                             <select class="form-control" name="categoria">
                                                 <!-- for CATEGORIA se itera para que aparezcan en productos-->
-                                                <option selected>Selecciona la categoria</option>
+                                                <option selected disabled>Selecciona la categoria</option>
                                                 {% for dato in CategoriasRecibidas %}
                                                 <option value="{{dato.nombreCategoria}}">{{dato.nombreCategoria}}
                                                 </option>
@@ -118,6 +101,18 @@
                                             <input type="number" class="form-control" name="cantidad" required>
                                         </div>
                                     </div>
+
+                                    <!-- MOTIVO -->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Motivo de salida
+                                        </label></font>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><i
+                                                    class="fas fa-list"></i></span>
+                                                    <textarea class="form-control" rows="2" name="motivo"></textarea required>
+                                        </div>
+                                    </div>
                                 </div>
 
 
@@ -133,7 +128,7 @@
                                                     class="fas fa-truck-loading"></i></span>
                                             <select class="form-control" name="distribuidor">
                                                 <!-- for DISTRIBUIDORse itera para que aparezcan en ENTRADAS-->
-                                                <option selected>Selecciona el seller</option>
+                                                <option selected disabled>Selecciona el seller</option>
                                                 {% for dato in distribuidorRecibido %}
                                                 <option value="{{dato.nombre}}">{{dato.nombre}}</option>
                                                 </option>
@@ -152,7 +147,7 @@
                                                     class="fas fa-shipping-fast"></i></span>
                                             <select class="form-control" name="transportista">
                                                 <!-- for DISTRIBUIDORse itera para que aparezcan en ENTRADAS-->
-                                                <option selected>Selecciona el transportista</option>
+                                                <option selected disabled>Selecciona el transportista</option>
                                                 {% for dato in transportistaRecibido %}
                                                 <option value="{{dato.nombre}}">{{dato.nombre}}</option>
                                                 </option>
@@ -171,7 +166,7 @@
                                                     class="fas fa-truck"></i></span>
                                             <select class="form-control" name="unidad">
                                                 <!-- for UNIDAD se itera para que aparezcan en SALIDAS-->
-                                                <option selected>Selecciona la Unidad</option>
+                                                <option selected disabled>Selecciona la Unidad</option>
                                                 <option>Motos</option>
                                                 <option>Sedan</option>
                                                 <option>Unidad 1.5</option>
@@ -227,13 +222,6 @@
         <!--Sripts-->
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
-    <!--FUNCION PARA FECHA Y HORA-->
-    <script>
-        $(function () {
-            //Date and time picker
-            $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
-        })
-    </script>
 
     <!--FUNCION MAYUSCULAS-->
     <script type="text/javascript">

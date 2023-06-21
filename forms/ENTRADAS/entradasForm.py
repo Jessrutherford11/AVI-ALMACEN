@@ -1,12 +1,12 @@
 class Entradas:
-    def __init__(self, identificador, fecha, codigoProducto, nombreProducto, tipoProducto, descripcion, cantidad, categoria, anaquel, distribuidor, validacion,observaciones):
+    def __init__(self, identificador, fecha, codigoProducto, nombreProducto, tipoProducto, descripcion, stock, categoria, anaquel, distribuidor, validacion,observaciones):
         self.identificador = identificador
         self.fecha = fecha
         self.codigoProducto = codigoProducto
         self.nombreProducto = nombreProducto
         self.tipoProducto = tipoProducto
         self.descripcion = descripcion
-        self.cantidad = cantidad
+        self.stock = stock
         self.cateoria = categoria
         self.anaquel = anaquel
         self.distribuidor = distribuidor
@@ -22,7 +22,7 @@ class Entradas:
             "nombreProducto" : self.nombreProducto,
             "tipoProducto": self.tipoProducto,
             "descripcion" : self.descripcion,
-            "cantidad" : self.cantidad,
+            "stock" : self.stock,
             "categoria": self.cateoria,
             "anaquel": self.anaquel,
             "distribuidor":self.distribuidor,
