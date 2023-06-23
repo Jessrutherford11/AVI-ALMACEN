@@ -17,7 +17,6 @@ def home():
         sellerTotales = seller.count_documents({})
         entradasRecibidas = entradas.find()
         salidasRecibidas = salidas.find()
-        flash('')
         return render_template('HOME/home.html', titulo = titulo, entradasTotales=entradasTotales, salidasTotales=salidasTotales, entradasRecibidas=entradasRecibidas, 
         salidasRecibidas=salidasRecibidas, transportistaTotales=transportistaTotales, sellerTotales=sellerTotales)
     elif 'usuario-empleado' in session:

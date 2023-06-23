@@ -22,7 +22,7 @@
             Swal.fire({
                 position: "top",
                 icon: "success",
-                title: "BIENVENIDO",
+                title: "{{message}}",
                 showConfirmButton: false,
                 timer: 1500,
             });
@@ -69,8 +69,6 @@
                             </div>
                             <div class="card-footer">
                                 <div class="row">
-                                    <div class="col-sm-3 col-6">
-                                    </div>
                                     <!-- /.col -->
                                     <div class="col-sm-3 col-6">
                                         <div class="description-block border-right">
@@ -197,7 +195,7 @@
                                                 <td>{{dato.tipoProducto}}</td>
                                                 <td>{{dato.categoria}}</td>
                                                 <td>{{dato.distribuidor}}</td>
-                                                <td class="text-success text-center">{{dato.cantidad}}</td>
+                                                <td><span class="text-success text-center">{{dato.cantidad}}</td></span>
                                                 <td class="text-danger text-center">{{dato.cantidad}}</td>
                                             </tr>
                                             {% endfor %}
@@ -251,7 +249,7 @@
                                                 <td>{{dato.identificador}}</td>
                                                 <td>{{dato.fecha}}</td>
                                                 <td>{{dato.nombreProducto}}</td>
-                                                <td class="text-success text-center">{{dato.cantidad}}</td>
+                                                <td><span class="text-success text-center">{{dato.cantidad}}</td></span>
                                             </tr>
                                             {% endfor %}
                                         </tbody>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/logo.png')}}" alt="LOGO"
+                height="80" width="80" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+        <!--CONTENIDO-->
+        <div class="content-wrapper">
+            <div class="container-fluid mt-4"> <!--fluid. Ocupe todo el espacio en la pantalla-->
+                <!--CARD-->
+                <div class="card card-outline card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa fa-bullhorn"> Notificaciones de stock minimo </i></h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- small box ENTRADAS-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a class="btn btn-app">
+                                    <span class="badge bg-warning">3</span>
+                                    <i class="fas fa-bullhorn"></i> Notifications
+                                </a>
+
+
+                                <a class="btn btn-app bg-warning">
+                                    <span class="badge bg-info">12</span>
+                                    <i class="fas fa-envelope"></i> Inbox
+                                </a>
+                            </div>
+
+                            <!-- small box SALIDAS-->
+                            <div class="col-md-4">
+                                <div class="info-box mb-3">
+                                    <span class="info-box-icon bg-gradient-teal elevation-3"><i
+                                            class="fas fa-sign-out-alt"></i></span>
+                                    <div class="info-box-content">
+                                        <h5 class="info-box-text">Salidas</h5>
+                                        <span class="info-box-number">{{salidasTotales}}</span>
+                                        <span class="progress-description">
+                                            Salidas Totales: {{salidasTotales}}
+                                            <!-- Variable que se ira incremetando-->
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+
+        <!--Side - bar control-->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    </div><!--wapperAjuste-->
+</body>
+
+</html>

@@ -29,7 +29,9 @@ def inicioSesionAdminis():
                 session['usuario-administrador'] = userRecibido['email']
                 #En sesion se guarda una variable que sera nomnbre. 
                 session['nombre'] = userRecibido['name']
+                print(session)
                 usuario = True
+                flash('Bienvendio:'+session['nombre'] )
                 session.pop('usuario-proveedor',None)
                 return redirect('/home')    
             elif(check_password_hash(userRecibido['contraseña'],password)==False):
@@ -57,12 +59,6 @@ def proteccionRutas():
     #Si empieza con 'static' no entra. 
     elif not 'usuario-proveedor' in session and ruta!="/" and ruta!="/login" and ruta!= "/iniciarsesion" and not ruta.startswith("/static"):
         flash('Inicia sesion para continuar')
-
-
-
-
-
-
 
 
 #FFUNCION CERRAR SESION

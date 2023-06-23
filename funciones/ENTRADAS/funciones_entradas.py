@@ -18,7 +18,6 @@ def vistaEntrada():
         entradasRecibidas = entradasBD.find()
         return render_template('ENTRADAS/entradas.html', titulo=titulo, entradasRecibidas=entradasRecibidas)
 
-
 #FUNCION *VISTA* CONSULTA OPERACIONES ENTRADAS
 def operacionesEntradas():
     if 'usuario-administrador' in session:
@@ -72,7 +71,7 @@ def agregarNuevaEntrada():
         Extencion = random.sample(Unir,Longi)
         Aleatorio = "".join(Extencion)
         identificador = Aleatorio
-        print(identificador)
+        #print(identificador)
 
         #ID CodigoProducto 
         codigoProductos = str(random.randint(100,8000))
@@ -81,7 +80,7 @@ def agregarNuevaEntrada():
         Extencion = random.sample(Unir,Longitud)
         Aleatorio = "".join(Extencion)
         codigoProducto = Aleatorio
-        print(codigoProducto)
+        #print(codigoProducto)
 
         #FECHA Actual
         locale.setlocale(locale.LC_ALL, "es")
@@ -92,16 +91,12 @@ def agregarNuevaEntrada():
         H : M -> Hora y minuto
         """ 
         fecha = strftime("%A  %d de %b de %Y a las %H:%M")
-        print(fecha)
-        
-
-
+        #print(fecha)
         if identificador and fecha and codigoProducto and nombreProducto and tipoProducto and descripcion and stock and categoria and anaquel and distribuidor and validacion and observaciones:
             entradas = Entradas(identificador,fecha,codigoProducto,nombreProducto,tipoProducto,descripcion,stock,categoria,anaquel,distribuidor,validacion,observaciones)
             entradasBD.insert_one(entradas.datosEntradasJson())
             #Si se inserta nos llevara a la tabla para consultar 
             return redirect('/entradas')
-        
     elif 'usuario-provedor' in session:
         return redirect('/')
     

@@ -15,6 +15,7 @@ import funciones.DISTRIBUIDOR.funciones_distribuidor as fun_distribuidor
 import funciones.TRANSPORTISTA.funciones_transportista as fun_transpor
 import funciones.ENTRADAS.funciones_entradas as fun_entradas
 import funciones.SALIDAS.funciones_salidas as fun_salidas
+import funciones.NOTIFICACIONES.funcionesNotificaciones as fun_notifi
 
 app = Flask(__name__)
 
@@ -378,6 +379,16 @@ def actualizarSalida(key,campo):
 def eliminarSalida(key):
     return fun_salidas.eliminarSalidas(key)
 
+
+
+
+
+#********************FUNCIONES NOTIFICACIONES***********************
+
+#FUNCION DE VISTA NOTIFICACIONES. 
+@app.route('/notificaciones')
+def notificaciones():
+    return fun_notifi.vistaNoti()
 
 
 

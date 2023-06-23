@@ -92,15 +92,6 @@ def actualizarCliente(key,campo):
         return redirect('/')
         
 
-
-
-
-
-
-
-
-
-
 #ELIMINAR CLIENTES
 def eliminarCliente(key):
     if 'usuario-administrador' in session:
