@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, request
+from flask import Flask, render_template, session, redirect, request, flash
 from data_base import baseDatos as ConecBD
 import random
 from forms.ENTRADAS.entradasForm import Entradas
@@ -17,6 +17,7 @@ def vistaEntrada():
         entradasBD = BD['Entradas']
         entradasRecibidas = entradasBD.find()
         return render_template('ENTRADAS/entradas.html', titulo=titulo, entradasRecibidas=entradasRecibidas)
+
 
 #FUNCION *VISTA* CONSULTA OPERACIONES ENTRADAS
 def operacionesEntradas():
@@ -95,8 +96,9 @@ def agregarNuevaEntrada():
         if identificador and fecha and codigoProducto and nombreProducto and tipoProducto and descripcion and stock and categoria and anaquel and distribuidor and validacion and observaciones:
             entradas = Entradas(identificador,fecha,codigoProducto,nombreProducto,tipoProducto,descripcion,stock,categoria,anaquel,distribuidor,validacion,observaciones)
             entradasBD.insert_one(entradas.datosEntradasJson())
+            flash("Entrada Registrada Correcatente: " + nombreProducto)
             #Si se inserta nos llevara a la tabla para consultar 
-            return redirect('/entradas')
+        return redirect('/entradas')
     elif 'usuario-provedor' in session:
         return redirect('/')
     
@@ -132,6 +134,7 @@ def actualizarEntradas(key,campo):
         dato = request.form['dato']
         if dato:
             entradasBD.update_one({'identificador':key}, {'$set':{campo:dato}})
+            flash("Entrada Actualizada : " +key)
             return editarInfoEntrada(key)
         
     elif 'usuario-proveedor' in session:
@@ -144,6 +147,7 @@ def eliminarEntrada(key):
     if 'usuario-administrador' in session:
         entradasBD = BD['Entradas']
         entradasBD.delete_one({'identificador':key})
+        flash("Entrada Eliminada: " + key)
         return redirect('/operaciones-entradas')
     
     elif 'usuario-proveedor' in session:

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}" alt="LOGO"
+                height="80" width="80" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <!--Agregar. FORMULARIO -->
+                <div class="card card-success"><!---->
+                    <div class="card-header">
+                        <h5 class="card-title"><i class="fas fa-user-plus">
+                                <font face="Century"><strong> Agregar Usuario </strong>
+                            </i></font>
+                        </h5>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- FORMULARIO -->
+                    <form action="/agregar-usuarios" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6"><!-- -->
+                                    <!--NOMBRE-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Nombre
+                                        </label></font>
+                                        <div class="input-group mb-4"> <!---->
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="far fa-address-card"></i></span>
+                                            <input type="text" class="form-control" name="name"
+                                                placeholder="Nombre Completo" class="fas fa-user-circle"
+                                                aria-label="Username" aria-describedby="basic-addon1" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Contraseña
+                                        </label></font>
+                                        <div class="input-group mb-4">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="fas fa-lock"></i></span>
+                                            <input type="password" class="form-control" value="aviva" name="contraseña" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- /.col derecha-->
+                                <div class="col-md-6">
+                                    <!--CORREO-->
+                                    <div class="form-group">
+                                        <label>
+                                            <font face="Century">Correo Electronico
+                                        </label></font>
+                                        <div class="input-group mb-4">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="fas fa-envelope"></i></span>
+                                            <input type="email" class="form-control" name="email"
+                                                placeholder="example@.com.mx.outlok..." aria-label="Username"
+                                                aria-describedby="basic-addon1" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <div class="icon">
+                                        <button type="submit" class="btn btn-outline-success">
+                                            <i class="fa fa-solid fa-user-check"></i> Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <div class="text-center">
+                <a href="/usuarios" class="nav-link text-warning">
+                    <i class="far fa-clipboard"> Consultar Usuarios</i></a>
+            </div>
+        </div>
+
+
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'HOME/MODULOS/scripts.html' %}
+    </div>
+</body>
+
+</html>

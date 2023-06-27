@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, redirect, session, request
+from flask import Flask, render_template, redirect, session, request, flash
 #Genere numeros aleatorioas
 import random
 from data_base import baseDatos as Conecbd
@@ -42,6 +42,7 @@ def nuevaCategoria():
                 categoria = Categoria(codigo, nombreCategoria)
                 #Insercion de datos a la BD 
                 categoriasBD.insert_one(categoria.datosCategoriasJson())
+                flash("Categoria :  "  +  nombreCategoria  +  " Se Agrego Correctamente")
                 return redirect('/categorias')
         except Exception :
             print("error en el servidor")
@@ -69,6 +70,7 @@ def actualizarCategorias(key,campo):
         dato = request.form['dato']
         if dato:
             CategoriasBD.update_one({'codigo':key}, {'$set':{campo:dato}})
+            flash("Se Actualizo Correctamente: " + key)
             return informacionCategorias(key)
         
         elif 'usuario-proveedor' in session:
@@ -81,6 +83,7 @@ def eliminarCategoria(key):
     if 'usuario-administrador' in session:
         categoriasBD = BD['Categoria']
         categoriasBD.delete_one({'codigo':key})
+        flash("Se Elimino Correctamente: " + key)
         return redirect ('/categorias')
     
     elif 'usuario-proveedor' in session:

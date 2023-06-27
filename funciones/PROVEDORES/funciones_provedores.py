@@ -1,5 +1,5 @@
 
-from flask import render_template, redirect, session, request
+from flask import render_template, redirect, session, request, flash
 #Generacion numeros aleatorios
 import random
 #Conexion BD
@@ -17,8 +17,6 @@ def reporteProvedor():
         provedoresBD = BD['Provedores']
         provedoresRecibidos = provedoresBD.find()
         return render_template('PROVEDORES/consultaProveedores.html', titulo = titulo, provedoresRecibidos = provedoresRecibidos)
-
-
 
 
 #VISTA PROVEDORES
@@ -84,6 +82,7 @@ def nuevoProveedor():
             provedor = Proveedores(codigo, nombres, apellidos, edad, correo, telefono, direccion, empresa)
             #Insercion a la BD
             provedoresBD.insert_one(provedor.datosProveedoresJson())
+            flash(nombres  +  apellidos  +  "  agregado correctamente ")
             return redirect('provedores')
     
     elif 'usuario-proveedor' in session:
@@ -111,6 +110,7 @@ def actualizarProvedor(key,campo):
             #$-- set.poner lo que se manda a campo que tre dato(nombres)
             #Campo es el que se actualizara 
             ProveedoresBD.update_one({'codigo':key},{'$set':{campo:dato}})
+            flash("Se actualizo correctamente: " + key)
         #Se  retorna la funcion de la vista de arriba
         return informacionProvedor(key)
 
@@ -125,6 +125,7 @@ def eliminarProvedor(key):
         ProvedoresBD = BD ['Provedores']
         #Se pasa la key y el nombre de la variable
         ProvedoresBD.delete_one({'codigo':key})
+        flash("Se elimino correctamente: " + key)
         return redirect ('/provedores')
     
     elif 'usuario-provedor' in session:

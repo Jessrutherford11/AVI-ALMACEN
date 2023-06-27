@@ -16,7 +16,7 @@
         <!--Menu-->
         {% include 'HOME/MODULOS/menu.html' %}
 
-        <!-- *MENSAJE FLASHH *-->
+        <!-- *MENSAJE FLASHH* #INENTARIO INSUFICIENTE#-->
         {% with messages = get_flashed_messages() %} {% if messages %} {% for
         message in messages %}
         <!--Top-Start. ARRIBA IZQUIERDA 
@@ -32,6 +32,25 @@
             });
         </script>
         {% endfor %} {% endif %} {% endwith %}
+
+
+         <!-- *MENSAJE FLASHH ¡SALIDA AGREGADA! *-->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+            message in messages %}
+            <!--Top-Start. ARRIBA IZQUIERDA 
+                Top .INICIO EN MEDIO. 
+                Top-End. ESQUINA DERECHA-->
+            <script>
+                Swal.fire({
+                    position: "top",
+                    icon: "success",
+                    title: "{{message}}",
+                    showConfirmButton: false,
+                    timer: 2500,
+                });
+            </script>
+            {% endfor %} {% endif %} {% endwith %}
+
 
         <!--CONTENIDO- Para que no se rompa el diseño-->
         <div class="content-wrapper">

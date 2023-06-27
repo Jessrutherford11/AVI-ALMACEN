@@ -1,4 +1,4 @@
-from flask import Flask, render_template,redirect,session,request 
+from flask import Flask, render_template,redirect,session,request,flash
 import random
 from data_base import baseDatos as Conecbd
 from forms.CLIENTES.clientesForm import Clientes
@@ -54,13 +54,14 @@ def nuevoCliente():
         Extencion = random.sample(Unir,Longitud)
         Aleatorio = "".join(Extencion)
         codigo = Aleatorio
-        print(codigo)
+        #print(codigo)
 
 
         if codigo and nombres and apellidos and edad and correo and telefono and direccion and empresa:
             cliente = Clientes(codigo, nombres, apellidos, edad, correo, telefono, direccion, empresa)
             #Insercion a la BD
             ClientesBD.insert_one(cliente.datosClientesJson())
+            flash(nombres  +  apellidos  +  "  agregado correctamente ")
             return redirect('clientes')
     
     elif 'usuario-proveedor' in session:
@@ -85,7 +86,8 @@ def actualizarCliente(key,campo):
         ClientesBD = BD['Clientes']
         dato = request.form['dato']
         if dato:
-            ClientesBD.update_one({'codigo':key}, {'$set':{campo:dato}})
+            ClientesBD.update_one({'codigo':key}, {'$set':{campo:dato}})  
+        flash("Se actualizo correctamente: " + key)
         return informacionCliente(key)
 
     elif 'usuario-proveedor' in session:
@@ -97,6 +99,7 @@ def eliminarCliente(key):
     if 'usuario-administrador' in session:
         clientesBD = BD['Clientes']
         clientesBD.delete_one({'codigo':key})
+        flash("Se elimino correctamente: " + key)
         return redirect('/clientes')
 
     elif 'usuario-proveedor' in session:

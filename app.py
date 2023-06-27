@@ -16,6 +16,7 @@ import funciones.TRANSPORTISTA.funciones_transportista as fun_transpor
 import funciones.ENTRADAS.funciones_entradas as fun_entradas
 import funciones.SALIDAS.funciones_salidas as fun_salidas
 import funciones.NOTIFICACIONES.funcionesNotificaciones as fun_notifi
+import funciones.USUARIOS.funciones_usuarios as fun_users
 
 app = Flask(__name__)
 
@@ -40,7 +41,7 @@ def iniciarSesion():
     return fun_login.inicioSesionAdminis()
 
 
-#********************FUNCION HOME********************
+#********************FUNCIONES HOME********************
 
 #FUNCION DE HOME
 @app.route('/home')
@@ -51,6 +52,29 @@ def homePage():
 @app.route('/API')
 def apiChart():
     return fun_home.Grafica()
+
+
+#********************FUNCIONES USUARIOS********************
+#FUNCION *VISTA* USUARIOS
+@app.route('/usuarios')
+def vistaUsuario():
+    return fun_users.vistaUsuarios()
+
+#FUNCIO  *VISTA* AGREGAR USUARIO
+@app.route('/ingresar-usuarios')
+def ingresarUsuarios():
+    return fun_users.agregarUsuario()
+
+#FUNCION *FORMULARIO* AGRRERA NUEVO USUARIO
+@app.route('/agregar-usuarios', methods = ['POST'])
+def agregarNuevoUsuario():
+    return fun_users.nuevoUsuario()
+
+#FUNCION ELIMINAR USUARIO
+@app.route('/eliminar-usuario/ <key>')
+def eliminarUsuarios(key):
+    return fun_users.eliminarUsuario(key)
+
 
 
 #********************FUNCION PROTECCION RUTAS********************
@@ -390,7 +414,9 @@ def eliminarSalida(key):
 def notificaciones():
     return fun_notifi.vistaNoti()
 
-
+@app.route('/test')
+def test():
+    return fun_notifi.agregar()
 
 #****************************FUNCIONES REPORTES***************************
 @app.route('/reporte-cliente')

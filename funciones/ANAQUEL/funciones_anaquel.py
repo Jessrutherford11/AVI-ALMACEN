@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect,flash
 from data_base import baseDatos as ConectBD
 import random
 
@@ -34,6 +34,7 @@ def nuevoAnaquel():
         if identificador and nombreAnaquel:
             anaquel = Anaquel(identificador,nombreAnaquel)
             anaquelBD.insert_one(anaquel.datosAnaquelJson())
+            flash(nombreAnaquel  +  " se agrego correctamente")
             return redirect('anaqueles')
         
     elif 'usuario-proveedor' in session:
@@ -45,6 +46,7 @@ def eliminarAnaquel(key):
     if 'usuario-administrador' in session:
         anaquelBD = BD['anaquel']
         anaquelBD.delete_one({'identificador':key})
+        flash("Se elimino correctamente: " + key)
         return redirect('/anaqueles')
 
     elif 'usuario-proveedor' in session:
@@ -69,6 +71,7 @@ def actualizarAnaquel(key,campo):
         dato = request.form['dato']
         if dato:
             anaquelBD.update_one({'identificador':key}, {'$set':{campo:dato}})
+            flash("Se Actualizo Correctamente: "+ key)
             return informacionAnaquel(key)
         
         elif 'usuario-proveedor' in session:

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect,session, request
+from flask import Flask, render_template, redirect,session, request, flash
 import random
 from data_base import baseDatos as ConectBD
 from forms.DISTRIBUIDOR.distribuidorForm import Distribuidor
@@ -45,6 +45,7 @@ def agregarNuevoDistribuidor():
             distribuidor = Distribuidor(identificador, nombre, direccion,telefono)
             #INSERCION BD
             distribuidorBD.insert_one(distribuidor.datosDistribuidorJson())
+            flash(nombre  +  "  Agregado correctamnete ")
             return redirect('/distribuidor')
         
     elif 'usuario-proveedor' in session:
@@ -69,6 +70,7 @@ def actualizarDistribuidor(key,campo):
         dato = request.form['dato']
         if dato:
             distribuidorBD.update_one({'identificador':key}, {'$set':{campo:dato}})
+            flash("Se agrego correctamente: " + key)
             return informacionDistribuidor(key)
         
         elif 'usuario-proveedor' in session:
@@ -83,6 +85,7 @@ def eliminarDistribuidor(key):
     if 'usuario-administrador' in session:
         distribuidorBD = BD['Seller']
         distribuidorBD.delete_one({'identificador':key})
+        flash("Se elimino correctamente: " + key)
         return redirect('/distribuidor')
     
     elif 'usuario-proveedor' in session:

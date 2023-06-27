@@ -13,3 +13,15 @@ def vistaNoti():
         notifBD = BD['Notificaciones']
         notificacionesRecibidas = notifBD.find()
         return render_template('NOTIFICACIONES/noti.html', titulo=titulo, notificacionesRecibidas=notificacionesRecibidas)
+
+#INSERCION AUTOMATICA  
+def agregar():
+    if 'usuario-administrador' in session:
+        #consultar entradas
+        prueba = "si"
+        entrada = BD['Entradas']
+        filtro = {"stock":{"$lte":"25"}}
+        resultado = entrada.find(filtro)
+        for dato in resultado:
+            print(dato)
+        return prueba

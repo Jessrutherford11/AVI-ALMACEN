@@ -6,10 +6,11 @@ class Administrador:
         self.email = email
         self.contraseña = contraseña
 
+
     def datosAdministradorJson(self):
         return{
             'identificador': self.identificador,
+            'name' : self.name,
             'email' : self.email,
-            'contraseña' : self.contraseña,
-            'name' : self.name
+            'contraseña' : self.contraseña
         }

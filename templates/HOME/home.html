@@ -24,7 +24,7 @@
                 icon: "success",
                 title: "{{message}}",
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 2500,
             });
         </script>
         {% endfor %} {% endif %} {% endwith %}
@@ -184,7 +184,6 @@
                                                 <th>Tipo Producto</th>
                                                 <th>Categoria</th>
                                                 <th>Seller</th>
-                                                <th>Cantidad Actual</th>
                                                 <th>Cantidad Minima</th>
                                             </tr>
                                         </thead>
@@ -194,9 +193,9 @@
                                                 <td>{{dato.nombreProducto}}</td>
                                                 <td>{{dato.tipoProducto}}</td>
                                                 <td>{{dato.categoria}}</td>
-                                                <td>{{dato.distribuidor}}</td>
-                                                <td><span class="text-success text-center">{{dato.cantidad}}</td></span>
-                                                <td class="text-danger text-center">{{dato.cantidad}}</td>
+                                                <td>{{dato.distribuidor}}</td>                                           
+                                                <td class="text-danger text-center">{{dato.stock}}</td>
+                                            
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -226,6 +225,8 @@
                                 </h3>
 
                                 <div class="card-tools">
+                                    
+                                    <span class="badge badge-success">{{salidasTotales}} </span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>

@@ -3,7 +3,7 @@
 
 from flask import render_template, request,flash, session, redirect
 #Para contraseñas hash
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 from data_base import baseDatos as Conecbd
 

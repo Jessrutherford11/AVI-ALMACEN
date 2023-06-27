@@ -59,7 +59,7 @@ def agregarNuevasSalidas():
     if 'usuario-administrador' in session:
         #Consulta
         salidasBD = BD['Salidas']
-         #Consulta Entradas para 'stock'
+        #Consulta Entradas para 'stock'
         entradasBD = BD['Entradas']
         #Busca el ID de entradas
         tipoProducto = request.form["tipoProducto"]
@@ -93,7 +93,7 @@ def agregarNuevasSalidas():
             salidas = Salidas(identificador,fecha, tipoProducto,nombreProducto,categoria,cantidad, motivo, distribuidor,transportista,unidad,placas, operador)
             #Si hay datos dentro de las variables
             if nombreProducto and cantidad:
-                print("Producti seleccionado", nombreProducto)
+                #print("Producto seleccionado", nombreProducto)
                 #Se parcea cantidad
                 cantidad = str(cantidad)
                 #Quitar 'stock' de salida 
@@ -114,7 +114,8 @@ def agregarNuevasSalidas():
                 if stock > cantidad:
                     resultado = stock - cantidad
                     salidasBD.insert_one(salidas.datosSalidasJson())
-                    print("resultado es :", resultado)
+                    flash("Salida Registrada Correctamente: " + nombreProducto)
+                    #print("resultado es :", resultado)
                     entradasBD.update_one({'nombreProducto': nombreProducto}, {'$set':{'stock':resultado}})
                     
                 else:
@@ -158,6 +159,7 @@ def actualizarSalidas(key, campo):
         dato = request.form['dato']
         if dato:
             salidasBD.update_one({'identificador': key}, {'$set':{campo:dato}})
+            flash("Salida Actualizada: " +key)
             return editarInfoSalidas(key)
 
     elif 'usuario-provedor' in session:
@@ -171,6 +173,7 @@ def eliminarSalidas(key):
     if 'usuario-administrador' in session:
         salidasBD = BD ['Salidas']
         salidasBD.delete_one({'identificador':key})
+        flash("Salida Eliminada Correctamente: " +key)
         return redirect('/operaciones-salidas')
     
     elif 'usuario-provedor' in session:
