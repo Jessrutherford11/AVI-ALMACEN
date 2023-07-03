@@ -54,7 +54,7 @@
                     <div class="col-md-8">
                         <div class="card card-outline card-dark">
                             <div class="card-header">
-                                <h3 class="card-title"><i class="fa fa-chart-bar">   Reporte de entradas/salidas</h3></i>
+                                <h3 class="card-title"><i class="fa fa-chart-bar"> Reporte de entradas/salidas</h3></i>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -68,33 +68,32 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
-                                        <div class="description-block border-right">
-                                            <span class="description-percentage text-success"><i
-                                                    class="fas fa-caret-left"></i> </span>
-                                            <h5 class="description-header">{{entradasTotales}}</h5>
-                                            <span class="description-text">ENTRADAS TOTALES</span>
+                                <div class="text-center">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class="col-sm-6 col-6">
+                                            <div class="description-block border-right">
+                                                <span class="description-percentage text-success"><i
+                                                        class="fas fa-caret-left"></i> </span>
+                                                <h5 class="description-header">{{entradasTotales}}</h5>
+                                                <span class="description-text">ENTRADAS TOTALES</span>
+                                            </div>
+                                            <!-- /.description-block -->
                                         </div>
-                                        <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
-                                        <div class="description-block border-right">
-                                            <span class="description-percentage text-primary"><i
-                                                    class="fas fa-caret-right"></i> </span>
-                                            <h5 class="description-header">{{salidasTotales}}</h5>
-                                            <span class="description-text">SALIDAS TOTALES</span>
+                                        <!-- /.col -->
+                                        <div class="col-sm-6 col-6">
+                                            <div class="description-block border-right">
+                                                <span class="description-percentage text-primary"><i
+                                                        class="fas fa-caret-right"></i> </span>
+                                                <h5 class="description-header">{{salidasTotales}}</h5>
+                                                <span class="description-text">SALIDAS TOTALES</span>
+                                            </div>
+                                            <!-- /.description-block -->
                                         </div>
-                                        <!-- /.description-block -->
+                                        <!-- /.col -->
                                     </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
-                                        <!-- /.description-block -->
-                                    </div>
+                                    <!-- /.row -->
                                 </div>
-                                <!-- /.row -->
                             </div>
                             <!-- /.card-footer -->
                         </div>
@@ -193,9 +192,9 @@
                                                 <td>{{dato.nombreProducto}}</td>
                                                 <td>{{dato.tipoProducto}}</td>
                                                 <td>{{dato.categoria}}</td>
-                                                <td>{{dato.distribuidor}}</td>                                           
+                                                <td>{{dato.distribuidor}}</td>
                                                 <td class="text-danger text-center">{{dato.stock}}</td>
-                                            
+
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -225,7 +224,7 @@
                                 </h3>
 
                                 <div class="card-tools">
-                                    
+
                                     <span class="badge badge-success">{{salidasTotales}} </span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -250,7 +249,8 @@
                                                 <td>{{dato.identificador}}</td>
                                                 <td>{{dato.fecha}}</td>
                                                 <td>{{dato.nombreProducto}}</td>
-                                                <td><span class="text-success text-center">{{dato.cantidad}}</td></span>
+                                                <td><span class="text-success text-center">{{dato.cantidad}}</td>
+                                                </span>
                                             </tr>
                                             {% endfor %}
                                         </tbody>

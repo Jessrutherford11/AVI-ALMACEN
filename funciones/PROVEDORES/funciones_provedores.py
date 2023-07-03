@@ -83,7 +83,7 @@ def nuevoProveedor():
             #Insercion a la BD
             provedoresBD.insert_one(provedor.datosProveedoresJson())
             flash(nombres  +  apellidos  +  "  agregado correctamente ")
-            return redirect('provedores')
+            return redirect('proveedores')
     
     elif 'usuario-proveedor' in session:
         return redirect('/')
@@ -126,7 +126,7 @@ def eliminarProvedor(key):
         #Se pasa la key y el nombre de la variable
         ProvedoresBD.delete_one({'codigo':key})
         flash("Se elimino correctamente: " + key)
-        return redirect ('/provedores')
+        return redirect ('/proveedores')
     
     elif 'usuario-provedor' in session:
         return redirect ('/')

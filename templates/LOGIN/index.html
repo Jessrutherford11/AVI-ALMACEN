@@ -36,10 +36,12 @@
             <p class="Registrate"></p>
             <div class="input-field">
                 <i class="fas fa-envelope"></i>
+                Correo
                 <input type="email" name="email" placeholder="Correo">
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
+                Contraseña
                 <input type="password" name="contraseña" placeholder="Contraseña">
                 <input type="submit" value="Iniciar Sesion">
             </div>
@@ -51,13 +53,31 @@
             <script>
                 Swal.fire({
                     position: "top",
-                    icon: "warning",
+                    icon: "error",
                     title: "{{message}}",
                     showConfirmButton: false,
                     timer: 1500,
                 });
             </script>
             {% endfor %} {% endif %} {% endwith %}
+
+            <!---->
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for
+                message in messages %}
+                <!--Top-Start. ARRIBA IZQUIERDA 
+                    Top .INICIO EN MEDIO. 
+                    Top-End. ESQUINA DERECHA-->
+                <script>
+                    Swal.fire({
+                        position: "top",
+                        icon: "warning",
+                        title: "{{message}}",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                </script>
+                {% endfor %} {% endif %} {% endwith %}
+
         </form>
 
         <div class="welcome-back">

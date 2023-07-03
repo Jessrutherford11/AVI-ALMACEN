@@ -16,6 +16,24 @@
         <!--Menu-->
         {% include 'HOME/MODULOS/menu.html' %}
 
+        
+            <!-- *MENSAJE FLASHH Actualizar*-->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <!--Top-Start. ARRIBA IZQUIERDA 
+            Top .INICIO EN MEDIO. 
+            Top-End. ESQUINA DERECHA-->
+        <script>
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "{{message}}",
+                showConfirmButton: false,
+                timer: 3500,
+            });
+        </script>
+        {% endfor %} {% endif %} {% endwith %}
+
         <!-- CONTENIDO. 
         VISTA DONDE SE VIZUALIZA LOS DATOS -->
         <div class="content-wrapper">
@@ -341,7 +359,7 @@
             </div>
         </div>
         <div class="text-center">
-            <a href="/provedores" class="nav-link text-warning">
+            <a href="/proveedores" class="nav-link text-warning">
                 <i class="far fa-clipboard"> Consultar Proveedores</i></a>
             </div>
     </div>

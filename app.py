@@ -252,7 +252,7 @@ def EliminarTransportista(key):
 #********************FUNCIONES PROVEDORES***********************
 
 #FUNCION DE VISTA PROVEDOR. 
-@app.route('/provedores')
+@app.route('/proveedores')
 def provedores():
     return fun_prove.vistaProvedores()
 

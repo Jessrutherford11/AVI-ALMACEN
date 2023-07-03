@@ -40,7 +40,7 @@ def inicioSesionAdminis():
         elif usuario == False:
             flash('Error: El usuario no existe')   
             return redirect('/') 
-    flash('Por favor llene todos los campos')      
+    flash('Error: Por favor llene todos los campos')      
     return redirect('/') 
 
 

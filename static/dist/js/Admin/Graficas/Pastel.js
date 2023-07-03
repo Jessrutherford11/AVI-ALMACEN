@@ -26,6 +26,9 @@
                   data: [
                     data.entradas,
                     data.entradas,
+                    data.salidas,
+                    data.salidas,
+                    data.entradas,
                   ],
                   backgroundColor: [
                     'rgba(144, 238, 144, 0.5)',
@@ -37,7 +40,9 @@
                 },
                 { //valores
                   label: 'Salidas', //nombre de la barrita de arriba
-                  data: data.salidas, //Porcentaje de la barrita
+                  data:[ data.salidas, 
+                  data.salidas, //Porcentaje de la barrita
+                  ],
                   backgroundColor: [
                       'rgba(0, 250, 154, 0.3)',
                   ],
@@ -48,11 +53,6 @@
               }
               ],
             },
-
-            
-
-
-
             options: {
               scales: {
                 y: {
