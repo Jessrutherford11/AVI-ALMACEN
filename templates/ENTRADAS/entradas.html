@@ -33,6 +33,23 @@
             </script>
             {% endfor %} {% endif %} {% endwith %}
 
+             <!-- *MENSAJE FLASHH Agregar*-->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+            message in messages %}
+            <!--Top-Start. ARRIBA IZQUIERDA 
+                Top .INICIO EN MEDIO. 
+                Top-End. ESQUINA DERECHA-->
+            <script>
+                Swal.fire({
+                    position: "top",
+                    icon: "success",
+                    title: "{{message}}",
+                    showConfirmButton: false,
+                    timer: 3500,
+                });
+            </script>
+            {% endfor %} {% endif %} {% endwith %}
+
         <!--CONTENIDO- Para que no se rompa el diseño-->
         <div class="content-wrapper">
             <section class="content">
@@ -61,7 +78,7 @@
                                                 <th><i class="fas fa-solid fa-hashtag">
                                                         <font face="Calibri">Identificador</th></i></font>
                                                 <th><i class="fas fa-solid fa-calendar-alt">
-                                                        <font face="Calibri">Fecha</th></i></font>
+                                                        <font face="Calibri">Fecha y Hora</th></i></font>
                                                 <th><i class="fas fa-solid fa-barcode">
                                                         <font face="Calibri">Codigo Producto</th></i></font>
                                                 <th><i class="fas fa-solid fa-box">

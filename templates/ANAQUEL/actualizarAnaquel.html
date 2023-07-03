@@ -16,6 +16,24 @@
         <!--Menu-->
         {% include 'HOME/MODULOS/menu.html' %}
 
+
+        <!-- *MENSAJE FLASHH Actualizar*-->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <!--Top-Start. ARRIBA IZQUIERDA 
+            Top .INICIO EN MEDIO. 
+            Top-End. ESQUINA DERECHA-->
+        <script>
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "{{message}}",
+                showConfirmButton: false,
+                timer: 3500,
+            });
+        </script>
+        {% endfor %} {% endif %} {% endwith %}
+
         <!-- CONTENIDO. 
         VISTA DONDE SE VIZUALIZA LOS DATOS -->
         <div class="content-wrapper">
@@ -43,9 +61,8 @@
                                                     <small text-center>
                                                         Nombre Anaquel:
                                                         <!--Boton que activara el modal para modificar datos-->
-                                                        <button type="button" data-toggle="modal"
-                                                            data-target="#anaquel" data-bs-toggle="modal"
-                                                            class="btn btn-xs btn-OpenEdit">
+                                                        <button type="button" data-toggle="modal" data-target="#anaquel"
+                                                            data-bs-toggle="modal" class="btn btn-xs btn-OpenEdit">
                                                             <i class="fa-solid fas fa-edit"></i>Editar
                                                         </button>
                                                     </small text-center>
@@ -82,8 +99,8 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <input class="form-control rounded-pill"
-                                    placeholder="{{anaquelRecibido.nombreAnaquel}}" type="text" name="dato" required>
+                                <input class="form-control rounded-pill" placeholder="{{anaquelRecibido.nombreAnaquel}}"
+                                    type="text" name="dato" required>
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
@@ -100,7 +117,7 @@
                     <i class="far fa-clipboard"> Consultar Anaqueles</i></a>
             </div>
         </div>
-            
+
         <!--Pie de pagina-->
         {% include 'HOME/MODULOS/footer.html' %}
         <!--Side - bar control-->
@@ -109,4 +126,5 @@
         {% include 'HOME/MODULOS/scripts.html' %}
     </div>
 </body>
+
 </html>
