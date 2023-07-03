@@ -16,6 +16,23 @@
         <!--Menu-->
         {% include 'HOME/MODULOS/menu.html' %}
 
+         <!-- *MENSAJE FLASHH Agregar*-->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+            message in messages %}
+            <!--Top-Start. ARRIBA IZQUIERDA 
+                Top .INICIO EN MEDIO. 
+                Top-End. ESQUINA DERECHA-->
+            <script>
+                Swal.fire({
+                    position: "top",
+                    icon: "success",
+                    title: "{{message}}",
+                    showConfirmButton: false,
+                    timer: 3500,
+                });
+            </script>
+            {% endfor %} {% endif %} {% endwith %}
+
         <!-- CONTENIDO. 
         VISTA DONDE SE VIZUALIZA LOS DATOS -->
         <div class="content-wrapper">
@@ -210,9 +227,9 @@
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                        class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                        class="fa-solid fas fa-minus"></i>Cerrar</button>
                                 <button type="submit" class="btn btn-outline-success"><i
-                                        class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                        class="fa-solid fas fa-check"></i>Guardar</button>
                             </div>
                     </form>
                 </div>
@@ -233,16 +250,16 @@
                         <div class="modal-body">
                             <label>Tipo de Producto:</label>
                             <select class="form-control" name="dato" >
-                                <option selected>Selecciona el Tipo de Producto</option>
+                                <option selected disabled>Selecciona el Tipo de Producto</option>
                                 <option>INTERNO</option>
                                 <option>EXTERNO</option>
                             </select>
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                    class="fa-solid fas fa-minus"></i>Cerrar</button>
                             <button type="submit" class="btn btn-outline-success"><i
-                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                    class="fa-solid fas fa-check"></i>Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -267,9 +284,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                    class="fa-solid fas fa-minus"></i>Cerrar</button>
                             <button type="submit" class="btn btn-outline-success"><i
-                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                    class="fa-solid fas fa-check"></i>Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -293,9 +310,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                    class="fa-solid fas fa-minus"></i>Cerrar</button>
                             <button type="submit" class="btn btn-outline-success"><i
-                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                    class="fa-solid fas fa-check"></i>Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -315,9 +332,10 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <label>Seleccione la categoria:</label>
+                            <label>Categoria:</label>
                             <select class="form-control" name="dato">
                                 <!-- for CATEGORIA se itera para que aparezcan en productos-->
+                                <option selected disabled>Selecciona la Categoria</option>
                                 {% for dato in CategoriasRecibidas %}
                                 <option class="form-control rounded-pill" value="{{dato.nombreCategoria}}">
                                     {{dato.nombreCategoria}}</option>
@@ -327,9 +345,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                    class="fa-solid fas fa-minus"></i>Cerrar</button>
                             <button type="submit" class="btn btn-outline-success"><i
-                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                    class="fa-solid fas fa-check"></i>Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -349,9 +367,10 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <label>Seleccione el anaquel/estante:</label>
+                            <label>Anaquel/Estante:</label>
                             <select class="form-control" name="dato">
                                 <!-- for ESTANTE se itera para que aparezcan en productos-->
+                                <option selected disabled>Selecciona el Anaquel/Estante: </option>
                                 {% for dato in estanteRecibidos %} <!-- -->
                                 <option class="form-control rounded-pill" value="{{dato.nombreAnaquel}}">
                                     {{dato.nombreAnaquel}}</option>
@@ -361,9 +380,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                    class="fa-solid fas fa-minus"></i>Cerrar</button>
                             <button type="submit" class="btn btn-outline-success"><i
-                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                    class="fa-solid fas fa-check"></i>Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -376,14 +395,15 @@
                 <form action="{{url_for('actualizarInfoEntrada', key=entradasRecibidas.identificador, campo='distribuidor')}}" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Editar Distribuidor</h4>
+                            <h4 class="modal-title">Editar Seller</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <label>Seleccione el ditribuidor:</label>
+                            <label>Seller:</label>
                             <select class="form-control" name="dato">
+                                <option selected disabled>Selecciona el seller:</option>
                                 <!-- for DISTRIBUIDOR se itera para que aparezcan en ENTRADAS-->
                                 {% for dato in distribuidorRecibido %} <!-- -->
                                 <option class="form-control rounded-pill" value="{{dato.nombre}}">
@@ -394,9 +414,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                    class="fa-solid fas fa-minus"></i>Cerrar</button>
                             <button type="submit" class="btn btn-outline-success"><i
-                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                    class="fa-solid fas fa-check"></i>Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -410,7 +430,7 @@
                 <form action="{{url_for('actualizarInfoEntrada', key=entradasRecibidas.identificador, campo='validacion')}}" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Editar validacion del prodcuto</h4>
+                            <h4 class="modal-title">Editar validacion del producto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -455,9 +475,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                    class="fa-solid fas fa-minus"></i>Cerrar</button>
                             <button type="submit" class="btn btn-outline-success"><i
-                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                    class="fa-solid fas fa-check"></i>Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -482,9 +502,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                    class="fa-solid fas fa-user-minus"></i>Cerrar</button>
+                                    class="fa-solid fas fa-minus"></i>Cerrar</button>
                             <button type="submit" class="btn btn-outline-success"><i
-                                    class="fa-solid fas fa-user-check"></i>Guardar</button>
+                                    class="fa-solid fas fa-check"></i>Guardar</button>
                         </div>
                     </div>
                 </form>

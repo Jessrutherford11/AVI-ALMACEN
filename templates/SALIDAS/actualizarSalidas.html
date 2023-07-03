@@ -15,6 +15,25 @@
 
         <!--Menu-->
         {% include 'HOME/MODULOS/menu.html' %}
+        <!-- *MENSAJE FLASHH ¡SALIDA ACTUALIZADA! *-->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <!--Top-Start. ARRIBA IZQUIERDA 
+        Top .INICIO EN MEDIO. 
+        Top-End. ESQUINA DERECHA-->
+        <script>
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "{{message}}",
+                showConfirmButton: false,
+                timer: 2500,
+            });
+        </script>
+        {% endfor %} {% endif %} {% endwith %}
+
+
+
 
         <!-- CONTENIDO. 
         VISTA DONDE SE VIZUALIZA LOS DATOS -->
@@ -92,19 +111,7 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <div class="form-group">
-                                                    <small>
-                                                        Cantidad:
-                                                        <button type="button" data-toggle="modal"
-                                                            data-target="#cantidad" class="btn btn-xs btn-OpenEdit">
-                                                            <i class="fa-solid fas fa-edit"></i>Editar
-                                                        </button>
-                                                    </small>
-                                                    <p id="vtitle">{{salidasRecibidas.cantidad}}</p>
-                                                    <span class="text-muted"></span>
-                                                </div>
-                                            </div>
+                                         
 
                                             <div class="col-md-4 text-center">
                                                 <div class="form-group ">
@@ -125,7 +132,8 @@
                                                     <small>
                                                         Transportista:
                                                         <button type="button" data-toggle="modal"
-                                                            data-target="#transportista" class="btn btn-xs btn-OpenEdit">
+                                                            data-target="#transportista"
+                                                            class="btn btn-xs btn-OpenEdit">
                                                             <i class="fa-solid fas fa-edit"></i>Editar
                                                         </button>
                                                     </small>
@@ -133,9 +141,7 @@
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
-                                        </div><!--</Row-->
 
-                                        <div class="row">
                                             <div class="col-md-4 text-center">
                                                 <div class="form-group ">
                                                     <small>
@@ -149,9 +155,10 @@
                                                     <span class="text-muted"></span>
                                                 </div>
                                             </div>
+                                        </div><!--</Row-->
 
-
-
+                                        <div class="row">
+                        
                                             <div class="col-md-4 text-center">
                                                 <div class="form-group ">
                                                     <small>
