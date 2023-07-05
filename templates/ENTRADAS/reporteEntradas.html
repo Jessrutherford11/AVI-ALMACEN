@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'HOME/MODULOS/header.html' %}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper"> <!--Ajuste de tamaño-->
+        <div class="preloader flex-column justify-content-center align-items-center"> <!--Telon-->
+            <!--Animacion-->
+            <img class="animation__wobble" src="{{ url_for('static', filename = 'dist/img/icons/LOGO.png')}}" alt="LOGO"
+                height="80" width="80" />
+        </div>
+        <!--Navbar-->
+        {% include 'HOME/MODULOS/nav-bar.html' %}
+        <!-- /.navbar -->
+
+        <!--Menu-->
+        {% include 'HOME/MODULOS/menu.html' %}
+        <!--CONTENIDO- Para que no se rompa el diseño-->
+        <div class="content-wrapper">
+            <section class="container mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title"><strong><i class="fas fa-solid fa-sign-in-alt">
+                                    <font face="Castellar">  <i class="fas fa-solid fa-chart-line nav-icon">   REPORTE ENTRADAS  </strong></i></i></font>
+                        </h1>
+                    </div>
+                    <!--Se pone la tabla-->
+                    <table id="example1" class="table table-hover  table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th><i class="fas fa-solid fa-hashtag">
+                                    <font face="Calibri">Identificador</th></i></font>
+                            <th><i class="fas fa-solid fa-calendar-alt">
+                                    <font face="Calibri">Fecha y Hora</th></i></font>
+                            <th><i class="fas fa-solid fa-barcode">
+                                    <font face="Calibri">Codigo Producto</th></i></font>
+                            <th><i class="fas fa-solid fa-box">
+                                    <font face="Calibri">Nombre Producto</th></i></font>
+                            <th><i class="fas fa-solid fa-box-open">
+                                    <font face="Calibri">Tipo Producto</th></i></font>
+                            <th><i class="fas fa-solid fa-calendar-plus">
+                                    <font face="Calibri">Stock</th></i></font>
+                            <th><i class="fas fa-solid fa-boxes">
+                                    <font face="Calibri">Categoria</th></i></font>
+                            <th><i class="fas fa-solid fa-people-carry">
+                                    <font face="Calibri">Anaquel</th></i></font>
+                            <th><i class="fas fa-solid fa-truck-loading">
+                                    <font face="Calibri">Seller</th></i></font>
+                            <th><i class="fas fa-solid fa-check">
+                                    <font face="Calibri">Validacion</th></i></font>
+                            <th><i class="fas fa-solid fa-eye">
+                                    <font face="Calibri">Observaciones</th></i></font>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--Iteracion por cada dato encontrado-->
+                            {% for dato in entradasRecibidas %}
+                            <tr>
+                                <td class="text-center">{{dato.identificador}}</td>
+                                <td class="text-center">{{dato.fecha}}</td>
+                                <td class="text-center">{{dato.codigoProducto}}</td>
+                                <td class="text-center">{{dato.nombreProducto}}</td>
+                                <td class="text-info text-center">{{dato.tipoProducto}}</td>
+                                <td class="text-center">{{dato.stock}}</td>
+                                <td class="text-center">{{dato.categoria}}</td>
+                                <td class="text-center">{{dato.anaquel}}</td>
+                                <td class="text-center">{{dato.distribuidor}}</td>
+                                <td class="text-warning text-center" >{{dato.validacion}}</span></td>
+                                <td class="text-center">{{dato.observaciones}}</td>   
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!--Pie de pagina-->
+        {% include 'HOME/MODULOS/footer.html' %}
+
+        <!--Side- bar control -->
+        {% include 'HOME/MODULOS/side-bar-control.html' %}
+
+        <!--Sripts-->
+        {% include 'CLIENTES/MODULOS/scripts.html' %}
+    </div>
+
+</body>
+
+</html>

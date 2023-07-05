@@ -63,6 +63,7 @@ def agregarNuevaEntrada():
         distribuidor = request.form["distribuidor"]
         validacion = request.form["validacion"]
         observaciones = request.form["observaciones"]
+    
 
         #ID´s aleatorio identificador
         identificadorE= str(random.randrange(200,8000,4))
@@ -93,8 +94,13 @@ def agregarNuevaEntrada():
         """ 
         fecha = strftime("%A  %d de %b de %Y a las %H:%M")
         #print(fecha)
-        if identificador and fecha and codigoProducto and nombreProducto and tipoProducto and descripcion and stock and categoria and anaquel and distribuidor and validacion and observaciones:
-            entradas = Entradas(identificador,fecha,codigoProducto,nombreProducto,tipoProducto,descripcion,stock,categoria,anaquel,distribuidor,validacion,observaciones)
+
+        #DIA SE LA SEMANA
+        dia = strftime("%A")
+        print ("DIA DE LA SEMANA DE ENTRADAS:" , dia)
+
+        if identificador and fecha and codigoProducto and nombreProducto and tipoProducto and descripcion and stock and categoria and anaquel and distribuidor and validacion and observaciones and dia:
+            entradas = Entradas(identificador,fecha,codigoProducto,nombreProducto,tipoProducto,descripcion,stock,categoria,anaquel,distribuidor,validacion,observaciones,dia)
             entradasBD.insert_one(entradas.datosEntradasJson())
             flash("Entrada Registrada Correcatente: " + nombreProducto)
             #Si se inserta nos llevara a la tabla para consultar 
@@ -152,3 +158,14 @@ def eliminarEntrada(key):
     
     elif 'usuario-proveedor' in session:
         return redirect('/')
+
+
+
+# *REPORTE* ENTRADAS
+def reporteEntrada():
+    if 'usuario-administrador' in session:
+        titulo = 'Reporte Entradas'
+        entradasBD = BD['Entradas']
+        entradasRecibidas = entradasBD.find()
+        return render_template('ENTRADAS/reporteEntradas.html', titulo = titulo, entradasRecibidas=entradasRecibidas)
+

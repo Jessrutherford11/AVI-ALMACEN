@@ -70,7 +70,7 @@ def actualizarDistribuidor(key,campo):
         dato = request.form['dato']
         if dato:
             distribuidorBD.update_one({'identificador':key}, {'$set':{campo:dato}})
-            flash("Se agrego correctamente: " + key)
+            flash("Se actualizo correctamente: " + key)
             return informacionDistribuidor(key)
         
         elif 'usuario-proveedor' in session:

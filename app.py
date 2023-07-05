@@ -427,8 +427,13 @@ def resporteClientes():
 def reporteProveedores():
     return fun_prove.reporteProvedor()
 
+@app.route('/reporte-entradas')
+def repoteEntradas():
+    return fun_entradas.reporteEntrada()
 
-
+@app.route('/reporte-salidas')
+def repoteSalidas():
+    return fun_salidas.reporteSalida()
 
 
 

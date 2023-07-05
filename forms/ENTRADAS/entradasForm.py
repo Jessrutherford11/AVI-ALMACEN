@@ -1,5 +1,5 @@
 class Entradas:
-    def __init__(self, identificador, fecha, codigoProducto, nombreProducto, tipoProducto, descripcion, stock, categoria, anaquel, distribuidor, validacion,observaciones):
+    def __init__(self, identificador, fecha, codigoProducto, nombreProducto, tipoProducto, descripcion, stock, categoria, anaquel, distribuidor, validacion,observaciones, dia):
         self.identificador = identificador
         self.fecha = fecha
         self.codigoProducto = codigoProducto
@@ -12,6 +12,7 @@ class Entradas:
         self.distribuidor = distribuidor
         self.validacion = validacion
         self.observaciones = observaciones
+        self.dia = dia
         
 #Nombre de la tabla en la insercion de la BD
     def datosEntradasJson(self):
@@ -27,5 +28,6 @@ class Entradas:
             "anaquel": self.anaquel,
             "distribuidor":self.distribuidor,
             "validacion": self.validacion,
-            "observaciones": self.observaciones
+            "observaciones": self.observaciones,
+            "diaSemana": self.dia
         }

@@ -72,7 +72,7 @@ def actualizarTransportista(key,campo):
         dato = request.form['dato']
         if dato:
             transportistaBD.update_one({'identificador':key}, {'$set':{campo:dato}})
-            flash("Se actualizado correctamente : "  +key)
+            flash("Se actualizo correctamente : "  +key)
         return editarInfoTransportista(key)
     
     elif 'usuario-proveedor' in session:

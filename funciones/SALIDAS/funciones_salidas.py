@@ -166,8 +166,6 @@ def actualizarSalidas(key, campo):
         return redirect('/')
     
     
-
-
 #FUNCION ELIMINAR SALIDAS
 def eliminarSalidas(key):
     if 'usuario-administrador' in session:
@@ -178,4 +176,14 @@ def eliminarSalidas(key):
     
     elif 'usuario-provedor' in session:
         return redirect('/')
+    
+
+
+#FUNCION *REPORTE* SALIDAS 
+def reporteSalida():
+    if 'usuario-administrador' in session:
+        titulo = 'Salidas'
+        salidasBD = BD['Salidas']
+        salidasRecibidas = salidasBD.find()
+        return render_template('SALIDAS/reporteSalidas.html', titulo=titulo, salidasRecibidas=salidasRecibidas)
     
