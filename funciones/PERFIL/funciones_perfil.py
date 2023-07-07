@@ -24,6 +24,7 @@ def actualizarPerfil(key, campo):
         dato = request.form['dato']
         if dato:
             PerfilBD.update_one({'identificador':key}, {'$set':{campo:dato}})
+            flash("NOMBRE ACTUALIZADO CORRECTAMENTE :" + key) 
             return vistaPefil()
         
 
@@ -33,6 +34,7 @@ def actualizarCorreo(key, campo):
         dato = request.form['dato']
         if dato:
             PerfilBD.update_one({'identificador':key}, {'$set':{campo:dato}})
+            flash("CORREO ACTUALIZADO CORRECTAMENTE") 
             return redirect('/')
 
 

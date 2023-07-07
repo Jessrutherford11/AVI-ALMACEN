@@ -182,7 +182,7 @@ def eliminarSalidas(key):
 #FUNCION *REPORTE* SALIDAS 
 def reporteSalida():
     if 'usuario-administrador' in session:
-        titulo = 'Salidas'
+        titulo = 'Reporte Salidas'
         salidasBD = BD['Salidas']
         salidasRecibidas = salidasBD.find()
         return render_template('SALIDAS/reporteSalidas.html', titulo=titulo, salidasRecibidas=salidasRecibidas)

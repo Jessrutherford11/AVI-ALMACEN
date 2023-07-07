@@ -18,38 +18,38 @@
 
         <!-- *MENSAJE FLASHH* #AGREGAR#-->
         {% with messages = get_flashed_messages() %} {% if messages %} {% for
-            message in messages %}
-            <!--Top-Start. ARRIBA IZQUIERDA 
+        message in messages %}
+        <!--Top-Start. ARRIBA IZQUIERDA 
                 Top .INICIO EN MEDIO. 
                 Top-End. ESQUINA DERECHA-->
-            <script>
-                Swal.fire({
-                    position: "top",
-                    icon: "success",
-                    title: "{{message}}",
-                    showConfirmButton: false,
-                    timer: 3500,
-                });
-            </script>
-            {% endfor %} {% endif %} {% endwith %}
+        <script>
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "{{message}}",
+                showConfirmButton: false,
+                timer: 3500,
+            });
+        </script>
+        {% endfor %} {% endif %} {% endwith %}
 
-            <!-- *MENSAJE FLASHH* #INENTARIO INSUFICIENTE#-->
+        <!-- *MENSAJE FLASHH* #INENTARIO INSUFICIENTE#-->
         {% with messages = get_flashed_messages() %} {% if messages %} {% for
-            message in messages %}
-            <!--Top-Start. ARRIBA IZQUIERDA 
+        message in messages %}
+        <!--Top-Start. ARRIBA IZQUIERDA 
                 Top .INICIO EN MEDIO. 
                 Top-End. ESQUINA DERECHA-->
-            <script>
-                Swal.fire({
-                    position: "top",
-                    icon: "warning",
-                    title: "{{message}}",
-                    showConfirmButton: false,
-                    timer: 3500,
-                });
-            </script>
-            {% endfor %} {% endif %} {% endwith %}
-            
+        <script>
+            Swal.fire({
+                position: "top",
+                icon: "warning",
+                title: "{{message}}",
+                showConfirmButton: false,
+                timer: 3500,
+            });
+        </script>
+        {% endfor %} {% endif %} {% endwith %}
+
         <!--CONTENIDO- Para que no se rompa el diseño-->
         <div class="content-wrapper">
             <section class="content">
