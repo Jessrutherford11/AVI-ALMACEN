@@ -4,6 +4,7 @@ import random
 
 from forms.ANAQUEL.anaquelForm import Anaquel
 
+from data_base import baseDatos as ConectBD
 BD = ConectBD.conexion()
 
 #VISTA DE ANAQUEL. 

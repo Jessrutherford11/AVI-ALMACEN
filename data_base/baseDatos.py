@@ -1,4 +1,8 @@
+#INPORTACION DE LIBRERIA NECESARIA PARA LA CONEXION CON MONGO.
+
+#LIBRERIA DE MONFODB PARA PYTHON.s
 from pymongo import MongoClient
+#LIBRERIA PARA LA VALIDACION DE SEGURIDAD DE LA CONEXION.
 import certifi
 
 MONGO_URL = 'mongodb+srv://jessi:NBHD0511@clusteravi-almacen.iyllw6j.mongodb.net/?retryWrites=true&w=majority'

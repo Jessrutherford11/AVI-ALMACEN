@@ -27,7 +27,7 @@ app.secret_key = b'E\x7f\xa9\xa8tg\xd5l@\xaa\x89\x91\xf9\x96\xf4 \x8c\x05\xf2\xe
 
 
 
-#********************FUNCION LOGIN -ADMINISTRADORES********************
+#********************FUNCION LOGIN-ADMINISTRADORES********************
 
 #FUNCION LOGIN RAIZ
 @app.route('/')
