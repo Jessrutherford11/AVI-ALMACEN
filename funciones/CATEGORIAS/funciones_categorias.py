@@ -62,7 +62,6 @@ def informacionCategorias(key):
     elif 'usuario-proveedor' in session:
         return redirect('/')
     
-
 #ACTUALIZAR CATEGORIAS
 def actualizarCategorias(key,campo):
     if 'usuario-administrador' in session:
@@ -75,9 +74,7 @@ def actualizarCategorias(key,campo):
         
         elif 'usuario-proveedor' in session:
             return redirect('/')
-
-
-
+        
 #ELIMINAR CATEGORIAS
 def eliminarCategoria(key):
     if 'usuario-administrador' in session:

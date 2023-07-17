@@ -10,15 +10,6 @@ from forms.PROVEDORES.provedoresForm import Proveedores
 BD = Conecdb.conexion()
 
 
-#CONSULTA REPORTE PROVEDORES
-def reporteProvedor():
-    if 'usuario-administrador' in session:
-        titulo = 'Reporte Provedores'
-        provedoresBD = BD['Provedores']
-        provedoresRecibidos = provedoresBD.find()
-        return render_template('PROVEDORES/consultaProveedores.html', titulo = titulo, provedoresRecibidos = provedoresRecibidos)
-
-
 #VISTA PROVEDORES
 def vistaProvedores():
     if 'usuario-administrador' in session:
@@ -130,3 +121,13 @@ def eliminarProvedor(key):
     
     elif 'usuario-provedor' in session:
         return redirect ('/')
+    
+
+
+#CONSULTA REPORTE PROVEDORES
+def reporteProvedor():
+    if 'usuario-administrador' in session:
+        titulo = 'Reporte Provedores'
+        provedoresBD = BD['Provedores']
+        provedoresRecibidos = provedoresBD.find()
+        return render_template('PROVEDORES/consultaProveedores.html', titulo = titulo, provedoresRecibidos = provedoresRecibidos)

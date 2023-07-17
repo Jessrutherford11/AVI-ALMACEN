@@ -256,7 +256,6 @@ def EliminarTransportista(key):
 def provedores():
     return fun_prove.vistaProvedores()
 
-
 #FUNCION *VISTA* AGREGAR PROVEDOR.
 @app.route('/ingresar-proveedores')
 def IngresarProvedor():
@@ -267,19 +266,15 @@ def IngresarProvedor():
 def agregarProveedores():
     return fun_prove.nuevoProveedor()
 
-
 #FUNCION DE INFORMACION PROVEDOR
 @app.route('/informacion-proveedores/<key>')
 def informacionProveedor(key):
     return fun_prove.informacionProvedor(key)
 
-
 #FUNCION ACTUALIZAR PROVEDOR
 @app.route('/actualizar-proveedores/<key>, <campo>', methods = ['POST'])
 def actualizarProveedores(key,campo):
     return fun_prove.actualizarProvedor(key, campo)
-
-
 
 #FUNCION DE ELIMINAR PROVEEDOR
 @app.route('/eliminar-proveedor/ <key>')
@@ -334,7 +329,6 @@ def Entradas():
 def entradaOperaciones():
     return fun_entradas.operacionesEntradas()
 
-
 #FUNCION *VISTA* AGREGAR FORMULARIO ENTRADAS
 @app.route('/agregar-entradas')
 def agregarEntrada():
@@ -345,7 +339,6 @@ def agregarEntrada():
 def agregarNuevaEntrada():
     return fun_entradas.agregarNuevaEntrada()
 
-
 #FUNCION *VISTA* EDITAR ENTRADAS
 @app.route('/editar-informacion-entradas/<key>')
 def editarInfoEntradas(key):
@@ -355,7 +348,6 @@ def editarInfoEntradas(key):
 @app.route('/actualizar-entradas/ <key> , <campo>', methods = ['POST'] )
 def actualizarInfoEntrada(key,campo):
     return fun_entradas.actualizarEntradas(key,campo)
-
 
 #FUNCION ELIMINAR ENTRADA
 @app.route('/eliminar-entrada/<key>')
@@ -375,7 +367,6 @@ def Salidas():
 def salidasOperaciones():
     return fun_salidas.operacionesSalidas()
 
-
 #FUNCION *VISTA* AGREGAR FORMULARIO SALIDAS
 @app.route('/agregar-salidas')
 def agregarSalida():
@@ -386,7 +377,6 @@ def agregarSalida():
 def agregarNuevaSalida():
     return fun_salidas.agregarNuevasSalidas()
 
-
 #FUNCION *VISTA* EDITAR SALIDAS
 @app.route('/editar-informacion-salidas/<key>')
 def editarInfoSalida(key):
@@ -396,7 +386,6 @@ def editarInfoSalida(key):
 @app.route('/actualizar-salidas/ <key> , <campo>', methods = ['POST'] )
 def actualizarSalida(key,campo):
     return fun_salidas.actualizarSalidas(key,campo)
-
 
 #FUNCION ELIMINAR SALIDAS 
 @app.route('/eliminar-salidas/ <key>')
